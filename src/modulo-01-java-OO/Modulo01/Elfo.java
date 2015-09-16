@@ -1,3 +1,4 @@
+import java.util.Random;
 public class Elfo{
 
 	private String nome;
@@ -31,11 +32,19 @@ public class Elfo{
 		experiencia++;
 		flechas--;
 	}
+	
+	public void atirarFlechaRefactory(){
+	flechas--;
+	Random acertar=new Random();
+	if(acertar.nextBoolean() == true){
+		experiencia++;
+	}
+	}
 
 	//construtores
 	public Elfo(String nome){
 		this.nome=nome;
-                this.flechas=42;
+        this.flechas=42;
 	}
 
 	public Elfo(String nome, int flechas){
