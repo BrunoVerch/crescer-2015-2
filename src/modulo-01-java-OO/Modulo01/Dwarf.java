@@ -3,10 +3,10 @@ public class Dwarf {
     private Status status;
     
     public void receberFlechada() {
-        this.vida -= 10;
-        if(this.vida <= 0){
-            this.status=Status.MORTO;
-        }
+            this.vida -= 10;
+            if(this.vida == 0){
+                this.status=Status.MORTO;
+            }
     }
     
     public int getVida() {
