@@ -13,6 +13,10 @@ public class Elfo {
     public Elfo(String nome) {
         this(nome, 42);
     }
+    
+    public String toString(){
+        return this.nome+ " possui "+this.flechas+ " flechas e "+this.experiencia+" niveis de experiencia";
+    }
    
     public void atirarFlecha(Dwarf dwarf) {
         flechas--;
