@@ -25,6 +25,16 @@ public class ElfoTest
         assertEquals(1, elfo2.getExperiencia());
     }
     @Test
+    public void elfoAtiraDuasVezesFlechasGanhaXPPerdeFlechas(){
+        Elfo elfo5= new Elfo("elfo4",3);
+        elfo5.atirarFlecha(new Dwarf());
+        assertEquals(2, elfo5.getFlechas());
+        assertEquals(1, elfo5.getExperiencia());
+        elfo5.atirarFlecha(new Dwarf());
+        assertEquals(1, elfo5.getFlechas());
+        assertEquals(2, elfo5.getExperiencia());
+    }
+    @Test
     public void elfoCriadoSomenteComNome(){
         Elfo elfo3= new Elfo("elfo2");
         
@@ -33,5 +43,10 @@ public class ElfoTest
         assertEquals(42, elfo3.getFlechas());
         assertNotNull(elfo3.getFlechas());
         assertEquals(0, elfo3.getExperiencia());
+    }
+    @Test
+    public void testeToString(){
+        Elfo elfo4=new Elfo("elfo3",12);
+        assertEquals("elfo3 possui 12 flechas e 0 niveis de experiencia",elfo4.toString());
     }
 }
