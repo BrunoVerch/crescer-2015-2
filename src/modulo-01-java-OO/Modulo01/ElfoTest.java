@@ -17,22 +17,54 @@ public class ElfoTest
         assertEquals(0, elfo1.getExperiencia());
     }
     @Test
-    public void elfoAtiraFlechaGanhaXPPerdeFlechas(){
-        Elfo elfo2= new Elfo("elfo1",22);
+    public void elfoCriadoComFlechasNegativas(){
+        Elfo elfo6=new Elfo("elfo5",-1);
         
-        elfo2.atirarFlecha(new Dwarf());
-        assertEquals(21, elfo2.getFlechas());
-        assertEquals(1, elfo2.getExperiencia());
+        assertEquals(-1,elfo6.getFlechas());
     }
     @Test
-    public void elfoAtiraDuasVezesFlechasGanhaXPPerdeFlechas(){
-        Elfo elfo5= new Elfo("elfo4",3);
-        elfo5.atirarFlecha(new Dwarf());
-        assertEquals(2, elfo5.getFlechas());
-        assertEquals(1, elfo5.getExperiencia());
-        elfo5.atirarFlecha(new Dwarf());
-        assertEquals(1, elfo5.getFlechas());
+    public void elfoAtiraFlechaGanhaXPPerdeFlechas(){
+        Elfo elfo2= new Elfo("elfo1");
+        Dwarf dwarf=new Dwarf();
+        
+        elfo2.atirarFlecha(dwarf);
+        
+        assertEquals(41, elfo2.getFlechas());
+        assertEquals(1, elfo2.getExperiencia());
+        assertEquals(100, dwarf.getVida());
+    }
+    @Test
+    public void elfoAtiraEmDoisAnoes(){
+        Elfo elfo5= new Elfo("elfo4");
+        Dwarf dwarf=new Dwarf();
+        Dwarf dwarf1=new Dwarf();
+        
+        elfo5.atirarFlecha(dwarf);
+        elfo5.atirarFlecha(dwarf1);
+        
+        assertEquals(40, elfo5.getFlechas());
         assertEquals(2, elfo5.getExperiencia());
+        assertEquals(100, dwarf.getVida());
+        assertEquals(100, dwarf1.getVida());
+    }
+    @Test
+    public void doisElfoAtiramEmDoisAnoes(){
+        Elfo elfo5= new Elfo("elfo4");
+        Elfo elfo6= new Elfo("elfo4");
+        Dwarf dwarf=new Dwarf();
+        Dwarf dwarf1=new Dwarf();
+        
+        elfo5.atirarFlecha(dwarf);
+        elfo5.atirarFlecha(dwarf1);
+        elfo6.atirarFlecha(dwarf);
+        elfo6.atirarFlecha(dwarf1);
+        
+        assertEquals(40, elfo5.getFlechas());
+        assertEquals(40, elfo6.getFlechas());
+        assertEquals(2, elfo5.getExperiencia());
+        assertEquals(2, elfo6.getExperiencia());
+        assertEquals(90, dwarf.getVida());
+        assertEquals(90, dwarf1.getVida());
     }
     @Test
     public void elfoCriadoSomenteComNome(){
@@ -42,11 +74,38 @@ public class ElfoTest
         assertNotNull(elfo3.getNome());
         assertEquals(42, elfo3.getFlechas());
         assertNotNull(elfo3.getFlechas());
-        assertEquals(0, elfo3.getExperiencia());
     }
     @Test
-    public void testeToString(){
+    public void elfoCriado0DeExperiencia(){
+        Elfo elfo7=new Elfo("elfo6");
+        assertEquals(0, elfo7.getExperiencia());
+    }
+    @Test
+    public void elfoCriadoComNomeNull(){
+        Elfo elfo4=new Elfo(null);
+        
+        assertNull(elfo4.getNome());
+    }
+    @Test
+    public void elfoComNomeEDozeFlechasToString(){
         Elfo elfo4=new Elfo("elfo3",12);
-        assertEquals("elfo3 possui 12 flechas e 0 niveis de experiencia",elfo4.toString());
+        assertEquals("elfo3 possui 12 flechas e 0 niveis de experiência",elfo4.toString());
+    }
+    @Test
+    public void elfoComNomeEUmaFlechaToString(){
+        Elfo elfo4=new Elfo("elfo3",1);
+        assertEquals("elfo3 possui 1 flecha e 0 niveis de experiência",elfo4.toString());
+    }
+    @Test
+    public void elfoComUmDeExperienciaToString(){
+        Elfo elfo4=new Elfo("elfo3");
+        elfo4.atirarFlecha(new Dwarf());
+        assertEquals("elfo3 possui 41 flechas e 1 nivel de experiência",elfo4.toString());
+    }
+    @Test
+    public void elfoNasceVivo(){
+        Elfo elfo1=new Elfo("elfo1");
+        
+        assertEquals(Status.VIVO, elfo1.getStatus());
     }
 }
