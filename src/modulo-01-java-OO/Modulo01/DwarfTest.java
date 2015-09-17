@@ -41,10 +41,18 @@ public class DwarfTest
     @Test
     public void dwarfComVidaZeroStatusMorto(){
         Dwarf dwarf1=new Dwarf();
-        for(int i=0;i<11;i++){
-            dwarf1.receberFlechada();
-        }
-        assertEquals(Status.MORTO,dwarf1.getStatus());
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        dwarf1.receberFlechada();
+        assertEquals(Status.MORTO, dwarf1.getStatus());
     }
     @Test
     public void dwarfNasceVivo(){
