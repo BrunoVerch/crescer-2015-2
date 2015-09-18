@@ -26,6 +26,21 @@ public class Dwarf {
     public String getNome(){
         return this.nome;
     }
+    public Double getNumeroSorte(){
+        double valorInicial=101.0;
+        if(this.dataNascimento.ehBissexto()){
+            if(this.vida >= 80 && this.vida <=90){
+                return valorInicial*(-33);
+            }
+        }else{
+            if(this.nome=="Seixas" || this.nome=="Meireles"){
+                int valorA=100;
+                double valorB=(double) valorA;
+                return (valorInicial*33)%valorB;
+            }
+        }
+        return valorInicial;
+    }
     public Dwarf(String nome){
         this.nome=nome;
         this.status=Status.VIVO;

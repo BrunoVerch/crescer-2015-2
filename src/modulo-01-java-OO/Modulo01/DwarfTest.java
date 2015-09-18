@@ -80,4 +80,23 @@ public class DwarfTest
         assertEquals(03,dataNascimento.getMes());
         assertEquals(2015,dataNascimento.getAno());
     }
+    @Test
+    public void dwarfCriadoNoAnoBissextoCom90DeVidaGetNumeroSorte(){
+        Dwarf dwarf= new Dwarf("dwarf",new DataTerceiraEra(29,02,2012));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        assertEquals(-3333.0,dwarf.getNumeroSorte(),1.0);
+        
+    }
+    @Test
+    public void dwarfCriadoComNomeSeixasGetNumeroSorte(){
+        Dwarf dwarf= new Dwarf("Seixas");
+        assertEquals(33.3,dwarf.getNumeroSorte(),1.0);
+        
+    }
+    @Test
+    public void dwarfCriadoNoAnoBissextoGetNumeroSorte(){
+        Dwarf dwarf= new Dwarf("dwarf",new DataTerceiraEra(29,02,2012));
+        assertEquals(101.0,dwarf.getNumeroSorte(),1.0);
+    }
 }
