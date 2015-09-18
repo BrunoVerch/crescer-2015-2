@@ -80,12 +80,9 @@ public class DwarfTest
     @Test
     public void dwarfCriadoComNomeEDataPadrao(){
         Dwarf dwarf1=new Dwarf("dwarf");
-        DataTerceiraEra dataNascimento = dwarf1.getDataNascimento();
+        DataTerceiraEra dataEsperada = new DataTerceiraEra(1,1,1);
 
-        assertEquals("dwarf",dwarf1.getNome());
-        assertEquals(1,dataNascimento.getDia());
-        assertEquals(1,dataNascimento.getMes());
-        assertEquals(1,dataNascimento.getAno());
+        assertEquals(dataEsperada,dwarf1.getDataNascimento());
     }
     @Test
     public void dwarfCriadoComData11Do03De2015(){
@@ -121,7 +118,7 @@ public class DwarfTest
         Dwarf dwarf= new Dwarf("dwarf",new DataTerceiraEra(29,02,2012));
         dwarf.receberFlechada();
         dwarf.receberFlechada();
-        dwarf.getNumeroSorte();
+        
         dwarf.receberFlechada();
        
         assertEquals(2,dwarf.getExperiencia());
@@ -131,8 +128,7 @@ public class DwarfTest
     @Test
     public void dwarfCriadoComNomeSeixasERecebeFlechaEGetNumeroSorteEntre0E100(){
         Dwarf dwarf= new Dwarf("Seixas");
-        
-        dwarf.getNumeroSorte();
+      
         dwarf.receberFlechada();
         
         assertEquals(110,dwarf.getVida());
@@ -147,5 +143,13 @@ public class DwarfTest
         
         assertEquals(110,dwarf.getVida());
         assertEquals(33.3,dwarf.getNumeroSorte(),1.0);
+    }
+    @Test
+    public void dwarfReceberFlechadaNormal(){
+        Dwarf dwarf=new Dwarf("gh");
+        
+        dwarf.receberFlechada();
+        
+        assertEquals(110,dwarf.getVida());
     }
 }

@@ -4,14 +4,14 @@ public class Dwarf {
     private String nome;
     private int experiencia;
     private DataTerceiraEra dataNascimento;
+    private Inventario inventario;
     
     public void receberFlechada() {
             if(this.status==Status.VIVO){
                 if(this.getNumeroSorte() < 0){
                     this.experiencia += 2;
                 } else {
-                    if(this.getNumeroSorte()>=0 && this.getNumeroSorte()<=100){
-                    } else{
+                    if(this.getNumeroSorte()>100){
                         if(this.vida >= 10){
                             this.vida -= 10;
                         }
@@ -40,17 +40,15 @@ public class Dwarf {
     }
     public Double getNumeroSorte(){
         double valorInicial=101.0;
-        if(this.dataNascimento.ehBissexto()){
-            if(this.vida >= 80 && this.vida <=90){
+        if(this.dataNascimento.ehBissexto() && (this.vida >= 80 && this.vida <=90)){
                 return valorInicial*(-33);
-            }
-        }else{
-            if(this.nome=="Seixas" || this.nome=="Meireles"){
-                int valorA=100;
-                double valorB=(double) valorA;
-                return (valorInicial*33)%valorB;
-            }
         }
+        if(!dataNascimento.ehBissexto() && this.nome != null && this.nome=="Seixas" || this.nome=="Meireles"){
+            int valorA=100;
+            double valorB=(double) valorA;
+            return (valorInicial*33)%valorB;
+        }
+        
         return valorInicial;
     }
     public Dwarf(String nome){
