@@ -120,6 +120,15 @@ public class DwarfTest
         
         assertEquals(110,dwarf.getVida());
         assertEquals(33.3,dwarf.getNumeroSorte(),1.0);
+    }
+    @Test
+    public void dwarfCriadoComNomeMeirelesERecebeFlechaEGetNumeroSorteEntre0E100(){
+        Dwarf dwarf= new Dwarf("Meireles");
         
+        dwarf.getNumeroSorte();
+        dwarf.receberFlechada();
+        
+        assertEquals(110,dwarf.getVida());
+        assertEquals(33.3,dwarf.getNumeroSorte(),1.0);
     }
 }
