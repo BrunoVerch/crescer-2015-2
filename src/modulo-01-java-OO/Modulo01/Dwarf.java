@@ -1,9 +1,13 @@
 public class Dwarf {
     private int vida;
     private Status status;
+    private String nome;
+    private int experiencia;
     
     public void receberFlechada() {
-            this.vida -= 10;
+            if(this.vida >=10){
+                this.vida -= 10;
+            }
             if(this.vida == 0){
                 this.status=Status.MORTO;
             }
@@ -15,7 +19,8 @@ public class Dwarf {
     public Status getStatus(){
         return this.status;
     }
-    public Dwarf(){
+    public Dwarf(String nome){
+        this.nome=nome;
         this.status=Status.VIVO;
         this.vida=110;
     }

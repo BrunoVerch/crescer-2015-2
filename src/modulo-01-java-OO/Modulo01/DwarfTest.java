@@ -13,18 +13,18 @@ public class DwarfTest
     */
     @Test
     public void dwarfNasceCom110DeVida() {
-        Dwarf gimli = new Dwarf();
+        Dwarf gimli = new Dwarf("dwarf");
         assertEquals(110, gimli.getVida());
     }
     @Test
     public void dwarfReceberFlechadaEPerde10Vida(){
-        Dwarf dwarf1 = new Dwarf();
+        Dwarf dwarf1 = new Dwarf("dwarf");
         dwarf1.receberFlechada();
         assertEquals(100, dwarf1.getVida());
     }
     @Test
     public void dwarfReceberFlechada11vezesVidaIgual0(){
-        Dwarf dwarf2 = new Dwarf();
+        Dwarf dwarf2 = new Dwarf("dwarf");
         for(int i=0;i<11;i++){
             dwarf2.receberFlechada();
         }
@@ -32,7 +32,7 @@ public class DwarfTest
     }
     @Test
     public void dwarfReceberFlechada7vezesEVidaIgual40(){
-        Dwarf dwarf3 = new Dwarf();
+        Dwarf dwarf3 = new Dwarf("dwarf");
         for(int i=0;i<7;i++){
             dwarf3.receberFlechada();
         }
@@ -40,23 +40,23 @@ public class DwarfTest
     }
     @Test
     public void dwarfComVidaZeroStatusMorto(){
-        Dwarf dwarf1=new Dwarf();
+        Dwarf dwarf1=new Dwarf("dwarf");
+        for(int i=0;i<11;i++){
         dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
-        dwarf1.receberFlechada();
+        }
         assertEquals(Status.MORTO, dwarf1.getStatus());
     }
     @Test
+    public void dwarfComVidaNegativa(){
+        Dwarf dwarf1=new Dwarf("dwarf");
+        for(int i=0;i<12;i++){
+        dwarf1.receberFlechada();
+        }
+        assertEquals(0, dwarf1.getVida());
+    }
+    @Test
     public void dwarfNasceVivo(){
-        Dwarf dwarf1=new Dwarf();
+        Dwarf dwarf1=new Dwarf("dwarf");
         
         assertEquals(Status.VIVO, dwarf1.getStatus());
     }

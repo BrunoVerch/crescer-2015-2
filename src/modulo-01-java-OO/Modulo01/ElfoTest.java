@@ -25,7 +25,7 @@ public class ElfoTest
     @Test
     public void elfoAtiraFlechaGanhaXPPerdeFlechas(){
         Elfo elfo2= new Elfo("elfo1");
-        Dwarf dwarf=new Dwarf();
+        Dwarf dwarf=new Dwarf("dwarf");
         
         elfo2.atirarFlecha(dwarf);
         
@@ -36,8 +36,8 @@ public class ElfoTest
     @Test
     public void elfoAtiraEmDoisAnoes(){
         Elfo elfo5= new Elfo("elfo4");
-        Dwarf dwarf=new Dwarf();
-        Dwarf dwarf1=new Dwarf();
+        Dwarf dwarf=new Dwarf("dwarf");
+        Dwarf dwarf1=new Dwarf("dwarf1");
         
         elfo5.atirarFlecha(dwarf);
         elfo5.atirarFlecha(dwarf1);
@@ -51,8 +51,8 @@ public class ElfoTest
     public void doisElfoAtiramEmDoisAnoes(){
         Elfo elfo5= new Elfo("elfo4");
         Elfo elfo6= new Elfo("elfo4");
-        Dwarf dwarf=new Dwarf();
-        Dwarf dwarf1=new Dwarf();
+        Dwarf dwarf=new Dwarf("dwarf");
+        Dwarf dwarf1=new Dwarf("dwarf1");
         
         elfo5.atirarFlecha(dwarf);
         elfo5.atirarFlecha(dwarf1);
@@ -99,7 +99,7 @@ public class ElfoTest
     @Test
     public void elfoComUmDeExperienciaToString(){
         Elfo elfo4=new Elfo("elfo3");
-        elfo4.atirarFlecha(new Dwarf());
+        elfo4.atirarFlecha(new Dwarf("dwarf"));
         assertEquals("elfo3 possui 41 flechas e 1 nivel de experiência",elfo4.toString());
     }
     @Test
