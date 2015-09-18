@@ -39,12 +39,29 @@ public class DwarfTest
         assertEquals(40, dwarf3.getVida());
     }
     @Test
+    public void dwarfReceberFlechada7vezesEStatusVivo(){
+        Dwarf dwarf3 = new Dwarf("dwarf");
+        for(int i=0;i<7;i++){
+            dwarf3.receberFlechada();
+        }
+        assertEquals(Status.VIVO,dwarf3.getStatus());
+    }
+    @Test
     public void dwarfComVidaZeroStatusMorto(){
         Dwarf dwarf1=new Dwarf("dwarf");
         for(int i=0;i<11;i++){
         dwarf1.receberFlechada();
         }
         assertEquals(Status.MORTO, dwarf1.getStatus());
+    }
+    @Test
+    public void dwarfComVidaZeroStatusMortoEMaisUmaFlechada(){
+        Dwarf dwarf1=new Dwarf("dwarf");
+        for(int i=0;i<12;i++){
+        dwarf1.receberFlechada();
+        }
+        assertEquals(Status.MORTO, dwarf1.getStatus());
+        assertEquals(0,dwarf1.getVida());
     }
     @Test
     public void dwarfComVidaNegativa(){
