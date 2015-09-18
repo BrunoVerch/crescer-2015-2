@@ -99,4 +99,27 @@ public class DwarfTest
         Dwarf dwarf= new Dwarf("dwarf",new DataTerceiraEra(29,02,2012));
         assertEquals(101.0,dwarf.getNumeroSorte(),1.0);
     }
+    @Test
+    public void dwarfCriadoRecebeFlechaEGetNumeroSorteMenorZero(){
+        Dwarf dwarf= new Dwarf("dwarf",new DataTerceiraEra(29,02,2012));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.getNumeroSorte();
+        dwarf.receberFlechada();
+       
+        assertEquals(2,dwarf.getExperiencia());
+        assertEquals(-3333.0,dwarf.getNumeroSorte(),0.5);
+        assertEquals(90,dwarf.getVida());
+    }
+    @Test
+    public void dwarfCriadoComNomeSeixasERecebeFlechaEGetNumeroSorteEntre0E100(){
+        Dwarf dwarf= new Dwarf("Seixas");
+        
+        dwarf.getNumeroSorte();
+        dwarf.receberFlechada();
+        
+        assertEquals(110,dwarf.getVida());
+        assertEquals(33.3,dwarf.getNumeroSorte(),1.0);
+        
+    }
 }
