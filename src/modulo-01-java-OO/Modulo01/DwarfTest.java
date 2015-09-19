@@ -152,4 +152,33 @@ public class DwarfTest
         
         assertEquals(100,dwarf.getVida());
     }
+    @Test
+    public void dwarfSortudoTentaSorte(){
+        Dwarf dwarf= new Dwarf("dwarf",new DataTerceiraEra(29,02,2012));
+        dwarf.receberFlechada();
+        dwarf.receberFlechada();
+        dwarf.getInventario().adicionarItem(new Item("espada",1));
+        dwarf.getInventario().adicionarItem(new Item("escudo",3));
+        dwarf.getInventario().adicionarItem(new Item("mapa",10));
+        
+        dwarf.tentarSorte();
+        
+        assertEquals(1001,dwarf.getInventario().getListaItens().get(0).getQuantidade());
+        assertEquals(1003,dwarf.getInventario().getListaItens().get(1).getQuantidade());
+        assertEquals(1010,dwarf.getInventario().getListaItens().get(2).getQuantidade());
+    }
+    @Test
+    public void dwarfAzaradoTentaSorte(){
+        Dwarf dwarf= new Dwarf("dwarf",new DataTerceiraEra(29,02,2012));
+        dwarf.receberFlechada();
+        dwarf.getInventario().adicionarItem(new Item("espada",1));
+        dwarf.getInventario().adicionarItem(new Item("escudo",3));
+        dwarf.getInventario().adicionarItem(new Item("mapa",10));
+        
+        dwarf.tentarSorte();
+        
+        assertEquals(1,dwarf.getInventario().getListaItens().get(0).getQuantidade());
+        assertEquals(3,dwarf.getInventario().getListaItens().get(1).getQuantidade());
+        assertEquals(10,dwarf.getInventario().getListaItens().get(2).getQuantidade());
+    }
 }
