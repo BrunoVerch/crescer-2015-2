@@ -52,5 +52,22 @@ public class InventarioTest
         
         assertEquals(esperado,lista.getDescricoesItens());
     }
+    @Test
+    public void inventarioGetDescricoesItensComPerderItem(){
+        Inventario lista=new Inventario();
+        Item item=new Item("escudo",2);
+        Item item1=new Item("espada",1);
+        Item item2=new Item("poçao",5);
+        Item item3=new Item("mapa",2);
+        String esperado="escudo,espada,mapa";
+        
+        lista.adicionarItem(item);
+        lista.adicionarItem(item1);
+        lista.adicionarItem(item2);
+        lista.adicionarItem(item3);
+        lista.perderItem(item2);
+        
+        assertEquals(esperado,lista.getDescricoesItens());
+    }
     
 }
