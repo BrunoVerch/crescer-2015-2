@@ -9,4 +9,10 @@ public class Item
         this.descricao=descricao;
         this.quantidade=quantidade;
     }
+    public String getDescricao(){
+        return this.descricao;
+    }
+    public int getQuantidade(){
+        return this.quantidade;
+    }
 }
