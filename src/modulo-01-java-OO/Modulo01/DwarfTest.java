@@ -150,6 +150,6 @@ public class DwarfTest
         
         dwarf.receberFlechada();
         
-        assertEquals(110,dwarf.getVida());
+        assertEquals(100,dwarf.getVida());
     }
 }
