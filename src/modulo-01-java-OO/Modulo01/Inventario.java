@@ -16,15 +16,24 @@ public class Inventario
         listaItens.remove(item);
     }
     public String getDescricoesItens(){
-        int tamanho=getListaItens().size();
         StringBuilder strBuilder = new StringBuilder();
-        for(int x=0;x<tamanho;x++){
-            if(x<(tamanho-1)){
-                strBuilder.append(getListaItens().get(x).getDescricao()).append(",");
-            }else{
-                strBuilder.append(getListaItens().get(x).getDescricao());
+        for(int x=0;x<getListaItens().size();x++){
+            strBuilder.append(getListaItens().get(x).getDescricao());
+            if(x<(getListaItens().size()-1)){
+                strBuilder.append(",");
             }
         }
         return strBuilder.toString();
+    }
+    public Item getItemComMaiorQuantidade(){
+        int itemMaiorQuantidade=getListaItens().get(0).getQuantidade();
+        Item itemMaior=getListaItens().get(0);
+        for(int i=1;i<getListaItens().size();i++){
+            if(getListaItens().get(i).getQuantidade()>itemMaiorQuantidade){
+                itemMaiorQuantidade=getListaItens().get(i).getQuantidade();
+                itemMaior=getListaItens().get(i);
+            }
+        }
+        return itemMaior;
     }
 }

@@ -69,5 +69,33 @@ public class InventarioTest
         
         assertEquals(esperado,lista.getDescricoesItens());
     }
+    @Test
+    public void inventarioGetItemComMaiorQuantidade(){
+        Inventario lista=new Inventario();
+        Item item=new Item("escudo",2);
+        Item item1=new Item("espada",1);
+        Item item2=new Item("poçao",5);
+        Item item3=new Item("mapa",2);
+        lista.adicionarItem(item);
+        lista.adicionarItem(item1);
+        lista.adicionarItem(item2);
+        lista.adicionarItem(item3);
+        
+        assertEquals(item2,lista.getItemComMaiorQuantidade());
+    }
+    @Test
+    public void inventarioComPrimeiroItemMaiorGetItemComMaiorQuantidade(){
+        Inventario lista=new Inventario();
+        Item item=new Item("escudo",8);
+        Item item1=new Item("espada",1);
+        Item item2=new Item("poçao",5);
+        Item item3=new Item("mapa",2);
+        lista.adicionarItem(item);
+        lista.adicionarItem(item1);
+        lista.adicionarItem(item2);
+        lista.adicionarItem(item3);
+        
+        assertEquals(item,lista.getItemComMaiorQuantidade());
+    }
     
 }
