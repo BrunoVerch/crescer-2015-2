@@ -14,4 +14,10 @@ public class ItemTest
         assertEquals("espada",item.getDescricao());
         assertEquals(5,item.getQuantidade());
     }
+    @Test
+    public void itemCriadoAcrescenta1000Quantidade(){
+        Item item=new Item("poçao",2);
+        item.acrescenta1000();
+        assertEquals(1002,item.getQuantidade());
+    }
 }

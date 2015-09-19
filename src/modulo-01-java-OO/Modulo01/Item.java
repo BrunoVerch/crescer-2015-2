@@ -15,4 +15,7 @@ public class Item
     public int getQuantidade(){
         return this.quantidade;
     }
+    public void acrescenta1000(){
+        this.quantidade+=1000;
+    }
 }
