@@ -97,5 +97,76 @@ public class InventarioTest
         
         assertEquals(item,lista.getItemComMaiorQuantidade());
     }
-    
+    @Test
+    public void inventarioOrdenarItens(){
+        Inventario lista=new Inventario();
+        Item item=new Item("escudo",8);
+        Item item1=new Item("espada",1);
+        Item item2=new Item("poçao",5);
+        Item item3=new Item("mapa",2);
+        lista.adicionarItem(item);
+        lista.adicionarItem(item1);
+        lista.adicionarItem(item2);
+        lista.adicionarItem(item3);
+        
+        lista.ordenarItens();
+        
+        assertEquals(1,lista.getListaItens().get(0).getQuantidade());
+        assertEquals(item3,lista.getListaItens().get(1));
+    }
+    @Test
+    public void inventarioOrdenarItensComAlgunsValoresNegativos(){
+        Inventario lista=new Inventario();
+        Item item=new Item("escudo",8);
+        Item item1=new Item("espada",1);
+        Item item2=new Item("poçao",-5);
+        Item item3=new Item("mapa",-2);
+        lista.adicionarItem(item);
+        lista.adicionarItem(item1);
+        lista.adicionarItem(item2);
+        lista.adicionarItem(item3);
+        
+        lista.ordenarItens();
+        
+        assertEquals(-5,lista.getListaItens().get(0).getQuantidade());
+        assertEquals(item3,lista.getListaItens().get(1));
+    }
+    @Test
+    public void inventarioOrdenarItensComItensJaOrdenados(){
+        Inventario lista=new Inventario();
+        Item item=new Item("escudo",1);
+        Item item1=new Item("espada",2);
+        Item item2=new Item("poçao",3);
+        Item item3=new Item("mapa",4);
+        lista.adicionarItem(item);
+        lista.adicionarItem(item1);
+        lista.adicionarItem(item2);
+        lista.adicionarItem(item3);
+        
+        lista.ordenarItens();
+        
+        assertEquals(1,lista.getListaItens().get(0).getQuantidade());
+        assertEquals(item1,lista.getListaItens().get(1));
+    }
+    @Test
+    public void inventarioOrdenarItensComPerdasAntesEDepois(){
+        Inventario lista=new Inventario();
+        Item item=new Item("escudo",9);
+        Item item1=new Item("espada",2);
+        Item item2=new Item("poçao",3);
+        Item item3=new Item("cantil",7);
+        Item item4=new Item("mapa",4);
+        lista.adicionarItem(item);
+        lista.adicionarItem(item1);
+        lista.adicionarItem(item2);
+        lista.adicionarItem(item3);
+        lista.adicionarItem(item4);
+        lista.perderItem(item2);
+        
+        lista.ordenarItens();
+        lista.perderItem(item1);
+        
+        assertEquals(4,lista.getListaItens().get(0).getQuantidade());
+        assertEquals(item3,lista.getListaItens().get(1));
+    }
 }
