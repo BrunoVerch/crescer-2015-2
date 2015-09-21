@@ -36,6 +36,7 @@ public class InventarioTest
         assertEquals(lista.getListaItens().get(1),item2);
         assertEquals(2,lista.getListaItens().size());
     }
+    
     @Test
     public void inventarioGetDescricoesItens(){
         Inventario lista=new Inventario();
@@ -68,6 +69,15 @@ public class InventarioTest
         lista.perderItem(item2);
         
         assertEquals(esperado,lista.getDescricoesItens());
+    }
+    @Test
+    public void inventarioGetDescricoesItensSemItens(){
+        Inventario lista=new Inventario();
+        Item item=new Item("escudo",2);
+        lista.adicionarItem(item);
+        lista.perderItem(item);
+        
+        assertEquals("",lista.getDescricoesItens());
     }
     @Test
     public void inventarioGetItemComMaiorQuantidade(){
