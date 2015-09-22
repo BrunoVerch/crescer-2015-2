@@ -38,6 +38,12 @@ public class Dwarf {
     public int getExperiencia(){
         return this.experiencia;
     }
+    public void adicionarItem(Item item) {
+        this.inventario.adicionarItem(item);
+    }
+    public void perderItem(Item item) {
+        this.inventario.perderItem(item);
+    }
     public Double getNumeroSorte(){
         double valorInicial=101.0;
         if(this.dataNascimento.ehBissexto() && (this.vida >= 80 && this.vida <=90)){
@@ -67,11 +73,11 @@ public class Dwarf {
                 }
             } 
     }
-    public void tentarSorte(){
-        if(this.getNumeroSorte()==(-3333.0)){
-            for(int i=0;i<getInventario().getListaItens().size();i++){
-                this.getInventario().getListaItens().get(i).acrescenta1000();
-            }
+    public void tentarSorte() {
+        double numero = getNumeroSorte();
+        
+        if (numero == -3333.0) {
+            this.inventario.aumentar1000UnidadesEmCadaItem();
         }
     }
         
