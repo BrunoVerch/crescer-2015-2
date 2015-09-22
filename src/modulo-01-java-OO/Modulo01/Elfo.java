@@ -1,19 +1,17 @@
 
-public class Elfo {
-    private String nome;
-    private int flechas, experiencia;
-    private Status status;
+public class Elfo extends Personagens{
+    private int flechas;
     
     // Type initializer
      
     public Elfo(String nome, int flechas) {
-        this.nome = nome;
+        super(nome);
         this.flechas = flechas;
-        this.status=Status.VIVO;
     }
     
     public Elfo(String nome) {
-        this(nome, 42);
+        super(nome);
+        this.flechas=42;
     }
     
     public String toString(){
@@ -24,11 +22,12 @@ public class Elfo {
         
         return String.format("%s possui %d %s e %d %s de experiência",this.nome,this.flechas,textoFlecha=flechaNoSingular ? "flecha" : "flechas",this.experiencia,textoNivel=nivelNoSingular ? "nivel" : "niveis");
     }
+    
    
     public void atirarFlecha(Dwarf dwarf) {
         flechas--;
         experiencia++;
-        dwarf.receberFlechada();
+        dwarf.perderVida();
     }
     /*
     public void atirarFlechaRefactory(){
@@ -39,19 +38,10 @@ public class Elfo {
         flechas--;
     }
     */
-    public String getNome() {
-        return this.nome;
-    }
-    
-    public Status getStatus(){
-        return this.status;
-    }
+
     
     public int getFlechas() {
         return this.flechas;
     }
-    
-    public int getExperiencia(){
-        return this.experiencia;
-    }
+
 }

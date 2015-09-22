@@ -48,7 +48,7 @@ public class ElfoTest
         assertEquals(100, dwarf1.getVida());
     }
     @Test
-    public void doisElfoAtiramEmDoisAnoes(){
+    public void doisElfosAtiramEmDoisAnoes(){
         Elfo elfo5= new Elfo("elfo4");
         Elfo elfo6= new Elfo("elfo4");
         Dwarf dwarf=new Dwarf("dwarf");
@@ -107,5 +107,12 @@ public class ElfoTest
         Elfo elfo1=new Elfo("elfo1");
         
         assertEquals(Status.VIVO, elfo1.getStatus());
+    }
+    @Test
+    public void elfoTemInventario(){
+        Elfo elfo=new Elfo("elfo");
+        elfo.getInventario().adicionarItem(new Item("espada",2));
+        assertEquals(2,elfo.getInventario().getListaItens().get(0).getQuantidade());
+        assertEquals("espada",elfo.getInventario().getListaItens().get(0).getDescricao());
     }
 }
