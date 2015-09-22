@@ -15,6 +15,11 @@ public class Inventario
     public void perderItem(Item item){
         listaItens.remove(item);
     }
+    public void aumentar1000UnidadesEmCadaItem() {
+        for (Item item : this.listaItens) {
+            item.acrescenta1000();
+        }
+    }
     public String getDescricoesItens(){
         StringBuilder strBuilder = new StringBuilder();
         for(int x=0;x<getListaItens().size();x++){
@@ -36,6 +41,20 @@ public class Inventario
         }
         return itemMaior;
     }
+    /*
+    public Item getItemComMaiorQuantidade() {
+        int indice = 0, maiorQtd = 0;
+        
+        for (Item item : this.itens) {
+            int qtdAtual = item.getQuantidade();
+            if (qtdAtual > maiorQtd) {
+                indice = this.itens.indexOf(item);
+                maiorQtd = qtdAtual;
+            }
+        }
+        return this.itens.get(indice);
+    }
+    */
     public void ordenarItens(){
         Item aux;  
         for(int x=0;x<getListaItens().size();x++){
