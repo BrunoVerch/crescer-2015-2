@@ -36,26 +36,26 @@ public class Dwarf extends Personagens{
         return valorInicial;
     }
     public void receberFlechada() {
-                if(this.getNumeroSorte() < 0){
-                    this.experiencia += 2;
-                } else if(this.getNumeroSorte()>100){
-                    
-                    if(this.vida >= 10){
-                        this.vida -= 10;
-                    }
-                    if(this.vida == 0){
-                        this.status=Status.MORTO;
-                    }
-                }
-            
-    }
-    public void perderVida(){
+        if(this.getNumeroSorte() < 0){
+            this.experiencia += 2;
+        } else if(this.getNumeroSorte()>100){
+                
             if(this.vida >= 10){
                 this.vida -= 10;
             }
             if(this.vida == 0){
                 this.status=Status.MORTO;
             }
+        }
+            
+    }
+    public void perderVida(){
+        if(this.vida >= 10){
+            this.vida -= 10;
+        }
+        if(this.vida == 0){
+            this.status=Status.MORTO;
+        }
     }
     public void tentarSorte() {
         double numero = getNumeroSorte();
