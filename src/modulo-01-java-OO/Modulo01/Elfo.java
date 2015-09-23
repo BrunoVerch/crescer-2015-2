@@ -1,6 +1,6 @@
 
 public class Elfo extends Personagem{
-    private int flechas;
+    protected int flechas;
     
     // Type initializer
      
@@ -12,6 +12,7 @@ public class Elfo extends Personagem{
     public Elfo(String nome) {
         super(nome);
         this.flechas=42;
+        this.vida=100;
     }
     
     public String toString(){

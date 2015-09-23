@@ -10,11 +10,11 @@ public class UrukHaiTest
     @Test
     public void criaUrukHai(){
         UrukHai orc = new UrukHai();
-        int vidaEsperada = 150;
+        double vidaEsperada = 150.0;
         Item itemEsperado = new Item("Escudo Uruk-Hai",1);
         Item itemEsperado1 = new Item("Espada",1);
         
-        assertEquals(vidaEsperada, orc.getVida());
+        assertEquals(vidaEsperada, orc.getVida(),0.5);
         assertEquals(itemEsperado, orc.getInventario().getItemPorDescricao("Escudo Uruk-Hai"));
         assertEquals(itemEsperado1, orc.getInventario().getItemPorDescricao("Espada"));
     }
@@ -22,16 +22,15 @@ public class UrukHaiTest
     public void urukHaiAtacaDwarf(){
         UrukHai orc = new UrukHai();
         Dwarf gimli = new Dwarf("Gimli");
-        int vidaEsperada = 98;
+        double vidaEsperada = 98.0;
         orc.atacarAnao(gimli);
-        assertEquals(vidaEsperada, gimli.getVida());
+        assertEquals(vidaEsperada, gimli.getVida(),0.5);
     }
     @Test
     public void urukHaiRecebeDanoDeElfo(){
         UrukHai orc = new UrukHai();
-        Elfo elfo = new Elfo("elfo");
-        int vidaEsperada = 144;
+        double vidaEsperada = 144.0;
         orc.levarAtaque();
-        assertEquals(vidaEsperada, orc.getVida());
+        assertEquals(vidaEsperada, orc.getVida(),0.5);
     }
 }

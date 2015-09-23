@@ -45,4 +45,8 @@ public class Personagem
             this.status=Status.MORTO;
         }
     }
+    public int hashCode(){
+        //colocar constantes
+        return this.nome.hashCode();
+    }
 }

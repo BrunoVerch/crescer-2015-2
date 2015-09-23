@@ -31,7 +31,7 @@ public class ElfoTest
         
         assertEquals(41, elfo2.getFlechas());
         assertEquals(1, elfo2.getExperiencia());
-        assertEquals(100, dwarf.getVida());
+        assertEquals(100.0, dwarf.getVida(), 0.5);
     }
     @Test
     public void elfoAtiraEmDoisAnoes(){
@@ -44,8 +44,8 @@ public class ElfoTest
         
         assertEquals(40, elfo5.getFlechas());
         assertEquals(2, elfo5.getExperiencia());
-        assertEquals(100, dwarf.getVida());
-        assertEquals(100, dwarf1.getVida());
+        assertEquals(100.0, dwarf.getVida(),0.5);
+        assertEquals(100.0, dwarf1.getVida(),0.5);
     }
     @Test
     public void doisElfosAtiramEmDoisAnoes(){

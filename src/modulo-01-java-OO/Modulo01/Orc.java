@@ -21,6 +21,9 @@ public class Orc extends Personagem
             perderVida(6);
         }
     }
+    public void recebeAtaqueDoOrc(Orc orc){
+        this.levarAtaque();
+    }
     public void atacarAnao(Dwarf anao){
         if(podeAtacarComEspada()){
             anao.recebeAtaqueDoOrc(this);
