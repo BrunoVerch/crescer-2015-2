@@ -22,7 +22,9 @@ public class Elfo extends Personagem{
         
         return String.format("%s possui %d %s e %d %s de experiência",this.nome,this.flechas,textoFlecha=flechaNoSingular ? "flecha" : "flechas",this.experiencia,textoNivel=nivelNoSingular ? "nivel" : "niveis");
     }
-    
+    public void atacarOrc(Orc orc){
+        orc.recebeAtaqueDeElfo(this);
+    }
    
     public void atirarFlecha(Dwarf dwarf) {
         flechas--;

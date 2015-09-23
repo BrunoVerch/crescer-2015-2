@@ -37,4 +37,12 @@ public class Personagem
     public void perderItem(Item item) {
         this.inventario.perderItem(item);
     }
+    public void recebeAtaqueDoOrc(Orc orc){
+        if(this.vida > 0){
+            vida -= orc.getDanoDeAtaque();
+        }
+        if(this.vida == 0){
+            this.status=Status.MORTO;
+        }
+    }
 }
