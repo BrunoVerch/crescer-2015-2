@@ -63,8 +63,8 @@ public class ElfoTest
         assertEquals(40, elfo6.getFlechas());
         assertEquals(2, elfo5.getExperiencia());
         assertEquals(2, elfo6.getExperiencia());
-        assertEquals(90, dwarf.getVida());
-        assertEquals(90, dwarf1.getVida());
+        assertEquals(90, dwarf.getVida(),0.01);
+        assertEquals(90, dwarf1.getVida(),0.01);
     }
     @Test
     public void elfoCriadoSomenteComNome(){
