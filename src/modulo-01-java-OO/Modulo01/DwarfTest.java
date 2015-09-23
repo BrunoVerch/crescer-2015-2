@@ -14,13 +14,13 @@ public class DwarfTest
     @Test
     public void dwarfNasceCom110DeVida() {
         Dwarf gimli = new Dwarf("dwarf");
-        assertEquals(110, gimli.getVida());
+        assertEquals(110, gimli.getVida(),0.01);
     }
     @Test
     public void dwarfReceberFlechadaEPerde10Vida(){
         Dwarf dwarf1 = new Dwarf("dwarf");
         dwarf1.receberFlechada();
-        assertEquals(100, dwarf1.getVida());
+        assertEquals(100, dwarf1.getVida(),0.01);
     }
     @Test
     public void dwarfReceberFlechada11vezesVidaIgual0(){
@@ -28,7 +28,7 @@ public class DwarfTest
         for(int i=0;i<11;i++){
             dwarf2.receberFlechada();
         }
-        assertEquals(0, dwarf2.getVida());
+        assertEquals(0, dwarf2.getVida(),0.01);
     }
     @Test
     public void dwarfReceberFlechada7vezesEVidaIgual40(){
@@ -36,7 +36,7 @@ public class DwarfTest
         for(int i=0;i<7;i++){
             dwarf3.receberFlechada();
         }
-        assertEquals(40, dwarf3.getVida());
+        assertEquals(40, dwarf3.getVida(),0.01);
     }
     @Test
     public void dwarfReceberFlechada7vezesEStatusVivo(){
@@ -61,7 +61,7 @@ public class DwarfTest
         dwarf1.receberFlechada();
         }
         assertEquals(Status.MORTO, dwarf1.getStatus());
-        assertEquals(0,dwarf1.getVida());
+        assertEquals(0,dwarf1.getVida(),0.01);
     }
     @Test
     public void dwarfComVidaNegativa(){
@@ -69,7 +69,7 @@ public class DwarfTest
         for(int i=0;i<12;i++){
         dwarf1.receberFlechada();
         }
-        assertEquals(0, dwarf1.getVida());
+        assertEquals(0, dwarf1.getVida(),0.01);
     }
     @Test
     public void dwarfNasceVivo(){
@@ -123,7 +123,7 @@ public class DwarfTest
        
         assertEquals(2,dwarf.getExperiencia());
         assertEquals(-3333.0,dwarf.getNumeroSorte(),0.5);
-        assertEquals(90,dwarf.getVida());
+        assertEquals(90,dwarf.getVida(),0.01);
     }
     @Test
     public void dwarfCriadoComNomeSeixasERecebeFlechaEGetNumeroSorteEntre0E100(){
@@ -131,7 +131,7 @@ public class DwarfTest
       
         dwarf.receberFlechada();
         
-        assertEquals(110,dwarf.getVida());
+        assertEquals(110,dwarf.getVida(),0.01);
         assertEquals(33.3,dwarf.getNumeroSorte(),1.0);
     }
     @Test
@@ -141,7 +141,7 @@ public class DwarfTest
         dwarf.getNumeroSorte();
         dwarf.receberFlechada();
         
-        assertEquals(110,dwarf.getVida());
+        assertEquals(110,dwarf.getVida(),0.01);
         assertEquals(33.3,dwarf.getNumeroSorte(),1.0);
     }
     @Test
@@ -150,7 +150,7 @@ public class DwarfTest
         
         dwarf.receberFlechada();
         
-        assertEquals(100,dwarf.getVida());
+        assertEquals(100,dwarf.getVida(),0.01);
     }
     @Test
     public void dwarfSortudoTentaSorte(){

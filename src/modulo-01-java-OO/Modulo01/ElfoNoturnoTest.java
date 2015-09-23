@@ -15,7 +15,7 @@ public class ElfoNoturnoTest
         
         elfo.atirarFlecha(dwarf);
         
-        assertEquals(vidaEsperada,elfo.getVidaDouble(),0.001);
+        assertEquals(vidaEsperada,elfo.getVida(),0.001);
     }
     @Test
     public void elfoNoturnoAtiraFlechaDuasVezesEPerdePorcentagemVida(){
@@ -26,7 +26,7 @@ public class ElfoNoturnoTest
         elfo.atirarFlecha(dwarf);
         elfo.atirarFlecha(dwarf);
         
-        assertEquals(vidaEsperada,elfo.getVidaDouble(),0.001);
+        assertEquals(vidaEsperada,elfo.getVida(),0.001);
     }
     @Test
     public void elfoNoturnoAtiraFlechaGanha3Experiencia(){
@@ -36,6 +36,17 @@ public class ElfoNoturnoTest
         elfo.atirarFlecha(dwarf);
         
         assertEquals(3,elfo.getExperiencia());
+    }
+    @Test
+    public void elfoNoturnoAtiraFlechaAteMorrer(){
+        ElfoNoturno elfo=new ElfoNoturno("elfo",90);
+        Dwarf dwarf=new Dwarf("dwarf");
+        
+        for(int i=0;i<90;i++){
+            elfo.atirarFlecha(dwarf);
+        }
+        assertEquals(0,elfo.getVida(),0.01);
+        assertEquals(Status.MORTO,elfo.getStatus());
     }
     
 }
