@@ -6,7 +6,7 @@ public class Personagem
     protected int experiencia;
     protected Status status;
     protected Inventario inventario;
-    protected int vida;
+    protected double vida;
     
     public Personagem(String nome){
         this();
@@ -16,7 +16,7 @@ public class Personagem
         this.inventario=new Inventario();
         this.status=Status.VIVO;
     }
-    public int getVida(){
+    public double getVida(){
         return this.vida;
     }
     public String getNome(){

@@ -2,10 +2,6 @@
 
 public class Orc extends Personagem
 {
-   protected int vida;
-    protected Inventario inventario;
-    protected Status status;
-
     public Orc()
     {
         this.inventario = new Inventario();
@@ -58,19 +54,6 @@ public class Orc extends Personagem
         }
         return 0;
     }
-    
-    public int getVida(){
-        return this.vida;
-    }
-    
-    public Inventario getInventario(){
-        return this.inventario;
-    }
-    
-    public Status getStatus(){
-        return this.status;
-    }
-    
     private void debitarFlecha() {
         Item flecha = getItem("Flecha");
         

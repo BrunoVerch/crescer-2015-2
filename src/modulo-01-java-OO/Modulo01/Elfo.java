@@ -1,6 +1,6 @@
 
 public class Elfo extends Personagem{
-    protected int flechas;
+    private int flechas;
     
     // Type initializer
      
@@ -28,9 +28,11 @@ public class Elfo extends Personagem{
     }
    
     public void atirarFlecha(Dwarf dwarf) {
-        flechas--;
-        experiencia++;
-        dwarf.perderVida();
+        if(this.flechas >=1){
+            flechas--;
+            experiencia++;
+            dwarf.perderVida();
+        }
     }
     /*
     public void atirarFlechaRefactory(){
