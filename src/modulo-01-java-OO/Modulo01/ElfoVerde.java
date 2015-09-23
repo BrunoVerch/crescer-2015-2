@@ -13,7 +13,7 @@ public class ElfoVerde extends Elfo
         this.experiencia++;
     }
     public void adicionarItem(Item item) {
-        boolean podeAdicionar = item != null && (item.getDescricao().equals("Espada de aço valiriano") || 
+        boolean podeAdicionar = item != null && item.getDescricao() != null && (item.getDescricao().equals("Espada de aço valiriano") || 
                                  item.getDescricao().equals("Arco e flecha de vidro"));
         if (podeAdicionar) {
             super.adicionarItem(item);
