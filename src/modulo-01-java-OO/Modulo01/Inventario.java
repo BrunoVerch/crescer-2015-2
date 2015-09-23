@@ -80,5 +80,9 @@ public class Inventario
              } 
         }
     }
+    public boolean equals(Object obj) {
+        Inventario outro = (Inventario)obj;
+        return this.listaItens.equals(outro.getListaItens());
+    }
     }
 
