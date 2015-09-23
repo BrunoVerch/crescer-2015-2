@@ -1,4 +1,4 @@
-public class Dwarf extends Personagens{
+public class Dwarf extends Personagem{
     protected DataTerceiraEra dataNascimento;
     
     public Dwarf() {

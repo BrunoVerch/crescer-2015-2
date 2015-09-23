@@ -1,6 +1,6 @@
 
 
-public class Personagens
+public class Personagem
 {
     protected String nome;
     protected int experiencia;
@@ -8,11 +8,11 @@ public class Personagens
     protected Inventario inventario;
     protected int vida;
     
-    public Personagens(String nome){
+    public Personagem(String nome){
         this();
         this.nome=nome;
     }
-    public Personagens(){
+    public Personagem(){
         this.inventario=new Inventario();
         this.status=Status.VIVO;
     }

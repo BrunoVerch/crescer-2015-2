@@ -1,5 +1,5 @@
 
-public class Elfo extends Personagens{
+public class Elfo extends Personagem{
     private int flechas;
     
     // Type initializer
