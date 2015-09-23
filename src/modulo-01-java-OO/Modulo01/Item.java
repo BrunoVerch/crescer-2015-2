@@ -23,6 +23,15 @@ public class Item
         this.quantidade+=soma;
         this.quantidade+=soma*1000;
     }
+    public void retirarUmaUnidade(){
+        if(this.quantidade > 0){
+            this.quantidade-=1;
+        }
+    }
+    public boolean equals(Object obj) {
+        Item outro = (Item)obj;
+        return this.descricao.equals(outro.getDescricao()) && this.quantidade == outro.getQuantidade();
+    }
     /*
      * Exercicio de refatoraçao
     public void shimbalaie(){
