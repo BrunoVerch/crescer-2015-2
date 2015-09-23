@@ -20,6 +20,19 @@ public class Inventario
             item.acrescenta1000();
         }
     }
+    public void aumentarUnidadesComSomatorio() {
+        for (Item item : this.listaItens) {
+            item.acrescenta1000MaisQuantidade();
+        }
+    }
+    public Item getItemPorDescricao(String descricao){
+        for(Item item : this.listaItens){
+            if(item.getDescricao().equals(descricao)) {
+                return item;
+            }
+        }
+        return null;
+    }
     public String getDescricoesItens(){
         StringBuilder strBuilder = new StringBuilder();
         for(int x=0;x<getListaItens().size();x++){
