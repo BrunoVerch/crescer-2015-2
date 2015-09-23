@@ -1,10 +1,10 @@
 
 
-public class Orc
+public class Orc extends Personagem
 {
-   private int vida;
-    private Inventario inventario;
-    private Status status;
+   protected int vida;
+    protected Inventario inventario;
+    protected Status status;
 
     public Orc()
     {
@@ -12,20 +12,15 @@ public class Orc
         this.status = Status.VIVO;
     }
     
-    public void levarAtaqueDeAnao() {
+    public void levarAtaque() {
         
         if(getItem("Escudo Uruk-Hai") == null){
             perderVida(10);
         }
         else {
-            perderVida(5);
+            perderVida(6);
         }
     }
-    
-    public void levarAtaqueDeElfo() {
-        perderVida(8);
-    }
-    
     public void atacarAnao(Dwarf anao){
         if(podeAtacarComEspada()){
             anao.recebeAtaqueDoOrc(this);
@@ -51,32 +46,13 @@ public class Orc
             this.status = Status.FUGINDO;
         }
     }
-    public void recebeAtaqueDeElfo(Elfo elfo) {
-        if(this.vida > 0){
-            this.vida -= 8;
-        }
-        if(this.vida == 0){
-            this.status=Status.MORTO;
-        }
-    }
-
-    public void recebeAtaqueDeDwarf(Dwarf dwarf) {
-        if(this.vida > 0){ 
-            this.vida -= 10;
-        }
-        if(this.vida == 0){
-            this.status=Status.MORTO;
-        }
-    }
     public int getDanoDeAtaque(){
         if(podeAtacarComEspada()){
             return 12;
         }
-        
         if(podeAtacarComArco()){
             return 8;
         }
-        
         return 0;
     }
     
