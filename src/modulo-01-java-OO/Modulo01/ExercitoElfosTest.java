@@ -87,4 +87,11 @@ public class ExercitoElfosTest
         assertEquals(noturno2, exercito.buscar(Status.MORTO).get(1));
         assertEquals(noturno3, exercito.buscar(Status.MORTO).get(2));
     }
+    @Test
+    public void elfoNaoAlistadoEChamado(){
+        ExercitoElfos exercito = new ExercitoElfos();
+        ElfoVerde elfo = new ElfoVerde("elfo");
+        exercito.alistarElfo(elfo);
+        assertEquals(null, exercito.getExercito().get("elfo2"));
+    }
 }
