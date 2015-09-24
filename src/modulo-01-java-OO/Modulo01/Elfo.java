@@ -1,9 +1,8 @@
 
 public class Elfo extends Personagem{
     private int flechas;
-    
-    // Type initializer
-     
+    private static int count;
+    // Type initializer     
     public Elfo(String nome, int flechas) {
         super(nome);
         this.flechas = flechas;
@@ -13,6 +12,7 @@ public class Elfo extends Personagem{
         super(nome);
         this.flechas=42;
         this.vida=100;
+        count++;
     }
     
     public String toString(){
@@ -47,6 +47,12 @@ public class Elfo extends Personagem{
     
     public int getFlechas() {
         return this.flechas;
+    }
+    public static int getCount(){
+        return count;
+    }
+    public static void resetaCount(){
+        count=0;
     }
 
 }

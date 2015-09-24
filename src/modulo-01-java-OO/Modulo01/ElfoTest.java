@@ -115,4 +115,17 @@ public class ElfoTest
         assertEquals(2,elfo.getInventario().getListaItens().get(0).getQuantidade());
         assertEquals("espada",elfo.getInventario().getListaItens().get(0).getDescricao());
     }
+    @Test
+    public void elfoCriadoTresVezesConta(){
+        for(int i=0;i<6;i++){
+            new Elfo("elfo");
+        }
+        Elfo elfo=new Elfo("sj");
+        assertEquals(7,elfo.getCount());
+    }
+    @Before
+    public void setUp(){
+        Elfo.resetaCount();
+    }
+    
 }
