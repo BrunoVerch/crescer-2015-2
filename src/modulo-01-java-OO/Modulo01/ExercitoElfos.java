@@ -13,8 +13,8 @@ public class ExercitoElfos
     public HashMap<Status,ArrayList<Elfo>> getGrupoStatus(){
         return grupoStatus;
     }
-    public EstrategiaNormal getEstrategia(){
-        return (EstrategiaNormal)estrategia;
+    public EstrategiaDeAtaque getEstrategia(){
+        return estrategia;
     }
     public void alistarElfo(Elfo elfo){
         if(elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno){
