@@ -11,11 +11,12 @@ public class SnagaTest
     public void criadoSnaga(){
         Snaga orc = new Snaga();
         double vidaEsperada = 70.0;
-        Item itemEsperado1 = new Item("Arco",1);
-        Item itemEsperado2 = new Item("Flecha",5);
+        Inventario esperado=new Inventario();
+        esperado.adicionarItem(new Item("Arco",1));
+        esperado.adicionarItem(new Item("Flecha",5));
+        
         assertEquals(vidaEsperada, orc.getVida(),0.5);
-        assertEquals(itemEsperado1, orc.getInventario().getItemPorDescricao("Arco"));
-        assertEquals(itemEsperado2, orc.getInventario().getItemPorDescricao("Flecha"));
+        assertEquals(esperado, orc.getInventario());
     }
     @Test
     public void snagaRecebeAtaque(){
