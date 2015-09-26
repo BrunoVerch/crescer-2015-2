@@ -3,6 +3,7 @@ public class ExercitoElfos
 {
     HashMap<String, Elfo> exercito;
     HashMap<Status, ArrayList<Elfo>> grupoStatus;
+    private EstrategiaDeAtaque estrategia=new EstrategiaNormal();
     public ExercitoElfos(){
         this.exercito=new HashMap<>();
     }
@@ -11,6 +12,9 @@ public class ExercitoElfos
     }
     public HashMap<Status,ArrayList<Elfo>> getGrupoStatus(){
         return grupoStatus;
+    }
+    public EstrategiaNormal getEstrategia(){
+        return (EstrategiaNormal)estrategia;
     }
     public void alistarElfo(Elfo elfo){
         if(elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno){
