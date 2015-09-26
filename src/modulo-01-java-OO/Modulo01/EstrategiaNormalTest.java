@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import java.util.ArrayList;
+import java.util.*;
 
 public class EstrategiaNormalTest
 {
@@ -101,4 +101,35 @@ public class EstrategiaNormalTest
         assertEquals(70, dwarves.get(2).getVida(),0.01);
         assertEquals(70, dwarves.get(3).getVida(),0.01);
     }
+    @Test
+   public void exercitoDeElfosAtacaEOsNoturnosSóAtacam2Vezes(){
+       ExercitoElfos exercitoElfo = new ExercitoElfos();
+       ElfoVerde elfoVerde = new ElfoVerde("sortudo");
+       ElfoNoturno noturno = new ElfoNoturno("kurt");
+       ElfoNoturno noturno2 = new ElfoNoturno("ciclope");
+       ElfoNoturno noturno3 = new ElfoNoturno("jean"); 
+       
+       exercitoElfo.alistarElfo(elfoVerde);
+       exercitoElfo.alistarElfo(noturno);
+       exercitoElfo.alistarElfo(noturno2);
+       exercitoElfo.alistarElfo(noturno3);
+       
+       ArrayList<Dwarf> dwarves = new ArrayList<>();
+       Dwarf anao1 = new Dwarf("anao");
+       Dwarf anao2 = new Dwarf("anao1");
+       dwarves.add(anao1);
+       dwarves.add(anao2);
+       
+       int vidaAnaoEsperada = 90;
+       
+       ArrayList<Elfo> ordemAtaqueEsperada = new ArrayList<>(Arrays.asList(elfoVerde, noturno3));
+       
+       exercitoElfo.getEstrategia().atacar(exercitoElfo,dwarves);
+       
+       assertEquals(vidaAnaoEsperada,anao1.getVida(),0.01);              
+       assertEquals(2,exercitoElfo.getEstrategia().ordemDoUltimoAtaque().size());
+       assertEquals(ordemAtaqueEsperada,exercitoElfo.getEstrategia().ordemDoUltimoAtaque());
+       
+       
+    } 
 }
