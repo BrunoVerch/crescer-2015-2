@@ -16,6 +16,9 @@ public class ExercitoElfos
     public EstrategiaDeAtaque getEstrategia(){
         return estrategia;
     }
+    public void mudarEstrategia(EstrategiaDeAtaque estrategia){
+        this.estrategia=estrategia;
+    }
     public void alistarElfo(Elfo elfo){
         if(elfo instanceof ElfoVerde || elfo instanceof ElfoNoturno){
             exercito.put(elfo.getNome(),elfo);
