@@ -28,4 +28,15 @@ function imprime(array,func){
 		console.log('The second parameter needs to be function');
 	}
 }
-
+/*exercicio 4*/
+function fiboSum(num) {  
+	var primeiro = 1, segundo = 1, count = 0, soma=0;  
+	while (count < num) {
+		soma+=primeiro;
+		var aux = primeiro;	
+		primeiro = segundo;	
+		segundo += aux;	
+		count++;  
+	}
+	console.log(soma);
+}
