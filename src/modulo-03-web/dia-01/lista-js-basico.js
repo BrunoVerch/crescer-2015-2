@@ -39,4 +39,14 @@ function fiboSum(num) {
 		count++;  
 	}
 	console.log(soma);
+/*exercicio 5*/
+function excelis(letras) {
+	if(letras.search(/[^a-zA-Z]+/) === -1){
+	    letras = letras.toUpperCase();
+	    var sum = 0;
+	    for (var i = 0; i < letras.length; i++) {
+	        sum = sum * 26 + letras.charCodeAt(i) - 64; //returns 1 for 'a' and 2 for 'b' so on and so forth.
+	    }
+	    return sum;
+	} else {return 'Expressão inválida'}
 }
