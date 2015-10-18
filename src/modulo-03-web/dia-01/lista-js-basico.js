@@ -18,4 +18,14 @@ function maiorTexto(arrayStrings){
 	}
 	return palavra;
 }
+/*exercicio 3*/
+function imprime(array,func){
+	if (typeof func === 'function') {
+		for (var i = 0; i < array.length; i++) {
+			console.log(func(array[i]));
+		}
+	} else{
+		console.log('The second parameter needs to be function');
+	}
+}
 
