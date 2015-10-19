@@ -5,7 +5,7 @@ function daisyGame(numPetalas){
 	} else {
 		console.log('love me');
 	}
-}
+};
 /*exercicio 2*/
 function maiorTexto(arrayStrings){
 	var maior=arrayStrings[0].length;
@@ -17,7 +17,7 @@ function maiorTexto(arrayStrings){
 		}
 	}
 	return palavra;
-}
+};
 /*exercicio 3*/
 function imprime(array,func){
 	if (typeof func === 'function') {
@@ -27,17 +27,16 @@ function imprime(array,func){
 	} else{
 		console.log('The second parameter needs to be function');
 	}
-}
+};
 /*exercicio 4*/
-function fiboSum(num) {  
-	var primeiro = 1, segundo = 1, count = 0, soma=0;  
+function fiboSum(num) {
+	var primeiro = 1, segundo = 1, count = 0, soma=0;
 	while (count < num) {
-		soma+=primeiro;
-		var aux = primeiro;	
-		primeiro = segundo;	
-		segundo += aux;	
-		count++;  
-	}
+		soma=primeiro+segundo;
+		primeiro = segundo;
+		segundo += soma;
+		count++;
+	};
 	console.log(soma);
 /*exercicio 5*/
 function excelis(letras) {
@@ -49,4 +48,14 @@ function excelis(letras) {
 	    }
 	    return sum;
 	} else {return 'Expressão inválida'}
-}
+};
+/*exercicio 6*/
+function queroCafe(mascada,precos){
+	precos.sort(function(a, b){ return a > b});
+	resposta=[];
+	for (i=0;i<precos.length;i++) {
+		if(precos[i] <= mascada){
+			resposta.push(precos[i]);
+		}
+	} return resposta.join(',');
+};
