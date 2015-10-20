@@ -58,3 +58,25 @@ function ordenaPorMundiais(array){
    orderDESC(resposta);
    return resposta;
 };
+//exercicio 2
+function somarPorNacionais(array){
+  var resposta=0;
+   array.forEach(function(elem) {
+      resposta+=elem.titulos[0].qtd;
+    })
+   return resposta;
+};
+function somarPorContinentais(array){
+  var resposta=0;
+   array.forEach(function(elem) {
+      resposta+=elem.titulos[1].qtd;
+    })
+   return resposta;
+};
+function somarPorMundiais(array){
+  var resposta=0;
+   array.forEach(function(elem) {
+      resposta+=elem.titulos[2].qtd;
+    })
+   return resposta;
+};
