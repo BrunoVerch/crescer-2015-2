@@ -6,7 +6,7 @@ var clubes = [
       { desc: 'Continentais', qtd: 0 },
       { desc: 'Mundiais', qtd: 0 }
     ]
-  }, 
+  },
   {
     nome: 'Manchester United',
     titulos: [
@@ -59,6 +59,7 @@ function ordenaPorMundiais(array){
    return resposta;
 };
 //exercicio 2
+//reduce (function)
 function somarPorNacionais(array){
   var resposta=0;
    array.forEach(function(elem) {
@@ -89,3 +90,11 @@ function apenasOsMelhores(array){
     })
    return resposta;
 };
+function calcularIdadeMedia(array){
+  var soma= array
+  .map(function (elem) { return new Date().getFullYear() - elem.fundacao.getFullYear();})
+  .reduce(function (val,elem){
+    return val + elem;
+  },0);
+  return soma/array.length;
+}
