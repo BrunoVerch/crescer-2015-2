@@ -80,3 +80,12 @@ function somarPorMundiais(array){
     })
    return resposta;
 };
+//exercicio 3
+function apenasOsMelhores(array){
+  var resposta=[];
+   array.forEach(function(elem) {
+      if(elem.titulos[0].qtd > 18)
+      resposta.push(elem);
+    })
+   return resposta;
+};
