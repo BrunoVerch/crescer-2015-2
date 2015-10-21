@@ -1,5 +1,5 @@
-function CarrinhoDeCompras(){
-  this.carrinho=[];
+function CarrinhoDeCompras(carrinho){
+  this.carrinho= carrinho || [];
 };
 CarrinhoDeCompras.prototype.adicionarItem = function (itens) {
   this.carrinho.push(itens);
@@ -31,21 +31,4 @@ CarrinhoDeCompras.prototype.sortear = function(chance){
   } else {
     return false;
   }
-};
-
-CarrinhoDeCompras.prototype.forcarCompra = function () {
-  if(!this.intervalo){
-    var self=this;
-    //guarda o id em uma propriedade do objeto
-    this.intervalo = setInterval(function () {
-      self.carrinho.forEach(function (elem) {
-        elem.valorUnitario=elem.valorUnitario*1.1;
-      })
-    },5000);
-  };
-}
-
-CarrinhoDeCompras.prototype.concluirPedido = function () {
-  clearInterval(this.intervalo);
-  delete this.intervalo;
 };
