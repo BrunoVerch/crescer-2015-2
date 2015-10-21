@@ -13,3 +13,7 @@ CarrinhoDeCompras.prototype.index = function(sku){
     return elem.sku; 
    }).indexOf(sku);
 };
+
+CarrinhoDeCompras.prototype.atualizarQuantidade = function(sku,quantidade){
+  this.carrinho[this.index(sku)].quantidade = quantidade;
+};
