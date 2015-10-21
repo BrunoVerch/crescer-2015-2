@@ -17,3 +17,18 @@ CarrinhoDeCompras.prototype.index = function(sku){
 CarrinhoDeCompras.prototype.atualizarQuantidade = function(sku,quantidade){
   this.carrinho[this.index(sku)].quantidade = quantidade;
 };
+
+CarrinhoDeCompras.prototype.valorTotal = function () {
+  var total = this.carrinho.reduce(function (value,elem) {
+    return value + elem.subTotal();
+  },0);
+  return this.sortear(40) ? total*0.9 : total;
+};
+
+CarrinhoDeCompras.prototype.sortear = function(chance){
+  if(Math.random()*100 < chance ){
+    return true;
+  } else { 
+    return false;
+  }
+};
