@@ -21,11 +21,7 @@ function maiorTexto(arrayStrings){
 /*exercicio 3*/
 function imprime(array,func){
 	if (typeof func === 'function') {
-		for (var i = 0; i < array.length; i++) {
-			console.log(func(array[i]));
-		}
-	} else{
-		console.log('The second parameter needs to be function');
+		array.forEach(func);
 	}
 };
 /*exercicio 4*/
@@ -37,7 +33,7 @@ function fiboSum(num) {
 		segundo += soma;
 		count++;
 	};
-	console.log(soma);
+	return soma;
 /*exercicio 5*/
 function excelis(letras) {
 	if(letras.search(/[^a-zA-Z]+/) === -1){

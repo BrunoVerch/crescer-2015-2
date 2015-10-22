@@ -33,62 +33,45 @@ var clubes = [
   }
 ];
 function orderDESC(array){ return array.sort(function(a, b){ return a < b})};
+function ordenaPorIndice(indice, times) {
+  var clubes = [];
+  times.sort(function(elemEsq, elemDir, clubes) {
+    return elemEsq.titulos[indice].qtd < elemDir.titulos[indice].qtd;
+  });
+  return clubes;
+};
 //exercicio 1
 function ordenaPorNacionais(array){
-  var resposta=[];
-   array.forEach(function(elem) {
-      resposta.push(elem.titulos[0].qtd);
-    })
-   orderDESC(resposta);
-   return resposta;
+  return ordenaPorIndice(0, times);
 };
 function ordenaPorContinentais(array){
-  var resposta=[];
-   array.forEach(function(elem) {
-      resposta.push(elem.titulos[1].qtd);
-    })
-   orderDESC(resposta);
-   return resposta;
+  return ordenaPorIndice(1, times);
 };
 function ordenaPorMundiais(array){
-  var resposta=[];
-   array.forEach(function(elem) {
-      resposta.push(elem.titulos[2].qtd);
-    })
-   orderDESC(resposta);
-   return resposta;
+  return ordenaPorIndice(2, times);
 };
 //exercicio 2
 //reduce (function)
 function somarPorNacionais(array){
-  var resposta=0;
-   array.forEach(function(elem) {
-      resposta+=elem.titulos[0].qtd;
-    })
-   return resposta;
+  return array.reduce(function(valor,elem) {
+    return valor + elem.titulos[0].qtd;
+  },0);
 };
 function somarPorContinentais(array){
-  var resposta=0;
-   array.forEach(function(elem) {
-      resposta+=elem.titulos[1].qtd;
-    })
-   return resposta;
+  return array.reduce(function(valor,elem) {
+    return valor + elem.titulos[1].qtd;
+  },0);
 };
 function somarPorMundiais(array){
-  var resposta=0;
-   array.forEach(function(elem) {
-      resposta+=elem.titulos[2].qtd;
-    })
-   return resposta;
+  return array.reduce(function(valor,elem) {
+    return valor + elem.titulos[2].qtd;
+  },0);
 };
 //exercicio 3
 function apenasOsMelhores(array){
-  var resposta=[];
-   array.forEach(function(elem) {
-      if(elem.titulos[0].qtd > 18)
-      resposta.push(elem);
-    })
-   return resposta;
+  return array.filter(function(elem) {
+    return elem.titulos[0].qtd > 18;
+  });
 };
 function calcularIdadeMedia(array){
   var soma= array
