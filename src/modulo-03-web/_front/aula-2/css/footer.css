@@ -1,0 +1,21 @@
+/* =================================
+  Footer
+================================= */
+
+.footer {
+  padding: 10px 15px 15px;
+  color: #444;
+  background: #efefef;
+}
+
+.footer nav {
+  margin-bottom: 30px;
+}
+
+.footer .nav-link {
+  color: #444;
+}
+
+.footer p {
+  margin: 0;
+}
