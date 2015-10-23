@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>Exercicio 1</h2>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+      $(function() {
+
+        (function consultarSpotify() {
+          $.get('https://api.spotify.com/v1/artists/6mdiAmATAx73kdxrNrnlao/albums?limit=50')
+          .done(function(data) {
+            var images = data.items;
+            images.forEach(function(elem) {
+              $('h2').append(
+                $('<img>')
+                  .attr('src', elem.images[1].url)
+              );
+            })
+          })
+        })();
+
+      });
+    </script>
+</body>
+</html>
