@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<h2>Exercicio 2</h2>
+
+  <input name="escreva" type="text" id="nomeArtista" placeholder="Artista">
+  <button id="button">Inserir</button>
+
+
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+
+      $("#button").click(function(){
+        nome=$("#nomeArtista").val();
+
+
+        (function consultarSpotify() {
+          $.get('https://api.spotify.com/v1/search?q='+nome+'&type=artist')
+          .done(function (elem) {
+            id = elem.artists.items[0].id;
+          
+
+          $.get('https://api.spotify.com/v1/artists/'+id+'/albums?limit=50')
+          .done(function(data) {
+            var images = data.items;
+            images.forEach(function(elem) {
+              $('h2').append(
+                $('<img>')
+                  .attr('src', elem.images[1].url)
+              )
+          });
+        });
+        });
+      })();
+    });
+        
+
+    </script>
+</body>
+</html>
