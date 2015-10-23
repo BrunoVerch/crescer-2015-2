@@ -22,16 +22,19 @@
           $.get('https://api.spotify.com/v1/search?q='+nome+'&type=artist')
           .done(function (elem) {
             id = elem.artists.items[0].id;
+            console.log(id);
           
 
           $.get('https://api.spotify.com/v1/artists/'+id+'/albums?limit=50')
           .done(function(data) {
             var images = data.items;
             images.forEach(function(elem) {
-              $('h2').append(
-                $('<img>')
-                  .attr('src', elem.images[1].url)
-              )
+              if(elem.images.length !== 0){
+                $('h2').append(
+                  $('<img>')
+                    .attr('src', elem.images[1].url)
+                )
+              }
           });
         });
         });
