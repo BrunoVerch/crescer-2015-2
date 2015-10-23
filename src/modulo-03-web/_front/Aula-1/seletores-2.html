@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Exemplo Seletores</title>
+    <style>
+      p:nth-of-type {
+        color: red;
+      }
+
+      p:first-of-type span {
+        color: purple;
+      }
+
+      p:first-of-type span span {
+        color: yellow;
+      }
+
+      p:first-of-type + p {
+        color: green;
+      }
+
+      p:first-of-type + p + p {
+        color: gray;
+      }
+
+      p:first-of-type + p + p span {
+        color: orange;
+      }
+
+      p:last-child {
+        color: blue;
+      }
+
+      p:last-child span {
+        color: black;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <h1>Exemplo de seletores</h1>
+
+    <p>
+      Este texto será vermelho, mas este <span>roxo</span> e esse
+      <span>
+        <span>Amarelo</span>
+      </span>
+    </p>
+    <p>
+      Este texto será verde
+    </p>
+    <p>
+      Este será cinza, e este <span>laranja</span>
+    </p>
+    <p>
+      Este texto será azul e esse
+      <span>
+        <span>
+          <span>Preto</span>
+        </span>
+      </span>
+    </p>
+
+  </body>
+</html>
