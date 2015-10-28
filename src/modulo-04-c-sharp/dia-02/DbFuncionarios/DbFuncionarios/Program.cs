@@ -19,7 +19,10 @@ namespace DbFuncionarios
             //    Console.WriteLine(item.TituloCargo);
             //    Console.WriteLine();
             //}
-            
+            var baseDeDados = new BaseDeDados();
+            List<Funcionario> funcionarios = baseDeDados.Funcionarios;
+            funcionarios.FirstOrDefault(i => { i.ToString(); return false; });
+
             Console.Read();
         }
 

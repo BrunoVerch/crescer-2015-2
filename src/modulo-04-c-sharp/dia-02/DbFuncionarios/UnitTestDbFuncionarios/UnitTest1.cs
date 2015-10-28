@@ -39,7 +39,7 @@ namespace UnitTestDbFuncionarios
 
             dynamic carlos = new { Nome = "Carlos Henrique", Titulo = "Analista" };
 
-            IList<dynamic> realizado = baseDeDados.BuscaRapida("Carlos Henrique");
+            var realizado = baseDeDados.BuscaRapida("Carlos Henrique");
 
             Assert.IsTrue(realizado.Contains(carlos));
         }

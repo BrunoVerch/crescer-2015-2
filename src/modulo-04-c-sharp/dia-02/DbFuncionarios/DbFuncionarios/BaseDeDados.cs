@@ -124,5 +124,34 @@ namespace DbFuncionarios
                                          };
             return query.ToList();
         }
+        /*Questão F*/
+        public IList<Funcionario> BuscarPorCargo(Cargo cargo)
+        {
+            return Funcionarios.Where(f=>f.Cargo.Equals(cargo)).ToList();
+        }
+        /*Questão G*/
+        public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
+        {
+            DateTime dataAtual = DateTime.Now;
+            return Funcionarios.Where(f=>(dataAtual.Year - f.DataNascimento.Year) > idade - 5 && (dataAtual.Year - f.DataNascimento.Year) < idade + 5).ToList();
+        }
+        /*Questão H*/
+        public double SalarioMedio(params TurnoTrabalho[] turno)
+        {
+            var query = from Funcionario in Funcionarios
+                        group Funcionario by Funcionario.TurnoTrabalho into f
+                        select new
+                        {
+                            Turno = f.Key,
+                            Média = f.Average(funcionario => funcionario.Cargo.Salario)
+                        };
+            return 0;
+        }
+        /*Questão I*/
+        public int AniversariantesDoMes()
+        {
+            return 0;
+        }
+
     }
 }
