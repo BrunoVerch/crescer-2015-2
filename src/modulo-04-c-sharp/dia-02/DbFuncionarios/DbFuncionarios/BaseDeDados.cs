@@ -81,5 +81,48 @@ namespace DbFuncionarios
             margareteRicardo.TurnoTrabalho = TurnoTrabalho.Manha;
             Funcionarios.Add(margareteRicardo);
         }
+        /*Questão A*/
+        public IList<Funcionario> OrdenadosPorCargo()
+        {
+            return Funcionarios.OrderBy(f => f.Cargo.Titulo).ToList();
+        }
+        /*Questão B*/
+        public IList<Funcionario> BuscarPorNome(string nome)
+        {
+            return Funcionarios.Where(f => f.Nome.Contains(nome)).OrderBy(f=>f.Nome).ToList();
+        }
+        /*Questão C*/
+        public IList<dynamic> BuscaRapida(string nome)
+        {
+            IEnumerable<dynamic> query = from Funcionario in Funcionarios
+                                         where Funcionario.Nome == nome
+                                         select new
+                                         {
+                                             Nome = Funcionario.Nome,
+                                             Titulo = Funcionario.Cargo.Titulo
+                                         };
+            return query.ToList();                    
+        }
+        /*Questão D
+        Generally, you can use params when the number of arguments can vary from 0 to infinity,
+        and use an array when numbers of arguments vary from 1 to infinity.
+        http://stackoverflow.com/questions/7580277/why-use-the-params-keyword
+        */
+        public IList<Funcionario> BuscarPorTurno(params TurnoTrabalho[] turno)
+        {
+            return Funcionarios.Where(f => turno.Contains(f.TurnoTrabalho)).ToList();
+        }
+        /*Questão E*/
+        public IList<dynamic> QtdFuncionariosPorTurno()
+        {
+            IEnumerable<dynamic> query = from Funcionario in Funcionarios
+                                         group Funcionario by Funcionario.TurnoTrabalho into f
+                                         select new
+                                         {
+                                             Turno = f.Key,
+                                             Contagem = f.Count()
+                                         };
+            return query.ToList();
+        }
     }
 }
