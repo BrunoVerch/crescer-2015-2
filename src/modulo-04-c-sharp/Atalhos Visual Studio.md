@@ -1,0 +1,23 @@
+## Visual Studio - Principais Atalhos 
+
+- `CTRL + SHIFT + B` Build
+- `F5` Start Debug
+- `CTRL + F5` Start Without Debug
+- `F10` Em modo debug: desce pra próxima linha
+- `F11` Em modo debug: entra no método (Step Into)
+- `F12` Entra na definição do método (Go to definition) 
+- `CTRL + -` Entra na definição do método (Go to definition) 
+- `F2` Renomear arquivos da solution
+- `CTRL + ´` Mostra o arquivo atual na solution 
+- `CTRL + .` Sou burro, arruma pra mim visual studio 
+- `CTRL + ,` Busca os arquivos por nome de classes e métodos (acesso rápido)
+- `CTRL + F` Find/replace no arquivo atual
+- `CTRL + SHIFT + F` Find/replace em todos arquivos
+- `CTRL + TAB` Alterna entre os arquivos abertos (semelhante ao ALT TAB do windows)
+- `CTRL + K + D` Identa o código
+- `CTRL + K + C` Comenta o código selecionado
+- `CTRL + K + U` Descomenta o código selecionado
+- `CTRL + M + O` Collapse all methods (encolhe os métodos da classe)
+- `CTRL + M + M` Expande/Encolhe o método atual
+- `ctr + TAB + TAB` (Code Snippet) Cria um novo construtor na classe atual
+- `cw + TAB + TAB` (Code Snippet) `Console.WriteLine();`

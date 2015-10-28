@@ -1,0 +1,40 @@
+<!doctype>
+<html>
+  <head>
+    <title>Douchebag</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles/estilo-douchebag.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.geocities.min.css">
+  </head>
+  <body>
+    <header class="row-fluid">
+      <marquee>Tente a sorte digitando Justin Bieber abaixo!</marquee>
+      <form class="well form-search" id="formBusca">
+        <input type="text" name="textoBusca" class="input-xlarge search-query">
+        <input type="submit" value="Pesquisar" class="btn">
+      </form>
+    </header>
+    <section>
+      <div class="row">
+        <div class="progress progress-danger progress-striped active escondido">
+          <div class="bar"></div>
+        </div>
+      </div>
+      <ul id="capas-albuns" class="row"></ul>
+    </section>
+    <script src="scripts/jquery-2.1.4.min.js"></script>
+    <script src="scripts/StringUtils.js"></script>
+    <script src="scripts/Spotify.js"></script>
+    <script src="scripts/TelaConsulta.js"></script>
+    <script>
+      $(function() {
+        var telaConsulta = new TelaConsulta({
+          form: $('#formBusca'),
+          textoBusca: $('#formBusca input[name=textoBusca]'),
+          listaAlbuns: $('#capas-albuns'),
+          progress: $('.progress')
+        }).render();
+      });
+    </script>
+  </body>
+</html>
