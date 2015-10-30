@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h2>QueryString 1</h2>
+  <button id="btnNavegar">Navegar!</button>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript">
+    // document.addEventListener('DOMContentLoaded', function() { });
+    // $(function() {
+    $(document).ready(function() {
+      console.log('carregou');
+      $('#btnNavegar').click(function() {
+        window.location.href = 'querystring-2.html?username=bernardobrezende&nivel=nunez';
+        localStorage.setItem('username', 'bernardo');
+        localStorage.setItem('nivel', 'nunez');
+      });
+    });
+  </script>
+</body>
+</html>

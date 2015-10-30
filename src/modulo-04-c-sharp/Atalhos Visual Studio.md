@@ -10,6 +10,7 @@
 - `F2` Renomear arquivos da solution
 - `CTRL + ´` Mostra o arquivo atual na solution 
 - `CTRL + .` Sou burro, arruma pra mim visual studio 
+- `CTRL + .` (Com texto selecionado) Refactor: Extrair método
 - `CTRL + ,` Busca os arquivos por nome de classes e métodos (acesso rápido)
 - `CTRL + F` Find/replace no arquivo atual
 - `CTRL + SHIFT + F` Find/replace em todos arquivos
@@ -19,5 +20,7 @@
 - `CTRL + K + U` Descomenta o código selecionado
 - `CTRL + M + O` Collapse all methods (encolhe os métodos da classe)
 - `CTRL + M + M` Expande/Encolhe o método atual
-- `ctr + TAB + TAB` (Code Snippet) Cria um novo construtor na classe atual
+- `ctor + TAB + TAB` (Code Snippet) Cria um novo construtor na classe atual
 - `cw + TAB + TAB` (Code Snippet) `Console.WriteLine();`
+- `CTRL + SHIFT+ U` Coloca o texto selecionado em Upper Case
+- `CTRL + U` Coloca o texto selecionado em Lower Case

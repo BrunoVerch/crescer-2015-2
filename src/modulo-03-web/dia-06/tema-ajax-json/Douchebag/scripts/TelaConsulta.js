@@ -34,7 +34,8 @@ TelaConsulta.prototype.render = function() {
       self.spotify.obterDetalhesArtista(idParaPesquisar).done(function(response) {
         self.listaAlbuns.empty();
         response.items.forEach(function(i) {
-          // lembram do Array.prototype.contains? poderíamos utilizar aqui..
+          // lembram de prototype? poderíamos fazer um contains.
+          // !jaAdicionados.contains(i.name)
           if (jaAdicionados.indexOf(i.name.toLowerCase()) === -1) {
             self.listaAlbuns.append(
               $('<li>').append(
@@ -55,6 +56,7 @@ TelaConsulta.prototype.render = function() {
       });
     })
 
+    // evitando tratamento padrão do Browser
     return e.preventDefault();
   });
 };

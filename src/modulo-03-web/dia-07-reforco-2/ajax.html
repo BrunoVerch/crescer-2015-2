@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <button id="btnNavegar">Navegar!</button>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript">
+    // DOMContentLoaded
+    // $(document).ready(function() { });
+    $(function() {
+
+      $.ajaxSetup({
+        headers: {
+          'X-Projeto': 'CWI CRESCER'
+        },
+        error: function(err) {
+          console.log('ops, erro de ajax tratado de forma global!');
+        }
+      });
+
+      // http://api.jquery.com/jquery.ajax/
+      var promessa = $.get('https://api.spotify.com/v1/artists/shimbalaie/');
+      // promete executar QUANDO estiver pronto (sucesso)
+      var oQueExecutarQuandoTiverSucesso = function(res, textStatus, jqXHR) {
+        console.log(res);
+        console.log(textStatus);
+        console.log(jqXHR);
+      };
+      promessa.done(oQueExecutarQuandoTiverSucesso);
+      promessa.fail(function(xhr, textStatus, error) {
+        console.error(xhr.responseJSON.error.message);
+        console.error(textStatus);
+        console.error(error);
+      });
+      promessa.always(function() {
+        console.log('terminou requisição!!');
+      });
+      $.ajax({
+        url: 'https://api.spotify.com/v1/search',
+        type: 'GET',
+        data: { q: 'amon amarth', type: 'artist' },
+        success: oQueExecutarQuandoTiverSucesso,
+        error: function(xhr, status, error) {
+          console.log('errrrrrrooou');
+        },
+        complete: function() {
+          console.log('completou 2!');
+        }
+      });
+
+      $.ajax({
+        url: 'http://localhost:3000/usuarios',
+        type: 'GET'
+      }).done(function(res) {
+        console.log(res);
+      });
+
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+

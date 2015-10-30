@@ -1,0 +1,47 @@
+{
+  "forca": [
+    {
+      "dificuldade": "normal",
+      "palavras": [
+        {
+          "0": "clarineta",
+          "1": "bicicleta",
+          "2": "biblioteca",
+          "3": "museo",
+          "4": "escola",
+          "5": "cavalo"
+        }
+      ]
+    },
+    {
+      "dificuldade": "nunes",
+      "palavras": [
+        {
+          "0": "cabeleireiros",
+          "1": "tangamandapio",
+          "2": "carangueijeira",
+          "3": "otorrinolaringologista",
+          "4": "parangaricotirrimiuraro",
+          "5": "inconstitucionalidade"
+        }
+      ]
+    }
+  ],
+  "usuarios": [
+    {
+      "nome": "Marcos",
+      "pontos": 150,
+      "id": 1
+    },
+    {
+      "nome": "Nunez",
+      "pontos": 33,
+      "id": 3
+    },
+    {
+      "nome": "Maria",
+      "pontos": 125,
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <button id="btnNavegar">Navegar!</button>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript">
+    // DOMContentLoaded
+    // $(document).ready(function() { });
+    $(function() {
+      // $.get('')
+      //$.ajax({ url: '', type: 'GET' });
+      // atualização total
+      /*$.ajax({
+        url: 'http://localhost:3000/usuarios/2',
+        type: 'PUT',
+        data: { nome: 'Mary', pontos: 42 }
+      });*/
+      // atualização parcial
+      $.ajax({
+        url: 'http://localhost:3000/usuarios/2',
+        type: 'PATCH',
+        data: { pontos: 59 }
+      });
+
+      $('#btnNavegar').click(function() {
+        window.location.href = 'querystring.html?username=bérnardobrezende&nivel=bh';
+        localStorage.setItem('params', 
+          JSON.stringify({
+            nome: 'bernardobrezende',
+            nivel: 'bh'
+          })
+        );
+      });
+
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+
