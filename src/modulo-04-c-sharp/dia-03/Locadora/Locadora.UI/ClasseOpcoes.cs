@@ -30,7 +30,7 @@ namespace Locadora.UI
             Console.WriteLine("Para gerar um relatorio digite 6");
             Console.WriteLine("Para sair digite 7");
         }
-        public void Opcao()
+        public string Opcao()
         {
             Console.WriteLine("Digite o numero conforme opcao:");
             string opcaoEscolhida=Console.ReadLine();
@@ -39,6 +39,7 @@ namespace Locadora.UI
             {
                 Console.WriteLine("Não há esta opçao, escolha uma válida");
             }
+            return opcaoEscolhida;
         }
         //opcao 1
         public void CadatrarJogo()
@@ -81,7 +82,7 @@ namespace Locadora.UI
             int id=biblioteca.getId(nomeJogo);
             biblioteca.EditarNomeDoJogo(id, nomeAlterado);
             Console.WriteLine("Editando nome...");
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
             Console.Clear();
         }
         //opcao 3
@@ -120,7 +121,7 @@ namespace Locadora.UI
             {
                 Console.WriteLine("ID-{0} \r\n Nome-{1} \r\n Preco-{2} \r\n Categoria-{3}", jogo.Id, jogo.Nome, jogo.Preco, jogo.Categoria);
             }
-            Thread.Sleep(4000);
+            Thread.Sleep(5000);
             Console.Clear();
         }
         //opcao 6
