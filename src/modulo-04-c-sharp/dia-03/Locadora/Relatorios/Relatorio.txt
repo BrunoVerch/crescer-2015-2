@@ -1,0 +1,34 @@
+                    LOCADORA NUNES GAMES
+31/10/2015                                          16:31:45
+                      Relatorio de Jogos
+
+==========================================================================
+ID        Categoria Nome                                         Preco     
+1         RPG       Chrono Trigger                               60        
+2         CORRIDA   Top Gear                                     20        
+3         AVENTURA  Megaman X                                    40        
+4         AVENTURA  Super Metroid                                35        
+5         AVENTURA  Donkey Kong Country                          25        
+6         CORRIDA   Super Mario Kart                             40        
+7         LUTA      Super Street Fighter                         25        
+8         LUTA      Mortal Kombat 2                              37        
+9         LUTA      Killer Instinct                              18        
+10        AVENTURA  Final Fight                                  12        
+11        RPG       Super Mario RPG                              70        
+12        AVENTURA  Aladdin                                      16        
+13        CORRIDA   Rock 'n Roll Racing                          22        
+14        AVENTURA  Zelda: A link to the past                    110       
+15        RPG       Final Fantasy VI                             30,5      
+16        ESPORTE   International Super Star Soccer Deluxe       45        
+17        AVENTURA  Contra III                                   28        
+18        AVENTURA  Sunset Riders                                37,9      
+19        AVENTURA  Goof Troop                                   41,9      
+20        AVENTURA  Mickey to Donald: Magical Adventure 3        32,9      
+
+--------------------------------------------------------------------------
+Quantidade total de jogos: 20
+Quantidade de jogos disponiveis: 
+Valor medio por jogo: 37,31
+Jogo mais caro: Zelda: A link to the past
+Jogo mais barato: Final Fight
+==========================================================================
