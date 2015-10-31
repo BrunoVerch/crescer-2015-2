@@ -12,6 +12,7 @@ namespace Locadora.Dominio
     {
         //public string caminhoDoArquivo = @"C:\Users\bruno.verch\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\Locadora\game_store.xml";
         public string caminhoDoArquivo = @"C:\Users\bruno\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\Locadora\game_store.xml";
+        public string caminhoTXT = @"C:\Users\bruno\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\Locadora\Relatorios\Relatorio.txt";
 
         public void CadastrarJogo(Jogo joguinho)
         {
@@ -64,17 +65,16 @@ namespace Locadora.Dominio
             jogo.Save(caminhoDoArquivo);
         }
 
-        public void EditarCategoriaDoJogo(int id, string categoria)
+        public void EditarCategoriaDoJogo(int id, Categoria categoria)
         {
             XElement xmlJogos = XElement.Load(caminhoDoArquivo);
             XElement jogo = xmlJogos.Elements("jogo").First(jog => jog.FirstAttribute.Value == id.ToString());
-            jogo.Element("categoria").SetValue(categoria);
+            jogo.Element("categoria").SetValue(Convert.ToString(categoria));
             jogo.Save(caminhoDoArquivo);
         }
 
         public void gerarRelatorio()
         {
-            string caminhoTXT = @"C:\Users\bruno\Documents\crescer-2015-2\src\modulo-04-c-sharp\dia-03\Locadora\Relatorios\Relatorio.txt";
             XElement arquivoXML = XElement.Load(caminhoDoArquivo);
             List<Jogo> listaDeJogos = new List<Jogo>();
             foreach (XElement jogo in arquivoXML.Elements("jogo"))
