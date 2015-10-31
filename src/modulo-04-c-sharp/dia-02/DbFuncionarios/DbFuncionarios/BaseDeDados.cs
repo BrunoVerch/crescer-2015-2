@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DbFuncionarios
@@ -150,6 +152,19 @@ namespace DbFuncionarios
         public IList<Funcionario> AniversariantesDoMes()
         {
             return Funcionarios.Where(f => f.DataNascimento.Month == DateTime.Now.Month).ToList();
+        }
+        /*Questão J*/
+        public dynamic FuncionarioMaisComplexo()
+        {
+            string listaConsoantes = "[b,c,d,f,g,h,j,k,l,m,n,p,q,r,s,t,v,x,y,z]";
+            int maior = Funcionarios.Max(f => Regex.Matches(f.Nome, listaConsoantes).Count);
+            Funcionario funcComplexo= Funcionarios.First(f => Regex.Matches(f.Nome, listaConsoantes).Count == maior);
+            return new
+            {
+                Nome = funcComplexo.Nome,
+                SalarioBR=funcComplexo.Cargo.Salario.ToString("C",new CultureInfo("pt-BR")),
+                SalarioUSA="U$"+funcComplexo.Cargo.Salario.ToString("C", new CultureInfo("en-US"))
+            };
         }
 
     }
