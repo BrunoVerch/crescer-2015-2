@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.UI", "Locadora.UI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Dominio", "Locadora.Dominio\Locadora.Dominio.csproj", "{B2F5A7CF-7829-488D-A310-5B184240631A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Dominio.Test", "Locadora.Dominio.Test\Locadora.Dominio.Test.csproj", "{38E3270C-03A6-4F37-A3ED-7DA3256EFD3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B2F5A7CF-7829-488D-A310-5B184240631A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2F5A7CF-7829-488D-A310-5B184240631A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2F5A7CF-7829-488D-A310-5B184240631A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E3270C-03A6-4F37-A3ED-7DA3256EFD3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E3270C-03A6-4F37-A3ED-7DA3256EFD3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E3270C-03A6-4F37-A3ED-7DA3256EFD3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E3270C-03A6-4F37-A3ED-7DA3256EFD3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio
 {
-    class Cliente
+    public class Cliente
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }

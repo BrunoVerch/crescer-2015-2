@@ -41,8 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BibliotecaDeJogos.cs" />
+    <Compile Include="Categoria.cs" />
     <Compile Include="Cliente.cs" />
-    <Compile Include="InserçãoEPesquisaTemporaria.cs" />
     <Compile Include="Jogo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
