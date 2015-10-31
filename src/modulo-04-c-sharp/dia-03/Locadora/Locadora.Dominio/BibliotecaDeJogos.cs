@@ -33,7 +33,7 @@ namespace Locadora.Dominio
             List<Jogo> listaRetorno = new List<Jogo>();
             foreach (XElement jogo in arquivoXML.Elements("jogo"))
             {
-                if(jogo.Element("nome").Value.Contains(nome))
+                if(jogo.Element("nome").Value.ToUpper().Contains(nome.ToUpper()))
                 {
                     listaRetorno.Add(new Jogo(jogo));
                 }
@@ -51,8 +51,8 @@ namespace Locadora.Dominio
 
         public void EditarNomeDoJogo(int id,string nomeAlterado)
         {
-            XElement xmlJogos = XElement.Load(caminhoDoArquivo);
-            XElement jogo = xmlJogos.Elements("jogo").First(jog=> jog.FirstAttribute.Value == id.ToString());
+            XElement xmlJogos = XElement.Load(caminhoDoArquivo);            
+            XElement jogo = xmlJogos.Elements("jogo").Where(elem => elem.Attribute("id").Value == id.ToString()).Single();
             jogo.Element("nome").SetValue(nomeAlterado);
             xmlJogos.Save(caminhoDoArquivo);
         }
@@ -60,7 +60,7 @@ namespace Locadora.Dominio
         public void EditarPrecoDoJogo(int id, double novoValor)
         {
             XElement xmlJogos = XElement.Load(caminhoDoArquivo);
-            XElement jogo = xmlJogos.Elements("jogo").First(jog => jog.FirstAttribute.Value == id.ToString());
+            XElement jogo = xmlJogos.Elements("jogo").Where(elem => elem.Attribute("id").Value == id.ToString()).Single();
             jogo.Element("preco").SetValue(novoValor.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
             jogo.Save(caminhoDoArquivo);
         }
@@ -68,7 +68,7 @@ namespace Locadora.Dominio
         public void EditarCategoriaDoJogo(int id, Categoria categoria)
         {
             XElement xmlJogos = XElement.Load(caminhoDoArquivo);
-            XElement jogo = xmlJogos.Elements("jogo").First(jog => jog.FirstAttribute.Value == id.ToString());
+            XElement jogo = xmlJogos.Elements("jogo").Where(elem => elem.Attribute("id").Value == id.ToString()).Single();
             jogo.Element("categoria").SetValue(Convert.ToString(categoria));
             jogo.Save(caminhoDoArquivo);
         }
