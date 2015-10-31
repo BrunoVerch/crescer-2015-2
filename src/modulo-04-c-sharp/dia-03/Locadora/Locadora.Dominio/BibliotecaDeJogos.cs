@@ -14,27 +14,28 @@ namespace Locadora.Dominio
         public void CadastrarJogo(Jogo joguinho)
         {
             XElement arquivoXML = XElement.Load(caminhoDoArquivo);
+            int idNovo=arquivoXML.Elements().Max(id => Convert.ToInt32(id.Attribute("id").Value)) + 1;
             XElement jogo = new XElement("jogo");
-            //jogo.Add(new XAttribute("Id", int));
+            jogo.Add(new XAttribute("Id", idNovo));
             jogo.Add(new XElement("nome", joguinho.Nome));
             jogo.Add(new XElement("preco", joguinho.Preco));
             jogo.Add(new XElement("descricao", joguinho.Categoria));
             arquivoXML.Element("jogos").Add(jogo);
         }
 
-        //public Jogo PesquisarJogoPorNome(string nome)
-        //{
-        //    XElement arquivoXML = XElement.Load(caminhoDoArquivo);
-        //    var leitor = arquivoXML.CreateReader();
-        //    foreach (XElement jogo in arquivoXML.Elements("jogo"))
-        //    {
-        //        if(nome == jogo.Element("nome").Value)
-        //        {
-        //            return ;
-        //        }
-        //    }
-            
-        //}
+        public List<Jogo> PesquisarJogoPorNome(string nome)
+        {
+            XElement arquivoXML = XElement.Load(caminhoDoArquivo);
+            List<Jogo> listaRetorno = new List<Jogo>();
+            foreach (XElement jogo in arquivoXML.Elements("jogo"))
+            {
+                if(jogo.Element("nome").Value.Contains(nome))
+                {
+                    listaRetorno.Add(new Jogo(jogo));
+                }
+            }
+            return listaRetorno;
+        }
 
     }
 }
