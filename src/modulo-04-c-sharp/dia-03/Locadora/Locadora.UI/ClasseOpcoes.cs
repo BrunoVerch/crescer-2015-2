@@ -18,6 +18,7 @@ namespace Locadora.UI
         private const string ESPORTE = "5";
 
         BibliotecaDeJogos biblioteca = new BibliotecaDeJogos();
+        Validacao valida = new Validacao();
 
         public void Menu()
         {
@@ -38,6 +39,7 @@ namespace Locadora.UI
             if(Regex.Matches(opcaoEscolhida, opcoes).Count != 1)
             {
                 Console.WriteLine("Não há esta opçao, escolha uma válida");
+                Thread.Sleep(2000);
             }
             return opcaoEscolhida;
         }
@@ -46,7 +48,11 @@ namespace Locadora.UI
         {
             Console.WriteLine("Digite o nome do jogo:");
             string nome = Console.ReadLine();
+            if (!valida.validaString(nome))
+                return;
             Console.WriteLine("Digite o preco do jogo:");
+            if (!valida.verificaSeENumero(Console.ReadLine()))
+                return;
             double preco = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Escolha a categoria(caso escolha uma opcao diferente a categoria sera RPG)");
             Console.WriteLine("1-AVENTURA \r\n 2-RPG \r\n 3-CORRIDA \r\n 4-LUTA \r\n 5-ESPORTE");
@@ -77,8 +83,12 @@ namespace Locadora.UI
         {
             Console.WriteLine("Digite o nome do jogo a ser alterado");
             string nomeJogo = Console.ReadLine();
+            if (!valida.validaString(nomeJogo))
+                return;
             Console.WriteLine("Digite o novo nome do jogo");
             string nomeAlterado = Console.ReadLine();
+            if (!valida.validaString(nomeAlterado))
+                return;
             int id=biblioteca.getId(nomeJogo);
             biblioteca.EditarNomeDoJogo(id, nomeAlterado);
             Console.WriteLine("Editando nome...");
@@ -90,7 +100,11 @@ namespace Locadora.UI
         {
             Console.WriteLine("Digite o nome do jogo a ser alterado");
             string nomeJogo = Console.ReadLine();
+            if (!valida.validaString(nomeJogo))
+                return;
             Console.WriteLine("Digite o novo valor do jogo");
+            if (!valida.verificaSeENumero(Console.ReadLine()))
+                return;
             double precoAlterado = Convert.ToDouble(Console.ReadLine());
             int id = biblioteca.getId(nomeJogo);
             biblioteca.EditarPrecoDoJogo(id, precoAlterado);
@@ -103,6 +117,8 @@ namespace Locadora.UI
         {
             Console.WriteLine("Digite o nome do jogo a ser alterado");
             string nomeJogo = Console.ReadLine();
+            if (!valida.validaString(nomeJogo))
+                return;
             Console.WriteLine("Escolha a categoria(caso escolha uma opcao diferente a categoria sera RPG)");
             Console.WriteLine("1-AVENTURA \r\n 2-RPG \r\n 3-CORRIDA \r\n 4-LUTA \r\n 5-ESPORTE");
             Categoria categoria = OpcoesCategoria(Console.ReadLine());
