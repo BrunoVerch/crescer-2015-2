@@ -10,7 +10,7 @@ namespace Locadora.Dominio
 {
     public class Validacao
     {
-        public bool validaString(string palavra)
+        public bool ValidaString(string palavra)
         {
             string alfabeto = "[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,x,y,z]";
             if (string.IsNullOrWhiteSpace(palavra) || Regex.Matches(palavra, alfabeto).Count == 0)
@@ -22,7 +22,7 @@ namespace Locadora.Dominio
             else
                 return true;
         }
-        public bool verificaSeENumero(string palavra)
+        public bool VerificaSeENumero(string palavra)
         {
             if(!palavra.All(c=> char.IsDigit(c)))
             {
