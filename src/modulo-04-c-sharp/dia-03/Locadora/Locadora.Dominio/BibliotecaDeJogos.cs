@@ -16,61 +16,92 @@ namespace Locadora.Dominio
 
         public void CadastrarJogo(Jogo joguinho)
         {
-            XElement arquivoXML = XElement.Load(caminhoDoArquivo);
-            int idNovo= Convert.ToInt32(arquivoXML.Elements("jogo").Last().Attribute("id").Value);
+            XElement arquivoXML = Load();
+            int idNovo = GetLastId(arquivoXML);
             XElement jogo = new XElement("jogo");
             jogo.Add(new XAttribute("id", idNovo + 1));
             jogo.Add(new XElement("nome", joguinho.Nome));
             jogo.Add(new XElement("preco", joguinho.Preco));
             jogo.Add(new XElement("categoria", joguinho.Categoria));
             arquivoXML.Add(jogo);
-            arquivoXML.Save(caminhoDoArquivo);
+            SaveXML(arquivoXML);
+        }
+
+        private void SaveXML(XElement elem)
+        {
+            elem.Save(caminhoDoArquivo);
+        }
+
+        private int GetLastId(XElement elem)
+        {
+            return Convert.ToInt32(elem.Elements("jogo").Last().Attribute("id").Value);
         }
 
         public List<Jogo> PesquisarJogoPorNome(string nome)
         {
-            XElement arquivoXML = XElement.Load(caminhoDoArquivo);
+            XElement arquivoXML = Load();
             List<Jogo> listaRetorno = new List<Jogo>();
             foreach (XElement jogo in arquivoXML.Elements("jogo"))
             {
-                if(jogo.Element("nome").Value.ToUpper().Contains(nome.ToUpper()))
+                if (jogo.Element("nome").Value.ToUpper().Contains(nome.ToUpper()))
                 {
-                    listaRetorno.Add(new Jogo(jogo));
+                    listaRetorno.Add(ConvertXMLtoJogo(jogo));
                 }
             }
             return listaRetorno;
         }
 
-        public int getId(string nome)
+        public int GetId(string nome)
         {
-            XElement arquivoXML = XElement.Load(caminhoDoArquivo);
-            string nomeM=nome.ToUpper();
-            XElement jogoEsperado = arquivoXML.Elements("jogo").FirstOrDefault(jogo =>jogo.Element("nome").Value.ToUpper() == nomeM);
-            return Convert.ToInt32(jogoEsperado.FirstAttribute.Value);   
+            XElement xmlJogos = Load();
+            string nomeM = nome.ToUpper();
+            XElement jogoEsperado = xmlJogos.Elements("jogo").FirstOrDefault(jogo => jogo.Element("nome").Value.ToUpper() == nomeM);
+            return Convert.ToInt32(jogoEsperado.FirstAttribute.Value);
         }
 
-        public void EditarNomeDoJogo(int id,string nomeAlterado)
+        private XElement GetXElementById(XElement arquivoXML,int id)
         {
-            XElement xmlJogos = XElement.Load(caminhoDoArquivo);            
-            XElement jogo = xmlJogos.Elements("jogo").Where(elem => elem.Attribute("id").Value == id.ToString()).Single();
+            return arquivoXML.Elements("jogo").Where(elem => elem.Attribute("id").Value == id.ToString()).Single();
+        }
+
+        public void EditarNomeDoJogo(int id, string nomeAlterado)
+        {
+            XElement xmlJogos = Load();
+            XElement jogo = GetXElementById(xmlJogos,id);
             jogo.Element("nome").SetValue(nomeAlterado);
             xmlJogos.Save(caminhoDoArquivo);
         }
 
         public void EditarPrecoDoJogo(int id, double novoValor)
         {
-            XElement xmlJogos = XElement.Load(caminhoDoArquivo);
-            XElement jogo = xmlJogos.Elements("jogo").Where(elem => elem.Attribute("id").Value == id.ToString()).Single();
+            XElement xmlJogos = Load();
+            XElement jogo = GetXElementById(xmlJogos, id);
             jogo.Element("preco").SetValue(novoValor.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
             jogo.Save(caminhoDoArquivo);
         }
 
         public void EditarCategoriaDoJogo(int id, Categoria categoria)
         {
-            XElement xmlJogos = XElement.Load(caminhoDoArquivo);
-            XElement jogo = xmlJogos.Elements("jogo").Where(elem => elem.Attribute("id").Value == id.ToString()).Single();
+            XElement xmlJogos = Load();
+            XElement jogo = GetXElementById(xmlJogos, id);
             jogo.Element("categoria").SetValue(Convert.ToString(categoria));
             jogo.Save(caminhoDoArquivo);
+        }
+
+        private Jogo ConvertXMLtoJogo(XElement elem)
+        {
+            int IdXML = Convert.ToInt32(elem.Attribute("id").Value);
+            string Nome = elem.Element("nome").Value;
+            double Preco = Convert.ToDouble(elem.Element("preco").Value, System.Globalization.CultureInfo.InvariantCulture);
+            string Category = elem.Element("categoria").Value;
+            var Categoria = (Categoria)Enum.Parse(typeof(Categoria), Category);
+            return new Jogo(Nome, Preco, Categoria) { Id = IdXML };
+        }
+
+        private XElement Load()
+        {
+            XElement xmlJogos = XElement.Load(caminhoDoArquivo);
+            return xmlJogos;
         }
 
         public void gerarRelatorio()
@@ -78,8 +109,8 @@ namespace Locadora.Dominio
             XElement arquivoXML = XElement.Load(caminhoDoArquivo);
             List<Jogo> listaDeJogos = new List<Jogo>();
             foreach (XElement jogo in arquivoXML.Elements("jogo"))
-            {                
-                    listaDeJogos.Add(new Jogo(jogo));                
+            {
+                listaDeJogos.Add(ConvertXMLtoJogo(jogo));
             }
             double valorTotal = 0;
             StringBuilder lista = new StringBuilder();
@@ -93,16 +124,16 @@ namespace Locadora.Dominio
             }
             int totalDeJogos = listaDeJogos.Count;
             double valorMedio = valorTotal / totalDeJogos;
-            double maiorPreco = listaDeJogos.Max(jogo=>jogo.Preco);
+            double maiorPreco = listaDeJogos.Max(jogo => jogo.Preco);
             double menorPreco = listaDeJogos.Min(jogo => jogo.Preco);
             string maisCaro = listaDeJogos.First(jogo => jogo.Preco == maiorPreco).Nome;
             string maisBarato = listaDeJogos.First(jogo => jogo.Preco == menorPreco).Nome;
             string data = DateTime.Now.Date.ToString("dd/MM/yyyy");
             string hora = DateTime.Now.ToLongTimeString();
 
-            string nomeLocadora ="LOCADORA NUNES GAMES";
+            string nomeLocadora = "LOCADORA NUNES GAMES";
             string nomeRelatorio = "Relatorio de Jogos";
-            string cabecalhoLista = "ID".PadRight(10) + "Categoria".PadRight(10)+"Nome".PadRight(45)+"Preco".PadRight(10);
+            string cabecalhoLista = "ID".PadRight(10) + "Categoria".PadRight(10) + "Nome".PadRight(45) + "Preco".PadRight(10);
             using (StreamWriter writer = new StreamWriter(caminhoTXT))
             {
                 writer.WriteLine(nomeLocadora.PadLeft(40));
@@ -113,14 +144,16 @@ namespace Locadora.Dominio
                 writer.WriteLine(cabecalhoLista);
                 writer.WriteLine(lista);
                 writer.WriteLine("--------------------------------------------------------------------------");
-                writer.WriteLine("Quantidade total de jogos: "+ totalDeJogos);
+                writer.WriteLine("Quantidade total de jogos: " + totalDeJogos);
                 writer.WriteLine("Quantidade de jogos disponiveis: ");
-                writer.WriteLine("Valor medio por jogo: "+ valorMedio);
-                writer.WriteLine("Jogo mais caro: "+ maisCaro);
-                writer.WriteLine("Jogo mais barato: "+ maisBarato);
+                writer.WriteLine("Valor medio por jogo: " + valorMedio);
+                writer.WriteLine("Jogo mais caro: " + maisCaro);
+                writer.WriteLine("Jogo mais barato: " + maisBarato);
                 writer.WriteLine("==========================================================================");
             }
-
         }
     }
+
 }
+
+
