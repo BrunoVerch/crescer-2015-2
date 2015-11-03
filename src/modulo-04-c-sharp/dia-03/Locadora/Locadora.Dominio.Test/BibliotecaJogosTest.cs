@@ -27,7 +27,7 @@ namespace Locadora.Dominio.Test
         public void EditarNomeDoJogo()
         {
             BibliotecaDeJogos dados = new BibliotecaDeJogos();
-            int id=dados.getId("Top Gear");
+            int id=dados.GetId("Top Gear");
             dados.EditarNomeDoJogo(id,"Jogo Alterado");
             Assert.AreEqual("Jogo Alterado", dados.PesquisarJogoPorNome("Jogo Alterado")[0].Nome);
         }
