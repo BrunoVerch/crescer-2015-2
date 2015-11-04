@@ -1,0 +1,32 @@
+﻿@model Locadora.Web.Models.RelatorioModel
+@{
+    ViewBag.Title = "Listar";
+}
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <td>ID</td>
+            <td>Categoria</td>
+            <td>Nome</td>
+            <td>Preco</td>
+        </tr>
+        @{
+            foreach (var jogo in Model.Relatorio)
+            {
+                <tr>
+                    <td>@jogo.Id.ToString()</td>
+                    <td>@jogo.Categoria.ToString()</td>
+                    <td>@jogo.Nome</td>
+                    <td>@jogo.Preco.ToString()</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+<div class="center-block">
+    <p>Quantidade Total De Jogos: @Model.QuantidadeTotalJogos</p>
+    <p>Jogo Mais Caro: @Model.JogoMaisCaro</p>
+    <p>Jogo Mais Barato: @Model.JogoMaisBarato</p>
+    <p>Valor Medio Por Jogo: @Model.ValorMedioJogo</p>
+</div>
+
