@@ -41,10 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BibliotecaDeJogos.cs" />
+    <Compile Include="Categoria.cs" />
     <Compile Include="Cliente.cs" />
-    <Compile Include="InserçãoEPesquisaTemporaria.cs" />
     <Compile Include="Jogo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validacao.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

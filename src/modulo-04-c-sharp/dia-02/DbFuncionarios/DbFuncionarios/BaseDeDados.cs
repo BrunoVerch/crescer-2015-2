@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DbFuncionarios
@@ -127,7 +129,7 @@ namespace DbFuncionarios
         /*Questão F*/
         public IList<Funcionario> BuscarPorCargo(Cargo cargo)
         {
-            return Funcionarios.Where(f=>f.Cargo.Equals(cargo)).ToList();
+            return Funcionarios.Where(f=>f.Cargo.Titulo==cargo.Titulo).ToList();
         }
         /*Questão G*/
         public IList<Funcionario> FiltrarPorIdadeAproximada(int idade)
@@ -137,20 +139,32 @@ namespace DbFuncionarios
         }
         /*Questão H*/
         public double SalarioMedio(params TurnoTrabalho[] turno)
+        {            
+            var funcionariosTurno = BuscarPorTurno(turno);
+            return funcionariosTurno.Average(f=>f.Cargo.Salario);
+        }
+        //criado outro salario medio sem parametros para calcular a media de todos funcionarios
+        public double SalarioMedio()
         {
-            var query = from Funcionario in Funcionarios
-                        group Funcionario by Funcionario.TurnoTrabalho into f
-                        select new
-                        {
-                            Turno = f.Key,
-                            Média = f.Average(funcionario => funcionario.Cargo.Salario)
-                        };
-            return 0;
+            return Funcionarios.Average(f => f.Cargo.Salario);
         }
         /*Questão I*/
-        public int AniversariantesDoMes()
+        public IList<Funcionario> AniversariantesDoMes()
         {
-            return 0;
+            return Funcionarios.Where(f => f.DataNascimento.Month == DateTime.Now.Month).ToList();
+        }
+        /*Questão J*/
+        public dynamic FuncionarioMaisComplexo()
+        {
+            string listaConsoantes = "[b,c,d,f,g,h,j,k,l,m,n,p,q,r,s,t,v,x,y,z]";
+            int maior = Funcionarios.Max(f => Regex.Matches(f.Nome, listaConsoantes).Count);
+            Funcionario funcComplexo= Funcionarios.First(f => Regex.Matches(f.Nome, listaConsoantes).Count == maior);
+            return new
+            {
+                Nome = funcComplexo.Nome,
+                SalarioBR=funcComplexo.Cargo.Salario.ToString("C",new CultureInfo("pt-BR")),
+                SalarioUSA="U$"+funcComplexo.Cargo.Salario.ToString("C", new CultureInfo("en-US"))
+            };
         }
 
     }

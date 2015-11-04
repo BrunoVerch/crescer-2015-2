@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio
 {
-    class InserçãoEPesquisaTemporaria
+    public enum Categoria
     {
+        AVENTURA = 1, RPG = 2,CORRIDA = 3,LUTA = 4,ESPORTE = 5
     }
 }
