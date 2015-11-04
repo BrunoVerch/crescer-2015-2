@@ -104,30 +104,52 @@ namespace Locadora.Dominio
             return xmlJogos;
         }
 
+        public List<Jogo> GetJogos()
+        {
+            XElement arquivoXML=Load();
+            List<Jogo> listaRetorno = new List<Jogo>();
+            foreach (XElement jogo in arquivoXML.Elements("jogo"))
+            {
+                listaRetorno.Add(ConvertXMLtoJogo(jogo));
+            }
+            return listaRetorno;
+        }
+        public string JogoMaisCaro(List<Jogo> lista)
+        {
+            double maiorPreco = lista.Max(jogo => jogo.Preco);
+            return lista.First(jogo => jogo.Preco == maiorPreco).Nome;
+        }
+        public string JogoMaisBarato(List<Jogo> lista)
+        {
+            double menorPreco = lista.Min(jogo => jogo.Preco);
+            return lista.First(jogo => jogo.Preco == menorPreco).Nome;
+        }
+        public double ValorMedioJogo(List<Jogo> lista)
+        {
+            double valorTotal = 0;
+            foreach (var jogo in lista)
+            {
+                valorTotal += jogo.Preco;
+            }
+            int totalDeJogos = lista.Count;
+            return valorTotal / totalDeJogos;
+        }
+
         public void gerarRelatorio()
         {
             XElement arquivoXML = XElement.Load(caminhoDoArquivo);
-            List<Jogo> listaDeJogos = new List<Jogo>();
-            foreach (XElement jogo in arquivoXML.Elements("jogo"))
-            {
-                listaDeJogos.Add(ConvertXMLtoJogo(jogo));
-            }
-            double valorTotal = 0;
+            List<Jogo> listaDeJogos = GetJogos();
             StringBuilder lista = new StringBuilder();
             foreach (var jogo in listaDeJogos)
             {
-                valorTotal += jogo.Preco;
                 lista.Append(jogo.Id.ToString().PadRight(10));
                 lista.Append(jogo.Categoria.ToString().PadRight(10));
                 lista.Append(jogo.Nome.PadRight(45));
                 lista.Append(jogo.Preco.ToString().PadRight(10) + "\r\n");
             }
-            int totalDeJogos = listaDeJogos.Count;
-            double valorMedio = valorTotal / totalDeJogos;
-            double maiorPreco = listaDeJogos.Max(jogo => jogo.Preco);
-            double menorPreco = listaDeJogos.Min(jogo => jogo.Preco);
-            string maisCaro = listaDeJogos.First(jogo => jogo.Preco == maiorPreco).Nome;
-            string maisBarato = listaDeJogos.First(jogo => jogo.Preco == menorPreco).Nome;
+            double valorMedio = ValorMedioJogo(listaDeJogos);
+            string maisCaro = JogoMaisCaro(listaDeJogos);
+            string maisBarato = JogoMaisBarato(listaDeJogos);
             string data = DateTime.Now.Date.ToString("dd/MM/yyyy");
             string hora = DateTime.Now.ToLongTimeString();
 
@@ -144,7 +166,7 @@ namespace Locadora.Dominio
                 writer.WriteLine(cabecalhoLista);
                 writer.WriteLine(lista);
                 writer.WriteLine("--------------------------------------------------------------------------");
-                writer.WriteLine("Quantidade total de jogos: " + totalDeJogos);
+                writer.WriteLine("Quantidade total de jogos: " + listaDeJogos.Count);
                 writer.WriteLine("Quantidade de jogos disponiveis: ");
                 writer.WriteLine("Valor medio por jogo: " + valorMedio);
                 writer.WriteLine("Jogo mais caro: " + maisCaro);
