@@ -1,0 +1,15 @@
+﻿@model JogoModel
+@{
+    ViewBag.Title = "JogoDetalhes";
+}
+
+<div class="text-center">
+    <h2><strong>@Model.Nome</strong></h2>    
+    <img src="@Model.Imagem" style="width : 500px; height : 300px; margin:auto; display:block; box-shadow: 0 0 50px red; margin-bottom:30px; margin-top:30px">
+    <div>
+        <p>@Model.Descricao</p>
+        <p>Selo: @Model.Selo</p>
+        <p>Categoria: @Model.Categoria</p>
+        <p>Valor: @Model.Preco</p>
+    </div>
+</div>

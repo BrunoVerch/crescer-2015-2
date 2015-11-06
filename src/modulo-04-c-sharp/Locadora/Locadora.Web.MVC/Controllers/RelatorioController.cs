@@ -15,7 +15,15 @@ namespace Locadora.Web.MVC.Controllers
         public ActionResult JogosDisponiveis(string nomeJogo)
         {
             var model = new RelatorioModel();
-            foreach (var jogo in repositorio.BuscarTodos())
+            IList<Dominio.Jogo> ListaJogos=new List<Dominio.Jogo>();            
+            if(nomeJogo != null)
+            {
+                ListaJogos = repositorio.BuscarPorNome(nomeJogo);
+            } else
+            {
+                ListaJogos = repositorio.BuscarTodos();
+            }
+            foreach (var jogo in ListaJogos)
             {
                 var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Preco = jogo.Preco, Categoria = jogo.Categoria.ToString() };
                 model.Jogos.Add(jogoModel);
