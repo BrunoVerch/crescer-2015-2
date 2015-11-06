@@ -30,6 +30,10 @@ namespace Locadora.Repositorio.XML
             jogoSalvo.SetElementValue("preco", entidade.Preco);
             jogoSalvo.SetElementValue("categoria", entidade.Categoria.ToString());
             jogoSalvo.SetElementValue("id_cliente_locacao", entidade.IdClienteLocacao.HasValue ? entidade.IdClienteLocacao.Value.ToString() : "");
+            jogoSalvo.SetElementValue("descricao", entidade.Descricao);
+            jogoSalvo.SetElementValue("selo", entidade.Selo.ToString());
+            jogoSalvo.SetElementValue("imagem", entidade.Imagem);
+            jogoSalvo.SetElementValue("video", entidade.Video);
 
             SalvarDbXml(db);
             return 1;
@@ -106,6 +110,10 @@ namespace Locadora.Repositorio.XML
             jogoXml.SetElementValue("preco", jogo.Preco);
             jogoXml.SetElementValue("categoria", jogo.Categoria.ToString());
             jogoXml.SetElementValue("id_cliente_locacao", jogo.IdClienteLocacao.HasValue ? jogo.IdClienteLocacao.Value.ToString() : "");
+            jogoXml.SetElementValue("descricao", jogo.Descricao);
+            jogoXml.SetElementValue("selo", jogo.Selo.ToString());
+            jogoXml.SetElementValue("imagem", jogo.Imagem);
+            jogoXml.SetElementValue("video", jogo.Video);
 
             return jogoXml;
         }
@@ -125,7 +133,11 @@ namespace Locadora.Repositorio.XML
             jogo.Nome = jogoXml.Element("nome").Value;
             jogo.Preco = Convert.ToDecimal(jogoXml.Element("preco").Value);
             jogo.Categoria = ConverterXmlCategoriaEmEnum(jogoXml.Element("categoria"));
-            
+            jogo.Descricao = jogoXml.Element("descricao").Value;
+            jogo.Selo = ConverterXmlSeloEmEnum(jogoXml.Element("selo"));
+            jogo.Imagem = jogoXml.Element("imagem").Value;
+            jogo.Video = jogoXml.Element("video").Value;
+
             return jogo;
         }
 
@@ -133,6 +145,12 @@ namespace Locadora.Repositorio.XML
         {
             string valorXml = categoriaXml.Value;
             return (Categoria)Enum.Parse(typeof(Categoria), valorXml);
+        }
+
+        private Selo ConverterXmlSeloEmEnum(XElement seloXml)
+        {
+            string valorXml = seloXml.Value;
+            return (Selo)Enum.Parse(typeof(Selo), valorXml);
         }
     }
 }
