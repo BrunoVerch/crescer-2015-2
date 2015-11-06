@@ -12,6 +12,7 @@
             <th>Categoria</th>
             <th>Preço</th>
             <th>Detalhes</th>
+            <th>Editar</th>
         </tr>
     </thead>
     @foreach (var jogo in @Model.Jogos)
@@ -20,7 +21,8 @@
             <td>@jogo.Nome</td>            
             <td>@jogo.Categoria</td>
             <td>@jogo.Preco.ToString("c")</td>
-            <td>@Html.ActionLink("Detalhes","JogoDetalhes","Jogo", new { id = @jogo.Id },null)<td>
+            <td><a href="~/Jogo/JogoDetalhes/@jogo.Id">Detalhes do jogo</a></td>
+            <td><a href="~/Jogo/ManterJogo/@jogo.Id">Editar</a><td>
         </tr>
     }
 </table>

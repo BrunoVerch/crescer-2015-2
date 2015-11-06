@@ -16,7 +16,7 @@ namespace Locadora.Web.MVC.Controllers
         {
             var model = new RelatorioModel();
             IList<Dominio.Jogo> ListaJogos=new List<Dominio.Jogo>();            
-            if(nomeJogo != null)
+            if(!string.IsNullOrWhiteSpace(nomeJogo))
             {
                 ListaJogos = repositorio.BuscarPorNome(nomeJogo);
             } else
