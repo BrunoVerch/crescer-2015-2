@@ -19,14 +19,19 @@ namespace Locadora.Web.MVC.Controllers
             if(!string.IsNullOrWhiteSpace(nomeJogo))
             {
                 ListaJogos = repositorio.BuscarPorNome(nomeJogo);
-            } else
+            }
+            else
             {
                 ListaJogos = repositorio.BuscarTodos();
-            }
+            }            
             foreach (var jogo in ListaJogos)
             {
                 var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Preco = jogo.Preco, Categoria = jogo.Categoria.ToString() };
                 model.Jogos.Add(jogoModel);
+            }
+            if (ListaJogos.Count == 0)
+            {
+                return View("JogoNaoEncontrado");
             }
             model.QuantidadeDeJogos = model.Jogos.Count;
             model.ValorMedio = model.Jogos.Average(jogo=>jogo.Preco);
