@@ -6,6 +6,7 @@
     <title>Locadora - @ViewBag.Title</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Modules.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
@@ -17,11 +18,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Locadora CWI Crescer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Locadora CWI Crescer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })                
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav">                    
                 </ul>
+                <div class="pull-right inline navbar-brand">
+                    <input type="text" placeholder="Nome" id="pesquisaNome">
+                    <button class="btn btn-default btn-sm" type="submit" id="btn-pesquisa">Pesquisar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -46,6 +51,11 @@
           js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.5";
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
+
+        $('#btn-pesquisa').click(function () {
+            var nomeJogo = $('#pesquisaNome').val();
+            window.location.href = "@Url.Action("JogosDisponiveis", "Relatorio")" + "/search?nomeJogo=" + nomeJogo;
+        })
     </script>
 </body>
 </html>
