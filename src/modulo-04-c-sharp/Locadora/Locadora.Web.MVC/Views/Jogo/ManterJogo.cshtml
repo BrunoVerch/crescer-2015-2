@@ -1,15 +1,15 @@
 ﻿@model JogoEditarCriarModel
 @{
-    ViewBag.Title = "Manutenção de Cliente";
+    ViewBag.Title = "Manutenção de Jogo";
 }
 
 @if (Model == null || Model.Id == null)
 {
-    <h2>Cadastro de Cliente</h2>
+    <h2>Cadastro de Jogo</h2>
 }
 else
 {
-    <h2>Edição de Cliente</h2>
+    <h2>Edição de Jogo</h2>
 }
 
 @using (Html.BeginForm("Salvar", "Jogo", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
