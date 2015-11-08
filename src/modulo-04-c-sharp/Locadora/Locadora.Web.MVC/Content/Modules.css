@@ -1,0 +1,44 @@
+﻿.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline{
+    display:inline;
+}
+
+.block {
+  display: block;
+}
+
+.color-red{
+    color:red;
+}
+
+.margin-auto{
+    margin:auto;
+}
+
+.width-100{
+    width:100%;
+}
+
+.shadow-red{
+    box-shadow: 0 0 50px red;
+}
+
+.font-big{
+    font-size:100pt;
+}
+
+.img-banner{
+    height:300px;
+    width:100%;
+}
