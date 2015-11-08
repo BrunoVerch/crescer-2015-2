@@ -1,4 +1,5 @@
-﻿using Locadora.Dominio.Repositorio;
+﻿using Locadora.Dominio;
+using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,23 @@ namespace Locadora.Web.MVC.Controllers
             return View(jogoModel);
         }
 
+        [HttpGet]
         public ActionResult ManterJogo(int? id)
         {
             if (id.HasValue)
             {               
                 var jogo = repositorio.BuscarPorId((int)id);
-                var model = new JogoEditarCriarModel() { Id = jogo.Id, Nome = jogo.Nome, Preco = jogo.Preco, Categoria = jogo.Categoria.ToString(), Descricao = jogo.Descricao, Selo = jogo.Selo.ToString(), Imagem = jogo.Imagem, Video = jogo.Video };
+                var model = new JogoEditarCriarModel()
+                {
+                    Id = jogo.Id,
+                    Nome = jogo.Nome,
+                    Preco = jogo.Preco,
+                    Categoria = jogo.Categoria,
+                    Descricao = jogo.Descricao,
+                    Selo = jogo.Selo,
+                    Imagem = jogo.Imagem,
+                    Video = jogo.Video
+                };
                 return View(model);
             }
             else
@@ -34,18 +46,49 @@ namespace Locadora.Web.MVC.Controllers
             }
         }
 
+        [ValidateAntiForgeryToken]
+        [HttpPost]
         public ActionResult Salvar(JogoEditarCriarModel model)
         {
-
             if (ModelState.IsValid)
             {
-                TempData["Mensagem"] = "Cliente salvo com sucesso!";
+                bool ehParaCriar = model.Id == null;
+                if (ehParaCriar)
+                {
+                    Jogo jogo = new Jogo()
+                    {
+                        Nome = model.Nome,
+                        Categoria = model.Categoria,
+                        Descricao = model.Descricao,
+                        Preco = model.Preco,
+                        Selo = model.Selo,
+                        Imagem = model.Imagem,
+                        Video = model.Video
+                    };
+                    repositorio.Criar(jogo);
+                    TempData["Mensagem"] = "Jogo criado com sucesso!";
+                }
+                else
+                {
+                    Jogo jogo = new Jogo((int)model.Id)
+                    {
+                        Nome = model.Nome,
+                        Categoria = model.Categoria,
+                        Descricao = model.Descricao,
+                        Preco = model.Preco,
+                        Selo = model.Selo,
+                        Imagem = model.Imagem,
+                        Video = model.Video
+                    };
+                    repositorio.Atualizar(jogo);
+                    TempData["Mensagem"] = "Jogo editado com sucesso!";
+                }                         
 
-                return RedirectToAction("Index", "Cliente");
+                return RedirectToAction("JogosDisponiveis", "Relatorio");
             }
             else
             {
-                return View("Manter", model);
+                return View("ManterJogo", model);
             }
         }
     }
