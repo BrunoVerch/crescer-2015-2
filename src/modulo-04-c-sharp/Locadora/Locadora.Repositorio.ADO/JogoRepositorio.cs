@@ -23,11 +23,11 @@ namespace Locadora.Repositorio.ADO
                 sql.Append(" Nome = @paramNome, ");
                 sql.Append(" Preco = @paramPreco, ");
                 sql.Append(" IdCategoria = @paramIdCategoria, ");
-                sql.Append(" IdClienteLocacao = @paramIdClienteLocacao ");
-                sql.Append(" Descricao = @paramDescricao");
-                sql.Append(" IdSelo = @paramIdSelo");
-                sql.Append(" Imagem = @paramImagem");
-                sql.Append(" Video = @paramVideo");
+                sql.Append(" IdClienteLocacao = @paramIdClienteLocacao, ");
+                sql.Append(" Descricao = @paramDescricao, ");
+                sql.Append(" IdSelo = @paramIdSelo, ");
+                sql.Append(" Imagem = @paramImagem, ");
+                sql.Append(" Video = @paramVideo ");
                 sql.Append(" WHERE Id = @paramId ");
 
                 IDbCommand comando = conexao.CreateCommand();
@@ -97,14 +97,14 @@ namespace Locadora.Repositorio.ADO
             using (IDbConnection conexao = CriarConexao())
             {
                 var sql = new StringBuilder();
-                sql.Append(" INSERT INTO Jogo (Nome, Preco, Categoria, IdClienteLocacao, Descricao, IdSelo, Imagem, Video) ");
+                sql.Append(" INSERT INTO Jogo (Nome, Preco, IdCategoria, IdClienteLocacao, Descricao, IdSelo, Imagem, Video) ");
                 sql.Append(" VALUES (@paramNome, @paramPreco, @paramCategoria, @paramIdClienteLocacao, @paramDescricao, @paramIdSelo, @paramImagem, @paramVideo)");
 
                 IDbCommand comando = conexao.CreateCommand();
                 comando.CommandText = sql.ToString();
                 comando.AddParam("paramNome", entidade.Nome);
                 comando.AddParam("paramPreco", entidade.Preco);
-                comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
+                comando.AddParam("paramCategoria", (int)entidade.Categoria);
                 comando.AddParam("paramIdClienteLocacao", entidade.IdClienteLocacao);
                 comando.AddParam("paramDescricao", entidade.Descricao);
                 comando.AddParam("paramIdSelo", (int)entidade.Selo);
