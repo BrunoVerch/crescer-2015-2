@@ -2,8 +2,14 @@
 @{
     ViewBag.Title = "Jogos Disponíveis";
 }
+<h3>
+    @TempData["Mensagem"]
+</h3>
 
-<h2>Jogos disponíveis para locação</h2>
+<div class="page-header">
+    <h2 style="display:inline">Jogos disponíveis para locação</h2>
+    <a href="~/Jogo/ManterJogo" class="btn btn-default" style="float:right">Criar Jogo</a>
+</div>
 
 <table class="table table-bordered">
     <thead>
@@ -22,7 +28,7 @@
             <td>@jogo.Categoria</td>
             <td>@jogo.Preco.ToString("c")</td>
             <td><a href="~/Jogo/JogoDetalhes/@jogo.Id">Detalhes do jogo</a></td>
-            <td><a href="~/Jogo/ManterJogo/@jogo.Id">Editar</a><td>
+            <td><a href="~/Jogo/ManterJogo/@jogo.Id">Editar</a></td>
         </tr>
     }
 </table>
