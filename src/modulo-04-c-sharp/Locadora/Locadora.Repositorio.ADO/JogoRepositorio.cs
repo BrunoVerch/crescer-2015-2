@@ -37,7 +37,7 @@ namespace Locadora.Repositorio.ADO
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
                 comando.AddParam("paramIdClienteLocacao", entidade.IdClienteLocacao);
                 comando.AddParam("paramDescricao", entidade.Descricao);
-                comando.AddParam("paramIdSelo", entidade.Selo);
+                comando.AddParam("paramIdSelo", (int)entidade.Selo);
                 comando.AddParam("paramImagem", entidade.Imagem);
                 comando.AddParam("paramVideo", entidade.Video);
                 comando.AddParam("paramId", entidade.Id);
