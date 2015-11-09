@@ -22,7 +22,7 @@ namespace Locadora.Dominio.Test
 
             jogo.LocarPara(new Cliente(id: 1));
 
-            Assert.AreEqual(1, jogo.IdClienteLocacao);
+            Assert.AreEqual(1, jogo.ClienteLocacao);
         }
     }
 }
