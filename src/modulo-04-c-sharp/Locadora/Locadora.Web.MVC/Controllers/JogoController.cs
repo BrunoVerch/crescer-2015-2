@@ -1,6 +1,7 @@
 ﻿using Locadora.Dominio;
 using Locadora.Dominio.Repositorio;
 using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,9 @@ namespace Locadora.Web.MVC.Controllers
 {
     public class JogoController : Controller
     {
-        private IJogoRepositorio repositorio = new Locadora.Repositorio.ADO.JogoRepositorio();
+        private IJogoRepositorio repositorio = new Locadora.Repositorio.EF.JogoRepositorio();
 
+        [Autorizador(Roles = "MASTER")]
         public ActionResult JogoDetalhes(int id)
         {
             var jogo=repositorio.BuscarPorId(id);            

@@ -131,7 +131,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Relatorio\JogosDisponiveis.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +141,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,6 +153,8 @@
     <Compile Include="Models\ListaImagensModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguranca\Autorizador.cs" />
+    <Compile Include="Seguranca\UsuarioLogadoModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -164,6 +169,7 @@
     <Content Include="Views\Jogo\JogoDetalhes.cshtml" />
     <Content Include="Views\Jogo\ManterJogo.cshtml" />
     <Content Include="Views\Relatorio\JogoNaoEncontrado.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

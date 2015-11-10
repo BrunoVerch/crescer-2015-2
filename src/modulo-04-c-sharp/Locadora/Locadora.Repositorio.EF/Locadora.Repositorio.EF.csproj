@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201511091917001_Initial.Designer.cs">
       <DependentUpon>201511091917001_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511101727495_Autenticacao.cs" />
+    <Compile Include="Migrations\201511101727495_Autenticacao.Designer.cs">
+      <DependentUpon>201511101727495_Autenticacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +78,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201511091917001_Initial.resx">
       <DependentUpon>201511091917001_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511101727495_Autenticacao.resx">
+      <DependentUpon>201511101727495_Autenticacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
