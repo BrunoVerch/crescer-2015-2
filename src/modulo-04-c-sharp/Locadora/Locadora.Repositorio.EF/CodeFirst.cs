@@ -17,6 +17,7 @@ namespace Locadora.Repositorio.EF
         }
 
         public DbSet<Jogo> Jogo { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
