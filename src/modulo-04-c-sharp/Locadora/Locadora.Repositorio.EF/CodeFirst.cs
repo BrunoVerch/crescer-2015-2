@@ -1,4 +1,5 @@
 ﻿using Locadora.Dominio;
+using Locadora.Repositorio.EF.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -28,66 +29,6 @@ namespace Locadora.Repositorio.EF
             modelBuilder.Configurations.Add(new UsuarioMap());
             modelBuilder.Configurations.Add(new PermissaoMap());
             base.OnModelCreating(modelBuilder);
-        }
-    }
-
-    class JogoMap : EntityTypeConfiguration<Jogo>
-    {
-        public JogoMap()
-        {
-            ToTable("Jogo");
-
-            HasKey(p => p.Id);
-
-            Property(p => p.Nome).IsRequired().HasColumnName("Nome").HasMaxLength(250);
-            Property(p => p.Preco).IsRequired().HasColumnName("Preco");
-            Property(p => p.Descricao).IsRequired().HasColumnName("Descricao").HasMaxLength(255);
-            Property(p => p.Imagem).IsOptional().HasColumnName("Imagem").HasMaxLength(255);
-            Property(p => p.Video).IsOptional().HasColumnName("Video").HasMaxLength(255);
-
-            HasOptional(p => p.ClienteLocacao).WithOptionalDependent().Map(m => m.MapKey("IdClienteLocacao"));
-        }
-    }
-
-    class ClienteMap : EntityTypeConfiguration<Cliente>
-    {
-        public ClienteMap()
-        {
-            ToTable("Cliente");
-
-            HasKey(p => p.Id);
-            Property(p => p.Nome).IsRequired().HasColumnName("Nome").HasMaxLength(250);
-        }
-    }
-
-    class UsuarioMap : EntityTypeConfiguration<Usuario>
-    {
-        public UsuarioMap()
-        {
-            ToTable("Usuario");
-
-            HasKey(p => p.Id);
-
-            Property(p => p.NomeCompleto).IsRequired().HasMaxLength(200);
-            Property(p => p.Email).IsRequired().HasMaxLength(200);
-            Property(p => p.Senha).IsRequired().HasMaxLength(256);
-
-            HasMany(u => u.Permissoes).WithMany(p => p.Usuarios).Map(m => { m.ToTable("Usuario_Permissao");
-                m.MapLeftKey("IdUsuario");
-                m.MapRightKey("IdPermissao");
-            });
-        }
-    }
-
-    class PermissaoMap : EntityTypeConfiguration<Permissao>
-    {
-        public PermissaoMap()
-        {
-            ToTable("Permissao");
-
-            HasKey(p => p.Id);
-
-            Property(p => p.Nome).IsRequired().HasMaxLength(200);
         }
     }
 }
