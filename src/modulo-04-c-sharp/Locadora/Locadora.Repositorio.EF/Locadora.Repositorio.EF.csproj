@@ -40,7 +40,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,7 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="CodeFirst.cs" />
+    <Compile Include="JogoRepositorio.cs" />
     <Compile Include="Migrations\201511091917001_Initial.cs" />
     <Compile Include="Migrations\201511091917001_Initial.Designer.cs">
       <DependentUpon>201511091917001_Initial.cs</DependentUpon>
@@ -71,6 +75,10 @@
     <EmbeddedResource Include="Migrations\201511091917001_Initial.resx">
       <DependentUpon>201511091917001_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SQL\01-CriarBase.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
