@@ -10,13 +10,14 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
-    public class JogoController : Controller
+    public class JogoController : BaseController
     {
-        private IJogoRepositorio repositorio = new Locadora.Repositorio.EF.JogoRepositorio();
+        private IJogoRepositorio repositorio = null;
 
-        [Autorizador(Roles = "MASTER")]
+        [Autorizador]
         public ActionResult JogoDetalhes(int id)
         {
+            repositorio = CriarJogoRepositorio();
             var jogo=repositorio.BuscarPorId(id);            
             var jogoModel = new JogoDetalheModel() { Nome = jogo.Nome, Preco = jogo.Preco, Categoria = jogo.Categoria.ToString(), Descricao = jogo.Descricao, Selo=jogo.Selo.ToString(), Imagem=jogo.Imagem, Video=jogo.Video };
             
@@ -24,10 +25,12 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
+        [Autorizador]
         public ActionResult ManterJogo(int? id)
         {
             if (id.HasValue)
-            {               
+            {
+                repositorio = CriarJogoRepositorio();
                 var jogo = repositorio.BuscarPorId((int)id);
                 var model = new JogoEditarCriarModel()
                 {
@@ -50,10 +53,12 @@ namespace Locadora.Web.MVC.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
+        [Autorizador]
         public ActionResult Salvar(JogoEditarCriarModel model)
         {
             if (ModelState.IsValid)
             {
+                repositorio = CriarJogoRepositorio();
                 bool ehParaCriar = model.Id == null;
                 if (ehParaCriar)
                 {

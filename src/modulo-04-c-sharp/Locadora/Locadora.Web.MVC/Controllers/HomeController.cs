@@ -9,13 +9,14 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private IJogoRepositorio repositorio = new Locadora.Repositorio.EF.JogoRepositorio();
+        private IJogoRepositorio repositorio = null;
 
         [Autorizador]
         public ActionResult Index()
         {
+            repositorio = CriarJogoRepositorio();
             var model = new ListaImagensModel();
             IList<Dominio.Jogo> ListaJogos = new List<Dominio.Jogo>();
 
