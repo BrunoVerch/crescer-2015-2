@@ -17,13 +17,5 @@ namespace Locadora.Repositorio.EF
                 return db.Usuario.FirstOrDefault(p => p.Email == email);
             }
         }
-
-        public IList<Usuario> BuscarPorNomeCompleto(string nome)
-        {
-            using (var db = new CodeFirst())
-            {
-                return db.Usuario.Where(p => p.NomeCompleto == nome).ToList();
-            }
-        }
     }
 }

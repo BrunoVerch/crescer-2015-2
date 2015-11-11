@@ -8,7 +8,6 @@ namespace Locadora.Dominio.Repositorio
 {
     public interface IUsuarioRepositorio
     {
-        IList<Usuario> BuscarPorNomeCompleto(string nome);
         Usuario BuscarPorEmail(string email);
     }
 }

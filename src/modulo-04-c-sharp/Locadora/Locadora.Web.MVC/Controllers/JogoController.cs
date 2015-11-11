@@ -25,7 +25,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
-        [Autorizador]
+        [Autorizador(Roles = "ADMIN")]
         public ActionResult ManterJogo(int? id)
         {
             if (id.HasValue)
@@ -53,7 +53,7 @@ namespace Locadora.Web.MVC.Controllers
 
         [ValidateAntiForgeryToken]
         [HttpPost]
-        [Autorizador]
+        [Autorizador(Roles ="ADMIN")]
         public ActionResult Salvar(JogoEditarCriarModel model)
         {
             if (ModelState.IsValid)
