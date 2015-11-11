@@ -21,7 +21,6 @@ namespace Locadora.Repositorio.ADO
                 var sql = new StringBuilder();
                 sql.Append(" UPDATE Jogo set ");
                 sql.Append(" Nome = @paramNome, ");
-                sql.Append(" Preco = @paramPreco, ");
                 sql.Append(" IdCategoria = @paramIdCategoria, ");
                 sql.Append(" IdClienteLocacao = @paramIdClienteLocacao, ");
                 sql.Append(" Descricao = @paramDescricao, ");
@@ -33,7 +32,6 @@ namespace Locadora.Repositorio.ADO
                 IDbCommand comando = conexao.CreateCommand();
                 comando.CommandText = sql.ToString();
                 comando.AddParam("paramNome", entidade.Nome);
-                comando.AddParam("paramPreco", entidade.Preco);
                 comando.AddParam("paramIdCategoria", (int)entidade.Categoria);
                 comando.AddParam("paramIdClienteLocacao", entidade.ClienteLocacao);
                 comando.AddParam("paramDescricao", entidade.Descricao);
@@ -98,12 +96,11 @@ namespace Locadora.Repositorio.ADO
             {
                 var sql = new StringBuilder();
                 sql.Append(" INSERT INTO Jogo (Nome, Preco, IdCategoria, IdClienteLocacao, Descricao, IdSelo, Imagem, Video) ");
-                sql.Append(" VALUES (@paramNome, @paramPreco, @paramCategoria, @paramIdClienteLocacao, @paramDescricao, @paramIdSelo, @paramImagem, @paramVideo)");
+                sql.Append(" VALUES (@paramNome, @paramCategoria, @paramIdClienteLocacao, @paramDescricao, @paramIdSelo, @paramImagem, @paramVideo)");
 
                 IDbCommand comando = conexao.CreateCommand();
                 comando.CommandText = sql.ToString();
                 comando.AddParam("paramNome", entidade.Nome);
-                comando.AddParam("paramPreco", entidade.Preco);
                 comando.AddParam("paramCategoria", (int)entidade.Categoria);
                 comando.AddParam("paramIdClienteLocacao", entidade.ClienteLocacao);
                 comando.AddParam("paramDescricao", entidade.Descricao);

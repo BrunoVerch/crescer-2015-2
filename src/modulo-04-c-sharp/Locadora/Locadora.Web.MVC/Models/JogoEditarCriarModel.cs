@@ -16,10 +16,6 @@ namespace Locadora.Web.MVC.Models
         public string Nome { get; set; }
 
         [Required]
-        [RegularExpression("[0-9]+(,[0-9]{2})", ErrorMessage = "Informe um preço válido")]
-        public decimal Preco { get; set; }
-
-        [Required]
         public Categoria Categoria { get; set; }
 
         [Required]

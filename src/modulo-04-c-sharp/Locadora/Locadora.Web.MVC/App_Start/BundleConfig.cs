@@ -11,7 +11,8 @@ namespace Locadora.Web.MVC.App_Start
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquey-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
@@ -26,6 +27,9 @@ namespace Locadora.Web.MVC.App_Start
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/bootstrap.css",
                         "~/Content/Site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/themes/base").IncludeDirectory(
+                        "~/Content/themes/base/", "*.css", true));
         }
     }
 }

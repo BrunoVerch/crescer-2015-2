@@ -1,4 +1,4 @@
-﻿
+﻿@model Locadora.Web.MVC.Models.LoginModel
 @{
     ViewBag.Title = "Index";
 }
@@ -10,10 +10,12 @@
     <div class="form-group">
         <label for="email">Email:</label>
         <input type="text" class="form-control" name="email" value="" />
+        @Html.ValidationMessageFor(m => m.Email)
     </div>
     <div class="form-group">
         <label for="senha">Senha:</label>
         <input type="password" class="form-control" name="senha" value="" />
+        @Html.ValidationMessageFor(m => m.Senha)
     </div>
 
     <input type="submit" name="enviar" value="Login" />

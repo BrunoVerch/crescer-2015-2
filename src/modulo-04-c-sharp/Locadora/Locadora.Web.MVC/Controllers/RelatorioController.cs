@@ -29,7 +29,7 @@ namespace Locadora.Web.MVC.Controllers
             }            
             foreach (var jogo in ListaJogos)
             {
-                var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Preco = jogo.Preco, Categoria = jogo.Categoria.ToString() };
+                var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Categoria = jogo.Categoria.ToString() };
                 model.Jogos.Add(jogoModel);
             }
             if (ListaJogos.Count == 0)
@@ -37,9 +37,6 @@ namespace Locadora.Web.MVC.Controllers
                 return View("JogoNaoEncontrado");
             }
             model.QuantidadeDeJogos = model.Jogos.Count;
-            model.ValorMedio = model.Jogos.Average(jogo=>jogo.Preco);
-            model.JogoMaisBarato = model.Jogos.OrderBy(jogo => jogo.Preco).ToList()[0].Nome;
-            model.JogoMaisCaro = model.Jogos.OrderByDescending(jogo => jogo.Preco).ToList()[0].Nome; 
                
             return View(model);
         }

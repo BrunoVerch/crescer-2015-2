@@ -19,7 +19,7 @@ namespace Locadora.Web.MVC.Controllers
         {
             repositorio = CriarJogoRepositorio();
             var jogo=repositorio.BuscarPorId(id);            
-            var jogoModel = new JogoDetalheModel() { Nome = jogo.Nome, Preco = jogo.Preco, Categoria = jogo.Categoria.ToString(), Descricao = jogo.Descricao, Selo=jogo.Selo.ToString(), Imagem=jogo.Imagem, Video=jogo.Video };
+            var jogoModel = new JogoDetalheModel() { Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Descricao = jogo.Descricao, Selo=jogo.Selo.ToString(), Imagem=jogo.Imagem, Video=jogo.Video };
             
             return View(jogoModel);
         }
@@ -36,7 +36,6 @@ namespace Locadora.Web.MVC.Controllers
                 {
                     Id = jogo.Id,
                     Nome = jogo.Nome,
-                    Preco = jogo.Preco,
                     Categoria = jogo.Categoria,
                     Descricao = jogo.Descricao,
                     Selo = jogo.Selo,
@@ -67,7 +66,6 @@ namespace Locadora.Web.MVC.Controllers
                         Nome = model.Nome,
                         Categoria = model.Categoria,
                         Descricao = model.Descricao,
-                        Preco = model.Preco,
                         Selo = model.Selo,
                         Imagem = model.Imagem,
                         Video = model.Video
@@ -82,7 +80,6 @@ namespace Locadora.Web.MVC.Controllers
                         Nome = model.Nome,
                         Categoria = model.Categoria,
                         Descricao = model.Descricao,
-                        Preco = model.Preco,
                         Selo = model.Selo,
                         Imagem = model.Imagem,
                         Video = model.Video
