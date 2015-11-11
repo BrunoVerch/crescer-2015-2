@@ -147,15 +147,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Models\ImagemJogoModel.cs" />
     <Compile Include="Models\JogoDetalheModel.cs" />
     <Compile Include="Models\JogoEditarCriarModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\ListaImagensModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguranca\Autorizador.cs" />
-    <Compile Include="Seguranca\UsuarioLogadoModel.cs" />
+    <Compile Include="Seguranca\ControleDeSessao.cs" />
+    <Compile Include="Seguranca\UsuarioLogado.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -186,6 +189,10 @@
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj">
       <Project>{93d95d00-78c7-4b77-be44-686ab7a29c7c}</Project>
       <Name>Locadora.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Locadora.Infraestrutura.Servicos\Locadora.Infraestrutura.Servicos.csproj">
+      <Project>{9201d295-5527-498b-8d05-89fa76156ac8}</Project>
+      <Name>Locadora.Infraestrutura.Servicos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Locadora.Repositorio.ADO\Locadora.Repositorio.ADO.csproj">
       <Project>{14105bc9-3336-43bc-b394-6e0aa2a29751}</Project>

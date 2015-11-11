@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Helpers", "Locador
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Repositorio.EF", "Locadora.Repositorio.EF\Locadora.Repositorio.EF.csproj", "{57B11746-0D91-49C2-9BB6-99DD6A9C27EB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servicos", "Servicos", "{9C691FAF-201F-463F-A3F0-912F11AED126}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Locadora.Infraestrutura.Servicos", "Locadora.Infraestrutura.Servicos\Locadora.Infraestrutura.Servicos.csproj", "{9201D295-5527-498B-8D05-89FA76156AC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{57B11746-0D91-49C2-9BB6-99DD6A9C27EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57B11746-0D91-49C2-9BB6-99DD6A9C27EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57B11746-0D91-49C2-9BB6-99DD6A9C27EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9201D295-5527-498B-8D05-89FA76156AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9201D295-5527-498B-8D05-89FA76156AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9201D295-5527-498B-8D05-89FA76156AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9201D295-5527-498B-8D05-89FA76156AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +76,7 @@ Global
 		{904D46BA-4984-4269-B153-D79D0AEFC0DD} = {B8852BF0-3657-4217-B96D-39339EDC6B84}
 		{98CFBFA0-6792-41AA-9F4C-F69FFD0C3C5C} = {904D46BA-4984-4269-B153-D79D0AEFC0DD}
 		{57B11746-0D91-49C2-9BB6-99DD6A9C27EB} = {4C4BE62A-458D-4CF0-91DD-92DBB516982C}
+		{9C691FAF-201F-463F-A3F0-912F11AED126} = {B8852BF0-3657-4217-B96D-39339EDC6B84}
+		{9201D295-5527-498B-8D05-89FA76156AC8} = {9C691FAF-201F-463F-A3F0-912F11AED126}
 	EndGlobalSection
 EndGlobal

@@ -1,4 +1,8 @@
-﻿using Locadora.Web.MVC.Seguranca;
+﻿using Locadora.Dominio;
+using Locadora.Dominio.Servicos;
+using Locadora.Web.MVC.Helpers;
+using Locadora.Web.MVC.Models;
+using Locadora.Web.MVC.Seguranca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,19 +20,30 @@ namespace Locadora.Web.MVC.Controllers
             return View();
         }
 
-        public ActionResult Login(string email,string senha)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel loginModel)
         {
-            //TODO: validar usuario
-
-            if (email == "didi" && senha == "die")
+            if (ModelState.IsValid)
             {
-                var usuarioLogadoModel = new UsuarioLogadoModel("didi", new string[] { "MASTER" });
+                ServicoAutenticacao servicoAutenticacao = FabricaDeModulos.CriarServicoAutenticacao();
 
-                FormsAuthentication.SetAuthCookie(email, true);
-                Session["USUARIO_LOGADO"] = usuarioLogadoModel;
+                Usuario usuarioAutenticado = servicoAutenticacao.BuscarPorAutenticacao(loginModel.Email, loginModel.Senha);
+
+                if (usuarioAutenticado != null)
+                {
+                    ControleDeSessao.CriarSessaoDeUsuario(usuarioAutenticado);
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
-            return RedirectToAction("Index", "Home");
+            ModelState.AddModelError("INVALID_LOGIN", "Usuário ou senha inválidos.");
+            return View("Index", loginModel);
+        }
+
+        public void Sair()
+        {
+            ControleDeSessao.Encerrar();
         }
     }
 }
