@@ -54,6 +54,10 @@
     <Compile Include="ClienteRepositorio.cs" />
     <Compile Include="CodeFirst.cs" />
     <Compile Include="JogoRepositorio.cs" />
+    <Compile Include="Mapping\ClienteMap.cs" />
+    <Compile Include="Mapping\JogoMap.cs" />
+    <Compile Include="Mapping\PermissaoMap.cs" />
+    <Compile Include="Mapping\UsuarioMap.cs" />
     <Compile Include="Migrations\201511091917001_Initial.cs" />
     <Compile Include="Migrations\201511091917001_Initial.Designer.cs">
       <DependentUpon>201511091917001_Initial.cs</DependentUpon>

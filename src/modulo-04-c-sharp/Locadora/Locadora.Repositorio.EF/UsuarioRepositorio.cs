@@ -1,12 +1,29 @@
-﻿using System;
+﻿using Locadora.Dominio.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Locadora.Dominio;
 
 namespace Locadora.Repositorio.EF
 {
-    class UsuarioRepositorio
+    public class UsuarioRepositorio : IUsuarioRepositorio
     {
+        public Usuario BuscarPorEmail(string email)
+        {
+            using (var db = new CodeFirst())
+            {
+                return db.Usuario.FirstOrDefault(p => p.Email == email);
+            }
+        }
+
+        public IList<Usuario> BuscarPorNomeCompleto(string nome)
+        {
+            using (var db = new CodeFirst())
+            {
+                return db.Usuario.Where(p => p.NomeCompleto == nome).ToList();
+            }
+        }
     }
 }
