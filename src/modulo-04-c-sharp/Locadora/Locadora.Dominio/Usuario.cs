@@ -15,5 +15,10 @@ namespace Locadora.Dominio
         public string Senha { get; set; }
 
         public ICollection<Permissao> Permissoes { get; set; }
+
+        public Usuario()
+        {
+            this.Permissoes = new HashSet<Permissao>();
+        }
     }
 }
