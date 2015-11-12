@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class JogoController : BaseController
     {
         private IJogoRepositorio repositorio = null;
@@ -25,7 +26,7 @@ namespace Locadora.Web.MVC.Controllers
         }
 
         [HttpGet]
-        [Autorizador(Roles = "ADMIN")]
+        [Autorizador(Roles = Permissao.ADMIN)]
         public ActionResult ManterJogo(int? id)
         {
             if (id.HasValue)
