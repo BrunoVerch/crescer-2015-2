@@ -1,23 +1,28 @@
 ﻿@model Locadora.Web.MVC.Models.LoginModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Login";
 }
-
-<h2>Index</h2>
 
 @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
 {
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="text" class="form-control" name="email" value="" />
-        @Html.ValidationMessageFor(m => m.Email)
-    </div>
-    <div class="form-group">
-        <label for="senha">Senha:</label>
-        <input type="password" class="form-control" name="senha" value="" />
-        @Html.ValidationMessageFor(m => m.Senha)
-    </div>
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
 
-    <input type="submit" name="enviar" value="Login" />
+    <div class="col-md-3 col-centered">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" name="email" value="" />        
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" class="form-control" name="senha" value="" />
+            @Html.ValidationMessageFor(m => m.Senha)
+        </div>
+
+        <div class="text-center">
+            <input class="btn btn-default" type="submit" name="enviar" value="Login" />
+        </div>
+    </div>
 }
 
