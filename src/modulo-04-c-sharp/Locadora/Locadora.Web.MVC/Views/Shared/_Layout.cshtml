@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Locadora - @ViewBag.Title</title>
-    @Styles.Render("~/Content/css");
-    @Scripts.Render("~/bundles/modernizr");
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/themes/base")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,13 +19,16 @@
                 </button>
                 @Html.ActionLink("Locadora CWI Crescer", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })                
             </div>
+            <div class="pull-right inline navbar-brand">
+                <form action="@Url.Action("JogosDisponiveis", "Relatorio")" method="get">
+                    <input type="text" placeholder="Nome" id="pesquisaNome" name="nomeJogo">
+                    <button class="btn btn-default btn-sm" type="submit" id="btn-pesquisa">Pesquisar</button>
+                </form>
+            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">                    
                 </ul>
-                <div class="pull-right inline navbar-brand">
-                    <input type="text" placeholder="Nome" id="pesquisaNome">
-                    <button class="btn btn-default btn-sm" type="submit" id="btn-pesquisa">Pesquisar</button>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -40,10 +44,9 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/themes/base")
         
     @RenderSection("Scripts",false)
-    <script>        
+    <script>
         (function(d, s, id) {
           var js, fjs = d.getElementsByTagName(s)[0];
           if (d.getElementById(id)) return;
@@ -52,10 +55,10 @@
           fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
-        $('#btn-pesquisa').click(function () {
-            var nomeJogo = $('#pesquisaNome').val();
-            window.location.href = "@Url.Action("JogosDisponiveis", "Relatorio")" + "/search?nomeJogo=" + nomeJogo;
-        })
+        $("#pesquisaNome").autocomplete({
+            source: 'http://localhost:56771/Relatorio/JogosAutocomplete'
+        });
+    
     </script>
 </body>
 </html>
