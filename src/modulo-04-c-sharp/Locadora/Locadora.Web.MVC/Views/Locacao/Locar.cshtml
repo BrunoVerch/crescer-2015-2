@@ -5,5 +5,35 @@
 
 <h2>Locar</h2>
 
-@Html.Partial("_Locar",Model)
+<div>
+    <div class="img-responsive">
+        @Model.Imagem
+    </div>
+    <div>
+        @Html.Partial("_Locar",Model)
+    </div>
+    @using (Html.BeginForm("Salvar", "Locacao", new { Id = Model.Id }, FormMethod.Post, new { @class = "form" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <div>
+            <div class="form-group">
+                <label for="cliente">Cliente:</label>
+                <input type="text" class="form-control" name="nomeCliente" value="" />
+            </div>
+
+            <div class="text-center">
+                <input class="btn btn-default" type="submit" name="finalizar" id="finalizar" value="Finalizar Pedido" />
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+    $("#finalizar").autocomplete({
+                source: 'http://localhost:56771/Locacao/ClienteAutocomplete'
+    });
+    </script>
+}
 

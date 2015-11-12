@@ -11,5 +11,6 @@ namespace Locadora.Web.MVC.Models
         public string Nome { get; set; }
         public string Categoria { get; set; }
         public string Selo { get; set; }
+        public DateTime DataDevolucao { get; set; }
     }
 }

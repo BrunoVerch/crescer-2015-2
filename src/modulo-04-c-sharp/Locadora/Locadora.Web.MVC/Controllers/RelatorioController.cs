@@ -25,8 +25,11 @@ namespace Locadora.Web.MVC.Controllers
                        
             foreach (var jogo in ListaJogos)
             {
-                var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Selo=jogo.Selo.ToString() };
-                model.Jogos.Add(jogoModel);
+                if(jogo.DataDevolucao == null)
+                {
+                    var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Selo = jogo.Selo.ToString() };
+                    model.Jogos.Add(jogoModel);
+                }                
             }
             if (ListaJogos.Count == 0)
             {

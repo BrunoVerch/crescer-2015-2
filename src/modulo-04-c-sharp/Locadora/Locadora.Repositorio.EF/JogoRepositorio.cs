@@ -62,5 +62,13 @@ namespace Locadora.Repositorio.EF
                 return db.SaveChanges();
             }
         }
+
+        public IList<Jogo> BuscarJogosPorCliente(int idCliente)
+        {
+            using (var db = new CodeFirst())
+            {
+                return db.Jogo.Where(p => p.ClienteLocacao.Id == idCliente).ToList();
+            }
+        }
     }
 }

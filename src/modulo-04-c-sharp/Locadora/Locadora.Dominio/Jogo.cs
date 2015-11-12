@@ -19,16 +19,31 @@ namespace Locadora.Dominio
         public string Video { get; set; }
 
         public Cliente ClienteLocacao { get; private set; }
-        
+
+        public decimal Valor
+        {
+            get
+            {
+                if (Selo == Selo.OURO)
+                    return 15;
+                if (Selo == Selo.PRATA)
+                    return 10;
+                else
+                    return 5;
+            }
+        }
+
+        public DateTime? DataDevolucao { get; set; }
+
+
         public Jogo()
         {
 
         }
 
-        public Jogo(int id, Cliente idClienteLocacao = null)
+        public Jogo(int id)
         {
             this.Id = id;
-            this.ClienteLocacao = idClienteLocacao;
         }
 
         public void LocarPara(Cliente cliente)

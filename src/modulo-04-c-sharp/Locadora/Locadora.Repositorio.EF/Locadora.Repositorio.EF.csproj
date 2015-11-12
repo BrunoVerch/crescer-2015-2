@@ -74,6 +74,18 @@
     <Compile Include="Migrations\201511120127542_colocar jogo.Designer.cs">
       <DependentUpon>201511120127542_colocar jogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511121635586_ValorData.cs" />
+    <Compile Include="Migrations\201511121635586_ValorData.Designer.cs">
+      <DependentUpon>201511121635586_ValorData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511121644539_Data.cs" />
+    <Compile Include="Migrations\201511121644539_Data.Designer.cs">
+      <DependentUpon>201511121644539_Data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511121651142_insertJogo.cs" />
+    <Compile Include="Migrations\201511121651142_insertJogo.Designer.cs">
+      <DependentUpon>201511121651142_insertJogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioRepositorio.cs" />
@@ -100,6 +112,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511120127542_colocar jogo.resx">
       <DependentUpon>201511120127542_colocar jogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511121635586_ValorData.resx">
+      <DependentUpon>201511121635586_ValorData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511121644539_Data.resx">
+      <DependentUpon>201511121644539_Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511121651142_insertJogo.resx">
+      <DependentUpon>201511121651142_insertJogo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
