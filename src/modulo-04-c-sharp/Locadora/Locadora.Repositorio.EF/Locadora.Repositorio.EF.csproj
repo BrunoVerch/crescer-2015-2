@@ -66,6 +66,14 @@
     <Compile Include="Migrations\201511101727495_Autenticacao.Designer.cs">
       <DependentUpon>201511101727495_Autenticacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511112342472_preco alterado.cs" />
+    <Compile Include="Migrations\201511112342472_preco alterado.Designer.cs">
+      <DependentUpon>201511112342472_preco alterado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201511120127542_colocar jogo.cs" />
+    <Compile Include="Migrations\201511120127542_colocar jogo.Designer.cs">
+      <DependentUpon>201511120127542_colocar jogo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioRepositorio.cs" />
@@ -86,6 +94,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201511101727495_Autenticacao.resx">
       <DependentUpon>201511101727495_Autenticacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511112342472_preco alterado.resx">
+      <DependentUpon>201511112342472_preco alterado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511120127542_colocar jogo.resx">
+      <DependentUpon>201511120127542_colocar jogo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

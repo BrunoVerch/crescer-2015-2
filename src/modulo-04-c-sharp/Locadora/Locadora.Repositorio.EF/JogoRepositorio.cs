@@ -32,7 +32,7 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new CodeFirst())
             {
-                return db.Jogo.Where(p => p.Nome == nome).ToList();
+                return db.Jogo.Where(p => p.Nome.Contains(nome)).ToList();
             }
         }
 

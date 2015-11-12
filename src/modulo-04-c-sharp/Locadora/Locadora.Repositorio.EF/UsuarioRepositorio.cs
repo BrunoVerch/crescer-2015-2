@@ -14,7 +14,7 @@ namespace Locadora.Repositorio.EF
         {
             using (var db = new CodeFirst())
             {
-                return db.Usuario.FirstOrDefault(p => p.Email == email);
+                return db.Usuario.Include("Permissoes").FirstOrDefault(p => p.Email == email);
             }
         }
     }
