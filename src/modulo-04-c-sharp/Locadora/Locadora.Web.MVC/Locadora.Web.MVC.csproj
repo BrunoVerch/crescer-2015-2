@@ -177,6 +177,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
+    <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,6 +189,7 @@
     <Compile Include="Models\JogoEditarCriarModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\ListaImagensModel.cs" />
+    <Compile Include="Models\LocarJogoModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -209,6 +211,8 @@
     <Content Include="Views\Jogo\ManterJogo.cshtml" />
     <Content Include="Views\Relatorio\JogoNaoEncontrado.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Locacao\Locar.cshtml" />
+    <Content Include="Views\Locacao\_Locar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -218,7 +222,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj">
@@ -228,10 +231,6 @@
     <ProjectReference Include="..\Locadora.Infraestrutura.Servicos\Locadora.Infraestrutura.Servicos.csproj">
       <Project>{9201d295-5527-498b-8d05-89fa76156ac8}</Project>
       <Name>Locadora.Infraestrutura.Servicos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Locadora.Repositorio.ADO\Locadora.Repositorio.ADO.csproj">
-      <Project>{14105bc9-3336-43bc-b394-6e0aa2a29751}</Project>
-      <Name>Locadora.Repositorio.ADO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Locadora.Repositorio.EF\Locadora.Repositorio.EF.csproj">
       <Project>{57b11746-0d91-49c2-9bb6-99dd6a9c27eb}</Project>
