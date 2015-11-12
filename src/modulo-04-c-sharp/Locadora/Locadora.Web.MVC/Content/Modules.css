@@ -42,3 +42,11 @@
     height:300px;
     width:100%;
 }
+.center {
+    text-align: center;
+}
+
+.col-centered{
+    margin: 10% auto;
+    float: none;
+}

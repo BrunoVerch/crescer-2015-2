@@ -16,8 +16,10 @@
         <tr>
             <th>Jogo</th>            
             <th>Categoria</th>
-            <th>Detalhes</th>
+            <th>Selo</th>
+            <th>Detalhes</th>            
             <th>Editar</th>
+            <th>Locação</th>
         </tr>
     </thead>
     @foreach (var jogo in @Model.Jogos)
@@ -25,8 +27,10 @@
         <tr>
             <td>@jogo.Nome</td>            
             <td>@jogo.Categoria</td>
+            <td>@jogo.Selo</td>
             <td><a href="~/Jogo/JogoDetalhes/@jogo.Id">Detalhes do jogo</a></td>
             <td><a href="~/Jogo/ManterJogo/@jogo.Id">Editar</a></td>
+            <td><a href="~/Locacao/Locar/@jogo.Id">Locar</a></td>
         </tr>
     }
 </table>
