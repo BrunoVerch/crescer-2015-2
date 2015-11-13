@@ -1,0 +1,22 @@
+﻿@model ListaJogosModel
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Jogo</th>
+            <th>Data Locacao</th>
+            <th>Valor Total</th>
+            <th>Devolver</th>
+        </tr>
+    </thead>
+    @foreach (var jogo in @Model.Jogos)
+    {
+        <tr>
+            <td>@jogo.Nome</td>
+            <td>@jogo.DataLocacao.Date</td>
+            <td>@jogo.ValorTotal.ToString("C")</td>
+            <td>@Html.ActionLink("Devolver", "FinalizaDevolver", new { nomeJogo = @jogo.Nome })</td>
+        </tr>
+    }
+</table>
+

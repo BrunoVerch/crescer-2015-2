@@ -16,25 +16,53 @@ namespace Locadora.Dominio.Servicos
             this.jogoRepositorio = repositorio;
         }
 
-        public void GerarDataDevolucao(Jogo jogo)
+        public DateTime GerarDataDevolucao(Jogo jogo)
         {
+            jogo.DataLocacao = DateTime.Now;
             if (jogo.Selo == Selo.OURO)
             {
-                jogo.DataDevolucao = DateTime.Now.AddDays(1);
+                return jogo.DataLocacao.GetValueOrDefault().AddDays(1);
             }
             else if(jogo.Selo == Selo.PRATA)
             {
-                jogo.DataDevolucao = DateTime.Now.AddDays(2);
+                return jogo.DataLocacao.GetValueOrDefault().AddDays(2);
             }
-            else if (jogo.Selo == Selo.BRONZE)
+            else
             {
-                jogo.DataDevolucao = DateTime.Now.AddDays(3);
+                return jogo.DataLocacao.GetValueOrDefault().AddDays(3);
             }
         }
         
-        public int PodeLocar(Cliente cliente)
+        public bool PodeLocar(Cliente cliente)
         {
-            return jogoRepositorio.BuscarJogosPorCliente(cliente.Id).Count();
-        }      
+            int total = jogoRepositorio.BuscarJogosPorCliente(cliente.Id).Count();
+            if(total == 3)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public decimal CalcularValorFinal(Jogo jogo)
+        {
+            decimal ValorFinal = 0;
+            int diferencaDias =(DateTime.Now - jogo.DataLocacao.Value).Days;
+
+            if (jogo.Valor == 15 && diferencaDias > 1)
+                ValorFinal = jogo.Valor + (diferencaDias * 5);
+            else
+            if (jogo.Valor == 10 && diferencaDias > 2)
+                ValorFinal = jogo.Valor + (diferencaDias * 5);
+            else
+            if (jogo.Valor == 5 && diferencaDias > 3)
+                ValorFinal = jogo.Valor + (diferencaDias * 5);
+            else
+                ValorFinal = jogo.Valor;
+
+            return ValorFinal;
+        }
     }
 }

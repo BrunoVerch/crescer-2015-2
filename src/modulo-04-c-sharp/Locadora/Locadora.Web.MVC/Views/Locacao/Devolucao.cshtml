@@ -1,0 +1,35 @@
+﻿@model ListaJogosModel
+@{
+    ViewBag.Title = "Devolucao";
+}
+
+@TempData["Mensagem"]
+
+<h2 class="text-center">Devolucão</h2>
+
+
+<div class="form-group text-center" style="margin-top:10%;">
+   <label for="cliente">Cliente:</label>
+   <input type="text" class="form-control inline-block" name="nomeCliente" value="" id="NomeCliente" />
+   <button class="btn btn-default inline-block" id="Ir">Ir</button>
+</div>
+
+<div id="ListaJogos"></div>
+
+
+@section Scripts {
+    <script>
+    $("#finalizar").autocomplete({
+                source: 'http://localhost:56771/Locacao/ClienteAutocomplete'
+    });
+
+    $(document).ready(function () {
+        $('#Ir').click(function () {
+            $('#ListaJogos').load("@Url.Action("Devolver", "Locacao")", { nomeCliente: $('#NomeCliente').val() });
+        })
+    }); 
+
+    </script>
+}
+
+

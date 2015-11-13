@@ -17,5 +17,13 @@ namespace Locadora.Repositorio.EF
                 return db.Cliente.Where(p => p.Nome.Contains(nome)).ToList();
             }
         }
+
+        public IList<Cliente> BuscarTodos()
+        {
+            using (var db = new CodeFirst())
+            {
+                return db.Cliente.ToList();
+            }
+        }
     }
 }

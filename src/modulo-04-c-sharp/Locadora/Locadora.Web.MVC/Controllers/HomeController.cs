@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class HomeController : BaseController
     {
         private IJogoRepositorio repositorio = null;
