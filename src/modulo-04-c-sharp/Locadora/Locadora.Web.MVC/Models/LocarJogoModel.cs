@@ -21,6 +21,6 @@ namespace Locadora.Web.MVC.Models
 
         public DateTime DataDevolucao { get; set; }
 
-        public decimal Valor { get; set; }
+        public string Valor { get; set; }
     }
 }

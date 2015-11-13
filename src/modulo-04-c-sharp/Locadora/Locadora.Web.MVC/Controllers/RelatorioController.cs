@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Locadora.Web.MVC.Controllers
 {
+    [Autorizador]
     public class RelatorioController : BaseController
     {
         private IJogoRepositorio repositorio = null;
@@ -25,7 +26,7 @@ namespace Locadora.Web.MVC.Controllers
                        
             foreach (var jogo in ListaJogos)
             {
-                if(jogo.DataDevolucao == null)
+                if(jogo.IdCliente == null)
                 {
                     var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Selo = jogo.Selo.ToString() };
                     model.Jogos.Add(jogoModel);

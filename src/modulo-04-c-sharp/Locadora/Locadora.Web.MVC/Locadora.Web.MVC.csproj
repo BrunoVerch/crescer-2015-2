@@ -186,9 +186,11 @@
     <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Models\ImagemJogoModel.cs" />
     <Compile Include="Models\JogoDetalheModel.cs" />
+    <Compile Include="Models\JogoDevolucaoModel.cs" />
     <Compile Include="Models\JogoEditarCriarModel.cs" />
     <Compile Include="Models\JogoModel.cs" />
     <Compile Include="Models\ListaImagensModel.cs" />
+    <Compile Include="Models\ListaJogosModel.cs" />
     <Compile Include="Models\LocarJogoModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
@@ -213,6 +215,9 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Locacao\Locar.cshtml" />
     <Content Include="Views\Locacao\_Locar.cshtml" />
+    <Content Include="Views\Locacao\Devolucao.cshtml" />
+    <Content Include="Views\Locacao\_Devolver.cshtml" />
+    <Content Include="Views\Shared\_ImagemSelo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
