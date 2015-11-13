@@ -8,7 +8,11 @@
 
 <div class="page-header">
     <h2 class="inline">Jogos disponíveis para locação</h2>
-    <a href="~/Jogo/ManterJogo" class="btn btn-default pull-right">Criar Jogo</a>
+    @if (User.IsInRole("ADMIN"))
+    {
+        <a href="~/Jogo/ManterJogo" class="btn btn-default pull-right">Criar Jogo</a>
+    }
+    <a href="~/Locacao/Devolucao" class="btn btn-default pull-right" style="margin-right:30px;">Devolver Jogo</a>
 </div>
 
 <table class="table table-bordered">
