@@ -33,7 +33,9 @@ namespace Locadora.Dominio
             }
         }
 
-        public DateTime? DataDevolucao { get; set; }
+        public int? IdCliente { get; set; }
+
+        public DateTime? DataLocacao { get; set; }
 
 
         public Jogo()
@@ -48,7 +50,14 @@ namespace Locadora.Dominio
 
         public void LocarPara(Cliente cliente)
         {
+            this.IdCliente = cliente.Id;
             this.ClienteLocacao = cliente;
+        }
+
+        public void DevolverJogo()
+        {
+            this.ClienteLocacao = null;
+            this.IdCliente = null;
         }
 
         public override string ToString()
