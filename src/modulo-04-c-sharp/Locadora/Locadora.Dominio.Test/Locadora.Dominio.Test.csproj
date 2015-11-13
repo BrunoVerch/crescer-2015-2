@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="JogoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Locadora.Dominio\Locadora.Dominio.csproj">
