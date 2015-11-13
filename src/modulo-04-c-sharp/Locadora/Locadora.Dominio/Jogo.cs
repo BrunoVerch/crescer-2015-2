@@ -50,6 +50,7 @@ namespace Locadora.Dominio
 
         public void LocarPara(Cliente cliente)
         {
+            this.DataLocacao = DateTime.Now.Date;
             this.IdCliente = cliente.Id;
             this.ClienteLocacao = cliente;
         }
@@ -58,6 +59,7 @@ namespace Locadora.Dominio
         {
             this.ClienteLocacao = null;
             this.IdCliente = null;
+            this.DataLocacao = null;
         }
 
         public override string ToString()

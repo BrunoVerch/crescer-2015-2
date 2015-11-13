@@ -21,7 +21,7 @@ namespace Locadora.Web.MVC.Controllers
         {
             repositorio = CriarJogoRepositorio();
             var model = new RelatorioModel();
-            IList<Dominio.Jogo> ListaJogos = new List<Dominio.Jogo>();
+            IList<Jogo> ListaJogos = new List<Jogo>();
             ListaJogos = ObterJogosPorFiltro(nomeJogo);
 
             foreach (var jogo in ListaJogos)
