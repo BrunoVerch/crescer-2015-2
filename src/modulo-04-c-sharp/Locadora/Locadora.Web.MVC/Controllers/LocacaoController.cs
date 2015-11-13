@@ -19,7 +19,7 @@ namespace Locadora.Web.MVC.Controllers
 
         public ActionResult Locar(int id)
         {
-            repositorio = FabricaDeModulos.CriarJogoRepositorio();           
+            repositorio = FabricaDeModulos.CriarJogoRepositorio();
             Jogo jogo = repositorio.BuscarPorId(id);
 
             var model = new LocarJogoModel()
@@ -39,12 +39,18 @@ namespace Locadora.Web.MVC.Controllers
         [HttpPost]
         public ActionResult Salvar(string nomeCliente, int idJogo)
         {
+            if (string.IsNullOrWhiteSpace(nomeCliente))
+            {
+                TempData["Mensagem"] = "Informe um nome correto!";
+                return RedirectToAction("JogosDisponiveis", "Relatorio");
+            }
             repositorio = FabricaDeModulos.CriarJogoRepositorio();
             IClienteRepositorio repositorioCliente = FabricaDeModulos.CriarClienteRepositorio();
-            Jogo jogo=repositorio.BuscarPorId(idJogo);
-            Cliente cliente=repositorioCliente.BuscarPorNome(nomeCliente).FirstOrDefault();
+            Jogo jogo = repositorio.BuscarPorId(idJogo);
+            Cliente cliente = repositorioCliente.BuscarPorNome(nomeCliente).FirstOrDefault();
 
             LocacaoServico locacao = new LocacaoServico(repositorio);
+            //mover para LocarPara regra
             jogo.DataLocacao = DateTime.Now.Date;
             if (cliente != null && locacao.PodeLocar(cliente))
             {
@@ -56,10 +62,10 @@ namespace Locadora.Web.MVC.Controllers
             {
                 TempData["Mensagem"] = "Não foi possivel locar este jogo!";
             }
-           
+
             return RedirectToAction("JogosDisponiveis", "Relatorio");
         }
-        
+
         public ActionResult Devolucao()
         {
             return View();
@@ -69,24 +75,25 @@ namespace Locadora.Web.MVC.Controllers
         {
             repositorio = FabricaDeModulos.CriarJogoRepositorio();
             IClienteRepositorio repositorioCliente = FabricaDeModulos.CriarClienteRepositorio();
+            ILocacaoServico repositorioLocacao = FabricaDeModulos.CriarServicoLocacao();
+
             IList<Cliente> clientes = repositorioCliente.BuscarPorNome(nomeCliente);
-            Cliente cliente=clientes.FirstOrDefault();
-            IList<Jogo> listaJogos=repositorio.BuscarJogosPorCliente(cliente.Id);
-            LocacaoServico locacao = new LocacaoServico(repositorio);
+            Cliente cliente = clientes.FirstOrDefault();
+            IList<Jogo> listaJogos = repositorio.BuscarJogosPorCliente(cliente.Id);
             var model = new ListaJogosModel();
             model.IdCliente = cliente.Id;
-            foreach(var jogo in listaJogos)
+            foreach (var jogo in listaJogos)
             {
                 var modelJogo = new JogoDevolucaoModel()
                 {
                     Id = jogo.Id,
                     Nome = jogo.Nome,
-                    DataLocacao=(DateTime)jogo.DataLocacao,
-                    ValorTotal=locacao.CalcularValorFinal(jogo)                  
+                    DataLocacao = (DateTime)jogo.DataLocacao,
+                    ValorTotal = repositorioLocacao.CalcularValorFinal(jogo)
                 };
                 model.Jogos.Add(modelJogo);
             }
-            return PartialView("Devolver", model);
+            return PartialView("_Devolver", model);
         }
 
         public ActionResult FinalizaDevolver(string nomeJogo)

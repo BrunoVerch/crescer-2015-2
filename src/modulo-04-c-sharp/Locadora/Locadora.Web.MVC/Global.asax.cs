@@ -19,7 +19,7 @@ namespace Locadora.Web.MVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //ativar otimização min + unificação
-            //BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

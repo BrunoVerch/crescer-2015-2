@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Locadora.Dominio.Servicos
 {
-    public class LocacaoServico
+    public class LocacaoServico : ILocacaoServico
     {
         private IJogoRepositorio jogoRepositorio;
 

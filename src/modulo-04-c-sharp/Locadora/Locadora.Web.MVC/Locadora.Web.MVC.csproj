@@ -185,13 +185,13 @@
     </Compile>
     <Compile Include="Helpers\FabricaDeModulos.cs" />
     <Compile Include="Models\ImagemJogoModel.cs" />
-    <Compile Include="Models\JogoDetalheModel.cs" />
-    <Compile Include="Models\JogoDevolucaoModel.cs" />
-    <Compile Include="Models\JogoEditarCriarModel.cs" />
-    <Compile Include="Models\JogoModel.cs" />
+    <Compile Include="Models\Jogo\JogoDetalheModel.cs" />
+    <Compile Include="Models\Jogo\JogoDevolucaoModel.cs" />
+    <Compile Include="Models\Jogo\JogoEditarCriarModel.cs" />
+    <Compile Include="Models\Jogo\JogoModel.cs" />
     <Compile Include="Models\ListaImagensModel.cs" />
-    <Compile Include="Models\ListaJogosModel.cs" />
-    <Compile Include="Models\LocarJogoModel.cs" />
+    <Compile Include="Models\Jogo\ListaJogosModel.cs" />
+    <Compile Include="Models\Jogo\LocarJogoModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

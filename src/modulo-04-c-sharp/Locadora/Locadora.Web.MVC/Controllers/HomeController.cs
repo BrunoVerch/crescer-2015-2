@@ -25,7 +25,7 @@ namespace Locadora.Web.MVC.Controllers
             foreach (var jogo in ListaJogos)
             {
                 var imagemModel = new ImagemJogoModel() { Imagem=jogo.Imagem };
-                if(jogo.Imagem != "")
+                if(!string.IsNullOrEmpty(jogo.Imagem))
                 {
                     model.Imagens.Add(imagemModel);
                 }                

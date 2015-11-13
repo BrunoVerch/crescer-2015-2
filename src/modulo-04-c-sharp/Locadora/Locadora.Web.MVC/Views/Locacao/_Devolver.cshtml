@@ -13,7 +13,7 @@
     {
         <tr>
             <td>@jogo.Nome</td>
-            <td>@jogo.DataLocacao.Date</td>
+            <td>@jogo.DataLocacao.ToShortDateString()</td>
             <td>@jogo.ValorTotal.ToString("C")</td>
             <td>@Html.ActionLink("Devolver", "FinalizaDevolver", new { nomeJogo = @jogo.Nome })</td>
         </tr>

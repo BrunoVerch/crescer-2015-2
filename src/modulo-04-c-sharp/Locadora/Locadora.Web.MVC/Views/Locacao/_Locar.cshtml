@@ -1,14 +1,14 @@
-﻿@model Locadora.Web.MVC.Models.LocarJogoModel
+﻿@model LocarJogoModel
 
 <div style="position:relative">   
-    <div style="position: absolute;top:15px;right:400px;">
+    <div style="position: absolute;top:15px;right:100px;width:500px;height:400px;">
         @Html.Partial("~/Views/Shared/_ImagemSelo.cshtml", Model.Selo.ToString())
     </div>
-    <img src="@Model.Imagem">
+    <img style="width:500px;height:400px;" src="@Model.Imagem">
 </div>
 <h2>@Html.DisplayFor(m => m.Nome)</h2>
 <p>@Html.DisplayFor(m => m.Selo)</p>
 <p>@Html.DisplayFor(m => m.Descricao)</p>
-<p>Data: @Html.DisplayFor(m => m.DataDevolucao)</p>
+<p>Data: @Model.DataDevolucao.ToShortDateString()</p>
 <p>Valor: @Html.DisplayFor(m => m.Valor)</p>
 

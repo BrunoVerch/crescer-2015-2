@@ -21,23 +21,23 @@ namespace Locadora.Web.MVC.Controllers
         {
             repositorio = CriarJogoRepositorio();
             var model = new RelatorioModel();
-            IList<Dominio.Jogo> ListaJogos=new List<Dominio.Jogo>();
+            IList<Dominio.Jogo> ListaJogos = new List<Dominio.Jogo>();
             ListaJogos = ObterJogosPorFiltro(nomeJogo);
-                       
+
             foreach (var jogo in ListaJogos)
             {
-                if(jogo.IdCliente == null)
+                if (jogo.IdCliente == null) //jogo.EstaLocado
                 {
                     var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Selo = jogo.Selo.ToString() };
                     model.Jogos.Add(jogoModel);
-                }                
+                }
             }
             if (ListaJogos.Count == 0)
             {
                 return View("JogoNaoEncontrado");
             }
             model.QuantidadeDeJogos = model.Jogos.Count;
-               
+
             return View(model);
         }
 
@@ -57,11 +57,11 @@ namespace Locadora.Web.MVC.Controllers
             if (string.IsNullOrWhiteSpace(nome))
             {
                 return jogoRepositorio.BuscarTodos();
-            }                
+            }
             else
             {
                 return jogoRepositorio.BuscarPorNome(nome);
-            }                
+            }
         }
     }
 }
