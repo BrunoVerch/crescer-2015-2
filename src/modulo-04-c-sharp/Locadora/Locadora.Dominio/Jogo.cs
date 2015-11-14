@@ -62,6 +62,14 @@ namespace Locadora.Dominio
             this.DataLocacao = null;
         }
 
+        public bool EstaDisponivel()
+        {
+            if (this.IdCliente == null)
+                return true;
+            else
+                return false;
+        }
+
         public override string ToString()
         {
             var builder = new StringBuilder();
