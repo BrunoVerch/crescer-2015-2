@@ -99,7 +99,6 @@ namespace Locadora.Web.MVC.Controllers
             IList<Jogo> jogos = repositorio.BuscarPorNome(nomeJogo);
             Jogo jogo = jogos.FirstOrDefault();
             jogo.DevolverJogo();
-            jogo.DataLocacao = null;
             repositorio.Atualizar(jogo);
             TempData["Mensagem"] = "Jogo devolvido com sucesso!";
             return View("Devolucao");

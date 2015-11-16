@@ -3,6 +3,8 @@
     ViewBag.Title = "Login";
 }
 
+<h3>@TempData["Mensagem"]</h3>
+
 @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form" }))
 {
     @Html.ValidationSummary(true)
@@ -23,6 +25,14 @@
         <div class="text-center">
             <input class="btn btn-default" type="submit" name="enviar" value="Login" />
         </div>
+
+        <div class="text-center">
+            <a href="~/Usuario/CadastroUsuario" class="btn btn-default btn-xs" style="margin-top:10px">Cadastrar</a>
+        </div>
     </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery-validator")
 }
 

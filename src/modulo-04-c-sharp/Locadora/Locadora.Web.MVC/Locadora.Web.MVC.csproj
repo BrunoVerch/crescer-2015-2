@@ -180,6 +180,7 @@
     <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +195,7 @@
     <Compile Include="Models\Jogo\LocarJogoModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RelatorioModel.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguranca\Autorizador.cs" />
     <Compile Include="Seguranca\ControleDeSessao.cs" />
@@ -218,6 +220,7 @@
     <Content Include="Views\Locacao\Devolucao.cshtml" />
     <Content Include="Views\Locacao\_Devolver.cshtml" />
     <Content Include="Views\Shared\_ImagemSelo.cshtml" />
+    <Content Include="Views\Usuario\CadastroUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

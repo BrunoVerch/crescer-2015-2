@@ -8,6 +8,7 @@ namespace Locadora.Dominio.Repositorio
 {
     public interface IUsuarioRepositorio
     {
+        int Criar(Usuario usuario);
         Usuario BuscarPorEmail(string email);
     }
 }

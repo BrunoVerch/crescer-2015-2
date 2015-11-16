@@ -17,5 +17,14 @@ namespace Locadora.Repositorio.EF
                 return db.Usuario.Include("Permissoes").FirstOrDefault(p => p.Email == email);
             }
         }
+
+        public int Criar(Usuario usuario)
+        {
+            using (var db = new CodeFirst())
+            {
+                db.Entry(usuario).State = System.Data.Entity.EntityState.Added;
+                return db.SaveChanges();
+            }
+        }
     }
 }

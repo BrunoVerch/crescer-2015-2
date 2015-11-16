@@ -26,7 +26,7 @@ namespace Locadora.Web.MVC.Controllers
 
             foreach (var jogo in ListaJogos)
             {
-                if (jogo.IdCliente == null) //jogo.EstaLocado
+                if (jogo.EstaDisponivel())
                 {
                     var jogoModel = new JogoModel() { Id = jogo.Id, Nome = jogo.Nome, Categoria = jogo.Categoria.ToString(), Selo = jogo.Selo.ToString() };
                     model.Jogos.Add(jogoModel);

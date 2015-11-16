@@ -21,8 +21,11 @@
             <th>Jogo</th>            
             <th>Categoria</th>
             <th>Selo</th>
-            <th>Detalhes</th>            
-            <th>Editar</th>
+            <th>Detalhes</th>
+            @if (User.IsInRole("ADMIN"))
+            {
+                <th>Editar</th>
+            }
             <th>Locação</th>
         </tr>
     </thead>
@@ -33,7 +36,10 @@
             <td>@jogo.Categoria</td>
             <td>@jogo.Selo</td>
             <td><a href="~/Jogo/JogoDetalhes/@jogo.Id">Detalhes do jogo</a></td>
-            <td><a href="~/Jogo/ManterJogo/@jogo.Id">Editar</a></td>
+            @if (User.IsInRole("ADMIN"))
+            {
+                <td><a href="~/Jogo/ManterJogo/@jogo.Id">Editar</a></td>
+            }
             <td><a href="~/Locacao/Locar/@jogo.Id">Locar</a></td>
         </tr>
     }
