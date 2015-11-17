@@ -1,5 +1,6 @@
 package br.com.cwi.crescer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DoublyLinkedList implements IList {
@@ -8,47 +9,87 @@ public class DoublyLinkedList implements IList {
 
     @Override
     public void addFirst(String value) {
-        Nodo node = new Nodo(value, first, last);
-        if (first == null) {
-            last = node;
+    	Nodo novo = new Nodo(value, null, null);        
+        if(first == null){
+        	first = novo;
+            last = first;
+        } else {
+        	first.setPrevious(novo);
+        	novo.setNext(first);
+            first = novo;
         }
-        first = node;
     }
 
     @Override
     public void addLast(String value) {
-        // TODO Auto-generated method stub
-
+    	Nodo novo = new Nodo(value, null, null);        
+        if(first == null){
+        	first = novo;
+            last = first;
+        } else {
+        	novo.setPrevious(last);
+        	last.setNext(novo);
+            last = novo;
+        }
     }
 
     @Override
     public void removeFirst() {
-        // TODO Auto-generated method stub
-
+    	if (!isEmpty()) {
+            if (first.next == null) {
+                first = null;
+                last = null;
+            } else {
+                first = first.next;
+                first.previous = null;
+            }
+    	}
     }
 
     @Override
     public void remove(int index) {
-        // TODO Auto-generated method stub
-
+    	Nodo aSerRemovido = getNode(index);
+    	Nodo anterior = aSerRemovido.getPrevious();
+        Nodo proximo = aSerRemovido.getNext();
+        anterior.setNext(proximo);
+        proximo.setPrevious(anterior);
     }
 
     @Override
     public void adicionar(int index, String value) {
-        // TODO Auto-generated method stub
-
+    	if (index == 1){
+    		this.addFirst(value);
+    		return;
+    	}
+    	Nodo node = getNode(index);
+        Nodo proximo = node.getNext();
+        Nodo novo = new Nodo(value, proximo, node);
+        node.setNext(novo);
+        proximo.setPrevious(novo);
+    }
+    
+    private Nodo getNode(int index) {
+        Nodo node = first;
+        for (int i = 0; i < index; i++) {
+            node = node.getNext();
+        }
+        return node;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+    	return (first == null);
     }
 
     @Override
     public List<String> list() {
-        // TODO Auto-generated method stub
-        return null;
+    	ArrayList<String> lista = new ArrayList<String>();
+        Nodo node = first;
+        while (node != null) {
+            lista.add(node.getValue());
+            node = node.getNext();
+        }
+        return lista;
     }
 
     @Override
@@ -61,26 +102,26 @@ public class DoublyLinkedList implements IList {
         return last.getValue();
     }
 
-    private class Nodo {
+    private class Nodo <T> {
 
-        private String value;
+        private T value;
         private Nodo next, previous;
 
-        public Nodo(String value, Nodo next, Nodo previous) {
+        public Nodo(T value, Nodo next, Nodo previous) {
             this.value = value;
             this.next = next;
             this.previous = previous;
         }
 
-        public Nodo(String value) {
+        public Nodo(T value) {
             this.value = value;
         }
 
         public String getValue() {
-            return value;
+            return (String) value;
         }
 
-        public void setValue(String value) {
+        public void setValue(T value) {
             this.value = value;
         }
 
@@ -90,6 +131,14 @@ public class DoublyLinkedList implements IList {
 
         public void setNext(Nodo next) {
             this.next = next;
+        }
+        
+        public Nodo getPrevious() {
+            return previous;
+        }
+
+        public void setPrevious(Nodo previous) {
+            this.previous = previous;
         }
     }
 }

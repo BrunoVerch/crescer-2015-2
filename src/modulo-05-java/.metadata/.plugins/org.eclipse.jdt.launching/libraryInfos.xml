@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="C:\Users\bruno\Documents\eclipse" version="1.8.0_65">
+<bootpath>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\resources.jar"/>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\rt.jar"/>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\sunrsasign.jar"/>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\jsse.jar"/>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\jce.jar"/>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\charsets.jar"/>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\jfr.jar"/>
+<entry path="C:\Users\bruno\Documents\eclipse\classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\ext"/>
+<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="C:\Users\bruno\Documents\eclipse\lib\endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

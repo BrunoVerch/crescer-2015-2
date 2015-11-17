@@ -30,7 +30,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void Listar() {
+    public void listar() {
         LinkedList linkedList = new LinkedList();
         linkedList.addFirst("primeiro");
         linkedList.addFirst("segundo");
@@ -39,12 +39,52 @@ public class LinkedListTest {
     }
 
     @Test
-    public void RemoveTerceiro() {
+    public void removeTerceiro() {
         LinkedList linkedList = new LinkedList();
         linkedList.addFirst("primeiro");
         linkedList.addFirst("segundo");
         linkedList.addFirst("terceiro");
-        assertEquals(1, 1);
+        linkedList.remove(2);
+        assertEquals(linkedList.getFirst(), "terceiro");
+        assertEquals(linkedList.getLast(), "primeiro");
+    }
+    @Test
+    public void removePrimeiro() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+        linkedList.addFirst("terceiro");
+        linkedList.removeFirst();
+        assertEquals(linkedList.getFirst(), "segundo");
+        assertEquals(linkedList.getLast(), "primeiro");
+    }
+    @Test
+    public void adicionaNaPosicao2() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+        linkedList.addFirst("terceiro");
+        linkedList.adicionar(2, "novo");
+        assertEquals(linkedList.getNode(2).getValue(),"novo");
+    }
+    @Test
+    public void verificaSeEstaVazio(){
+    	LinkedList linkedList = new LinkedList();
+    	assertTrue(linkedList.isEmpty());
+    }
+    @Test
+    public void pegaPrimeiroDaLista() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+        assertEquals(linkedList.getFirst(), "segundo");
+    }
+    @Test
+    public void pegaUltimoDaLista() {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addFirst("primeiro");
+        linkedList.addFirst("segundo");
+        assertEquals(linkedList.getLast(), "primeiro");
     }
 
 }

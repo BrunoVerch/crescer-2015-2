@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="LinkedListTest.listar" project="projetoCrescer" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="listar" classname="br.com.cwi.crescer.test.LinkedListTest" time="0.0"/>
+</testrun>

@@ -27,8 +27,13 @@ public class LinkedList implements IList {
 
     @Override
     public void removeFirst() {
-        Nodo node = first.getNext();
-        this.first = node;
+        if (!isEmpty()) {
+            if (first.next == null) {
+                first = null;
+            } else {
+                first = first.next;
+            }
+    	}
     }
 
     @Override
@@ -47,12 +52,12 @@ public class LinkedList implements IList {
 
     @Override
     public void remove(int index) {
-        Nodo tmp = getNode(index - 1);
-        Nodo removido = tmp.getNext();
-        tmp.setNext(removido.getNext());
+    	Nodo anterior = getNode(index-1);
+        Nodo atual = anterior.getNext();
+        anterior.setNext(atual.getNext());
     }
 
-    private Nodo getNode(int index) {
+    public Nodo getNode(int index) {
         Nodo node = first;
         for (int i = 0; i < index; i++) {
             node = node.getNext();
@@ -62,12 +67,12 @@ public class LinkedList implements IList {
 
     @Override
     public String getFirst() {
-        return first.getValue();
+        return (String) first.getValue();
     }
 
     @Override
     public String getLast() {
-        return last.getValue();
+        return (String) last.getValue();
     }
 
     @Override
@@ -75,31 +80,31 @@ public class LinkedList implements IList {
         ArrayList<String> lista = new ArrayList<String>();
         Nodo node = first;
         while (node != null) {
-            lista.add(node.getValue());
+            lista.add((String) node.getValue());
             node = node.getNext();
         }
         return lista;
     }
 
-    private class Nodo {
+    public class Nodo<T> {
 
-        private String value;
+        private T value;
         private Nodo next;
 
-        public Nodo(String value, Nodo node) {
+        public Nodo(T value, Nodo node) {
             this.value = value;
             this.next = node;
         }
 
-        public Nodo(String value) {
+        public Nodo(T value) {
             this.value = value;
         }
 
-        public String getValue() {
+        public T getValue() {
             return value;
         }
 
-        public void setValue(String value) {
+        public void setValue(T value) {
             this.value = value;
         }
 

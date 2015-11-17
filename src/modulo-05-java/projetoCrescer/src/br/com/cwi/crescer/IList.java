@@ -21,4 +21,5 @@ public interface IList {
     String getFirst();
 
     String getLast();
+    
 }

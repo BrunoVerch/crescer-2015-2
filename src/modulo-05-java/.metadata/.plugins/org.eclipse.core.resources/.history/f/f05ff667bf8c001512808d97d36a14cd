@@ -1,0 +1,13 @@
+package br.com.cwi.crescer.test;
+
+import org.junit.Test;
+
+public class DoublyLinkedList {
+
+	@Test
+	public void test() {
+		DoublyLinkedList linkedList = new DoublyLinkedList();
+		linkedList.
+	}
+
+}
