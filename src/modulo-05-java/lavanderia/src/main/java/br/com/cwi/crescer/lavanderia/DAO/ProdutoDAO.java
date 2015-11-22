@@ -1,19 +1,19 @@
-package br.com.crescer.lavanderia.DAO;
+package br.com.cwi.crescer.lavanderia.DAO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.cwi.crescer.lavanderia.domain.Servico;
+import br.com.cwi.crescer.lavanderia.domain.Produto;
 
 @Repository
-public class ServicoDAO {
+public class ProdutoDAO {
 
 	@PersistenceContext
 	private EntityManager em;
 
-	public Servico findById(Long id) {
-		return em.find(Servico.class, id);
+	public Produto findById(Long id) {
+		return em.find(Produto.class, id);
 	}
 }
