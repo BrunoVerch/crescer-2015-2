@@ -1,5 +1,6 @@
 package br.com.cwi.crescer.lavanderia.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -37,7 +38,7 @@ public class Pedido {
 	
 	@Column(name = "Valor")
 	@Basic(optional = false)
-	private double valor;
+	private BigDecimal valor;
 	
 	@Column(name = "Situacao", length = 1)
 	@Basic(optional = false)
@@ -75,11 +76,11 @@ public class Pedido {
 		this.dataEntrega = dataEntrega;
 	}
 
-	public double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 

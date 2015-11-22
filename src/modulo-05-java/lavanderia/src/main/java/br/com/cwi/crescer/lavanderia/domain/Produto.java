@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.lavanderia.domain;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +33,7 @@ public class Produto {
 	
 	@Column(name = "Valor")
 	@Basic(optional = false)
-	private double valor;
+	private BigDecimal valor;
 
 	public Long getIdProduto() {
 		return idProduto;
@@ -57,11 +59,11 @@ public class Produto {
 		this.idMaterial = idMaterial;
 	}
 
-	public double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 }

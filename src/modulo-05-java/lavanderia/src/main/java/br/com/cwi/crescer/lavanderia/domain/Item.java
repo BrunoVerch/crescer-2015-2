@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.lavanderia.domain;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,19 +33,19 @@ public class Item {
 	
 	@Column(name = "Peso")
 	@Basic(optional = false)
-	private double peso;
+	private BigDecimal peso;
 	
 	@Column(name = "ValorUnitario")
 	@Basic(optional = false)
-	private double valorUnitario;
+	private BigDecimal valorUnitario;
 	
 	@Column(name = "ValorDesconto")
 	@Basic(optional = false)
-	private double valorDesconto;
+	private BigDecimal valorDesconto;
 	
 	@Column(name = "ValorTotal")
 	@Basic(optional = false)
-	private double valorTotal;
+	private BigDecimal valorTotal;
 	
 	@Column(name = "Situacao")
 	@Basic(optional = false)
@@ -73,35 +75,35 @@ public class Item {
 		this.idProduto = idProduto;
 	}
 
-	public double getPeso() {
+	public BigDecimal getPeso() {
 		return peso;
 	}
 
-	public void setPeso(double peso) {
+	public void setPeso(BigDecimal peso) {
 		this.peso = peso;
 	}
 
-	public double getValorUnitario() {
+	public BigDecimal getValorUnitario() {
 		return valorUnitario;
 	}
 
-	public void setValorUnitario(double valorUnitario) {
+	public void setValorUnitario(BigDecimal valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
 
-	public double getValorDesconto() {
+	public BigDecimal getValorDesconto() {
 		return valorDesconto;
 	}
 
-	public void setValorDesconto(double valorDesconto) {
+	public void setValorDesconto(BigDecimal valorDesconto) {
 		this.valorDesconto = valorDesconto;
 	}
 
-	public double getValorTotal() {
+	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
 
-	public void setValorTotal(double valorTotal) {
+	public void setValorTotal(BigDecimal valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 
