@@ -1,4 +1,4 @@
-package br.com.cwi.crescer.controller;
+package br.com.cwi.crescer.lavanderia.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

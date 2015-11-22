@@ -1,8 +1,11 @@
-package br.com.cwi.crescer;
+package br.com.cwi.crescer.lavanderia;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import br.com.cwi.crescer.lavanderia.LavanderiaApplication;
+
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
