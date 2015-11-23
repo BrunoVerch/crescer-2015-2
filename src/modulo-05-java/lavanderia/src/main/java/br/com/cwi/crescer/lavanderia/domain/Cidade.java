@@ -8,45 +8,41 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Cidade")
-//@SequenceGenerator(name = Cidade.SEQUENCE_NAME,sequenceName = Cidade.SEQUENCE_NAME)
 public class Cidade {
-	
-	//public static final String SEQUENCE_NAME = "cidade_seq";
-	
-	@Id
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQUENCE_NAME)
-	@Column(name = "IDCidade")
-	private Long idCidade;
-	
-	@Column(name = "Nome", length = 50)
-	@Basic(optional = false)
-	private String nome;
-	
-	@Column(name = "UF", length = 2)
-	@Basic(optional = false)
-	private Long uf;
 
-	public Long getIdCidade() {
-		return idCidade;
-	}
+    @Id
+    @Column(name = "IDCidade")
+    private Long idCidade;
 
-	public void setIdCidade(Long idCidade) {
-		this.idCidade = idCidade;
-	}
+    @Column(name = "Nome", length = 50)
+    @Basic(optional = false)
+    private String nome;
 
-	public String getNome() {
-		return nome;
-	}
+    @Column(name = "UF", length = 2)
+    @Basic(optional = false)
+    private String uf;
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public Long getIdCidade() {
+        return idCidade;
+    }
 
-	public Long getUf() {
-		return uf;
-	}
+    public void setIdCidade(Long idCidade) {
+        this.idCidade = idCidade;
+    }
 
-	public void setUf(Long uf) {
-		this.uf = uf;
-	}
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
 }
