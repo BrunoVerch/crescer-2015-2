@@ -24,9 +24,36 @@
 		</header>
 		
 		<section class="container" style="background-color: snow;">
-			<div class="text-center">
-				<h2 th:text="${msg}">Message here</h2>
-			</div>
+			<form th:object="${cliente}">
+	
+			<p>
+				<label class="control-label">ID: </label>
+				<input th:field="*{id}" type="text" disabled="true" />
+			</p>
+			
+			<p>
+				<label class="control-label">Nome: </label>
+				<input th:field="*{nome}" type="text" disabled="true" />
+			</p>
+			
+			<p>
+				<label class="control-label">CPF: </label>
+		 		<input th:field="*{cpf}" type="text" disabled="true"/>
+			</p>
+			
+			<p>
+		 		<label class="control-label">Email: </label>
+		 		<input th:field="*{email}" type="text" disabled="true"/>
+	 		</p>
+	 		
+	 		<p>
+		 		<label class="control-label">Cidade: </label>
+		 		<select th:field="*{idCidade}" disabled="true">
+	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
+	            </select>
+            </p>
+             
+		</form>
 		</section>
 	</body>
 </html>
