@@ -47,9 +47,9 @@ public class Pedido {
     @Column(name = "Valor")
     @Basic(optional = false)
     private BigDecimal valor;
-    
+
     @OneToMany(mappedBy = "pedido")
-	private List<Item> itens;
+    private List<Item> itens;
 
     @Column(name = "Situacao", length = 1)
     @Basic(optional = false)
@@ -67,11 +67,11 @@ public class Pedido {
         this.idPedido = idPedido;
     }
 
-    public Cliente getIdCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    public void setIdCliente(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
@@ -106,12 +106,12 @@ public class Pedido {
     public void setSituacao(SituacaoPedido situacao) {
         this.situacao = situacao;
     }
-    
+
     public List<Item> getItens() {
-		return itens;
-	}
-    
+        return itens;
+    }
+
     public void setItens(List<Item> itens) {
-		this.itens = itens;
-	}
+        this.itens = itens;
+    }
 }
