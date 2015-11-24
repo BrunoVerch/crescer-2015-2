@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -44,9 +43,18 @@ public class Cliente {
     @ManyToOne
     @JoinColumn(name = "IDCidade")
     private Cidade cidade;
-    
-    @Embedded
-    private Endereco endereco;
+
+    @Column(name = "CEP", length = 8)
+    @Basic(optional = false)
+    private Long cep;
+
+    @Column(name = "Endereco", length = 50)
+    @Basic(optional = false)
+    private String endereco;
+
+    @Column(name = "Bairro", length = 50)
+    @Basic(optional = false)
+    private String bairro;
 
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
@@ -115,12 +123,29 @@ public class Cliente {
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
-    
-    public Endereco getEndereco() {
-		return endereco;
-	}
-    
-    public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+
+    public Long getCep() {
+        return cep;
+    }
+
+    public void setCep(Long cep) {
+        this.cep = cep;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
 }
