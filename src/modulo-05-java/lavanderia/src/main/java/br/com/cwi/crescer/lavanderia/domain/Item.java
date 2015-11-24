@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,13 +27,13 @@ public class Item {
     @Column(name = "IDItem")
     private Long idItem;
 
-    @Column(name = "IDPedido", length = 10)
-    @Basic(optional = false)
-    private Long idPedido;
+    @ManyToOne
+    @JoinColumn(name = "IDPedido")
+    private Pedido pedido;
 
-    @Column(name = "IDProduto", length = 10)
-    @Basic(optional = false)
-    private Long idProduto;
+    @ManyToOne
+    @JoinColumn(name = "IDProduto")
+    private Produto produto;
 
     @Column(name = "Peso")
     @Basic(optional = false)
@@ -66,21 +68,21 @@ public class Item {
         this.idItem = idItem;
     }
 
-    public Long getIdPedido() {
-        return idPedido;
+    public Pedido getPedido() {
+        return pedido;
     }
 
-    public void setIdPedido(Long idPedido) {
-        this.idPedido = idPedido;
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
-    public Long getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(Long idProduto) {
-        this.idProduto = idProduto;
-    }
+    public Produto getProduto() {
+		return produto;
+	}
+    
+    public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
 
     public BigDecimal getPeso() {
         return peso;
