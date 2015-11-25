@@ -44,15 +44,21 @@ public class ClienteService {
 
     public void atualizar(ClienteDTO dto) {
         Cliente entity = clienteDao.findById(dto.getId());
-    	ClienteMapper.merge(dto, entity);
-    	entity.setCidade(cidadeDAO.findById(dto.getIdCidade()));
+        ClienteMapper.merge(dto, entity);
+        entity.setCidade(cidadeDAO.findById(dto.getIdCidade()));
         clienteDao.save(entity);
     }
-    
+
     public void excluir(Long id){
-    	Cliente entity = clienteDao.findById(id);
-    	clienteDao.exclude(entity);
+        Cliente entity = clienteDao.findById(id);
+        clienteDao.exclude(entity);
     }
-    
-    
+
+    public void criar(ClienteDTO dto) {
+        Cliente entity = ClienteMapper.getNewEntity(dto);
+        entity.setCidade(cidadeDAO.findById(dto.getIdCidade()));
+        entity.setSituacao(SituacaoCliente.ATIVO);
+        clienteDao.save(entity);
+    }
+
 }

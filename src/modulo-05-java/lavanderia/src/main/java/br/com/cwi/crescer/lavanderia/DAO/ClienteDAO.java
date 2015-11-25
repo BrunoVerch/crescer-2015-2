@@ -36,9 +36,10 @@ public class ClienteDAO {
         em.merge(cliente);
         return cliente;
     }
-    
+
     @Transactional
     public void exclude(Cliente cliente){
-    	em.remove(em.getReference(Cliente.class, cliente.getIdCliente()));
+        em.remove(em.getReference(Cliente.class, cliente.getIdCliente()));
     }
+
 }
