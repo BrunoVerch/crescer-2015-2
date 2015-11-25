@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.cwi.crescer.lavanderia.domain.Cidade;
 import br.com.cwi.crescer.lavanderia.dto.ClienteDTO;
@@ -44,8 +45,9 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
-    public ModelAndView editar(ClienteDTO dto) {
+    public ModelAndView editar(ClienteDTO dto, RedirectAttributes redirectAttributes) {
         clienteService.atualizar(dto);
+        redirectAttributes.addFlashAttribute("message", "Editado com sucesso...");
         return new ModelAndView("redirect:/clientes");
     }
 
@@ -55,8 +57,9 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/remover", method = RequestMethod.POST)
-    public ModelAndView excluir(ClienteDTO dto) {
+    public ModelAndView excluir(ClienteDTO dto, RedirectAttributes redirectAttributes) {
         clienteService.excluir(dto.getId());
+        redirectAttributes.addFlashAttribute("message", "Removido com sucesso...");
         return new ModelAndView("redirect:/clientes");
     }
 
@@ -66,8 +69,9 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/incluir", method = RequestMethod.POST)
-    public ModelAndView incluir(ClienteDTO dto) {
+    public ModelAndView incluir(ClienteDTO dto, RedirectAttributes redirectAttributes) {
         clienteService.criar(dto);
+        redirectAttributes.addFlashAttribute("message", "Incluido com sucesso...");
         return new ModelAndView("redirect:/clientes");
     }
 
