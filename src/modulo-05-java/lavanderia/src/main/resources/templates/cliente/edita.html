@@ -1,30 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="@{layout}">
 	<head>
-		<meta charset="UTF-8" />
-		<title>Index</title>
-		<link rel="stylesheet" type="text/css" href="../../bootstrap.css" />
-		<link rel="stylesheet" href="../../Site.css" />
+		<title>Editar</title>
 	</head>
-	<body class="backcolor-dark">
-		<header>
-			<nav class="navbar-default backcolor-eee" style="border-bottom:1px solid black">
-			  <div class="container-fluid">
-			    <div class="navbar-header">
-			      <a class="navbar-brand" href="/"><img style="width:30px;heigth:30px;margin-left:20px;" src="https://cdn3.iconfinder.com/data/icons/cleaning-solid-1/48/17-512.png" /></a>
-			    </div>
-			
-			    <div class="collapse navbar-collapse">
-			      <ul class="nav navbar-nav">
-			        <li><a href="/"><h4>HOME</h4></a></li>
-			      </ul>
-			    </div>
-			  </div>
-			</nav>
-		</header>
-		
-		<section class="container" style="background-color: snow;">
-			<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post" class="col-md-offset-4" style="width:400px;margin-top:30px">
+	<body>
+			<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post" class="col-md-offset-4" style="width:400px;margin-top:30px" layout:fragment="content">
 		
 			<input th:field="*{id}" type="hidden" />
 			
@@ -71,6 +51,5 @@
             </div>
 		
 		</form>
-		</section>
 	</body>
 </html>

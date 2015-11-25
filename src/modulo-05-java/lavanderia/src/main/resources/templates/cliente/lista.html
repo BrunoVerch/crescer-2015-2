@@ -1,30 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="@{layout}">
 	<head>
-		<meta charset="UTF-8" />
-		<title>Index</title>
-		<link rel="stylesheet" type="text/css" href="bootstrap.css" />
-		<link rel="stylesheet" href="Site.css" />
+		<title>Listar</title>
 	</head>
-	<body class="backcolor-dark">
-		<header>
-			<nav class="navbar-default backcolor-eee" style="border-bottom:1px solid black">
-			  <div class="container-fluid">
-			    <div class="navbar-header">
-			      <a class="navbar-brand" href="/"><img style="width:30px;heigth:30px;margin-left:20px;" src="https://cdn3.iconfinder.com/data/icons/cleaning-solid-1/48/17-512.png" /></a>
-			    </div>
-			
-			    <div class="collapse navbar-collapse">
-			      <ul class="nav navbar-nav">
-			        <li><a href="/"><h4>HOME</h4></a></li>
-			      </ul>
-			    </div>
-			  </div>
-			</nav>
-		</header>
-		
-		<section class="container" style="background-color: snow;">
-			<div th:if="${not #lists.isEmpty(clientes)}">
+	<body>
+		<div th:if="${not #lists.isEmpty(clientes)}" layout:fragment="content">
+		<h3 th:if="${message}" th:text="${message}" class="alert alert-success" role="alert" id="mensagem"></h3>
         <table class="table table-hover">        
             <tr>
 <!--                 <th>Id</th> -->
@@ -48,7 +29,12 @@
             </tr>
         </table>
 
-    </div>
-		</section>
+    	</div>
+    	
+    	<script layout:fragment="scripts">
+    		setTimeout(function () {
+    			$('#mensagem').addClass('hide');
+    		},2000);
+    	</script>
 	</body>
 </html>
