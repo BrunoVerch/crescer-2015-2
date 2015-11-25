@@ -19,6 +19,9 @@ public class ClienteMapper {
         dto.setNome(entity.getNome());
         dto.setCpf(entity.getCpf());
         dto.setEmail(entity.getEmail());
+        dto.setEndereco(entity.getEndereco());
+        dto.setBairro(entity.getBairro());
+        dto.setCep(entity.getCep());
         dto.setIdCidade(entity.getCidade().getIdCidade());
         return dto;
     }
