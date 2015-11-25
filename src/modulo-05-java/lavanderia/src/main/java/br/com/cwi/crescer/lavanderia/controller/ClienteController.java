@@ -35,17 +35,28 @@ public class ClienteController {
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public ModelAndView viewExibe(@PathVariable("id") Long id) {
-        return new ModelAndView("cliente/exibe", "cliente", clienteService.findById(id));
+        return new ModelAndView("cliente/exibe", "cliente", clienteService.buscarClientePorId(id));
     }
 
     @RequestMapping(path = "/editar/{id}", method = RequestMethod.GET)
     public ModelAndView viewEdita(@PathVariable("id") Long id) {
-        return new ModelAndView("cliente/edita", "cliente", clienteService.findById(id));
+        return new ModelAndView("cliente/edita", "cliente", clienteService.buscarClientePorId(id));
     }
 
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
     public ModelAndView editar(ClienteDTO dto) {
         clienteService.atualizar(dto);
+        return new ModelAndView("redirect:/clientes");
+    }
+    
+    @RequestMapping(path = "/remover/{id}", method = RequestMethod.GET)
+    public ModelAndView viewExclui(@PathVariable("id") Long id) {
+        return new ModelAndView("cliente/exclui", "cliente", clienteService.buscarClientePorId(id));
+    }
+
+    @RequestMapping(path = "/remover", method = RequestMethod.POST)
+    public ModelAndView excluir(ClienteDTO dto) {
+        clienteService.excluir(dto.getId());
         return new ModelAndView("redirect:/clientes");
     }
 
