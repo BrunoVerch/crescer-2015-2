@@ -25,21 +25,23 @@
 		
 		<section class="container" style="background-color: snow;">
 			<div th:if="${not #lists.isEmpty(clientes)}">
-        <table class="">        
+        <table class="table table-hover">        
             <tr>
-                <th>Id</th>
+<!--                 <th>Id</th> -->
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>Email</th>
+                <th>Endereco</th>
                 <th>Visualizar</th>
                 <th>Editar</th>
                 <th>Remover</th>
             </tr>
             <tr th:each="cliente : ${clientes}">
-                <td th:text="${cliente.id}"><a th:href="@{|/clientes/${cliente.id}|}"></a></td>
+<!--                 <td th:text="${cliente.id}"><a th:href="@{|/clientes/${cliente.id}|}"></a></td> -->
                 <td th:text="${cliente.nome}"></td>
                 <td th:text="${cliente.cpf}"></td>
                 <td th:text="${cliente.email}"></td>
+                <td th:text="${cliente.endereco}"></td>
                 <td><a th:href="${ '/clientes/' + cliente.id}">Visualizar</a></td>
                 <td><a th:href="${'/clientes/editar/' + cliente.id}">Editar</a></td>
                 <td><a th:href="${'/clientes/remover/' + cliente.id}">Remover</a></td>

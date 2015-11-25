@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Index</title>
-		<link rel="stylesheet" type="text/css" href="../bootstrap.css" />
-		<link rel="stylesheet" href="../Site.css" />
+		<link rel="stylesheet" type="text/css" href="../../bootstrap.css" />
+		<link rel="stylesheet" href="../../Site.css" />
 	</head>
 	<body class="backcolor-dark">
 		<header>
@@ -24,10 +24,12 @@
 		</header>
 		
 		<section class="container" style="background-color: snow;">
-			<form th:object="${cliente}" style="width:400px;" class="col-md-offset-4">
+			<form th:action="@{/clientes/remover}" th:object="${cliente}" method="post" style="width:400px;" class="col-md-offset-4">
+		
+			<input th:field="*{id}" type="hidden" />
 			
-				<h3 class="text-center">Exibir</h3>
-				<div class="form-group">
+			<h3 class="text-center">Exclusao</h3>
+			<div class="form-group">
 					<label class="control-label">Nome: </label>
 					<input th:field="*{nome}" type="text" disabled="true" class="form-control" />
 				</div>
@@ -64,7 +66,13 @@
 		            </select>
 	            </div>
              
-			</form>
+            <div class="text-center" style="margin:30px">
+	            <p>Voce realmente deseja excluir esse cliente?</p>
+	            <button type="submit" class="btn btn-default text-center">Sim</button>
+	            <a class="btn btn-default text-center" href="/clientes" role="button">Nao</a>
+	        </div>
+		
+		</form>
 		</section>
 	</body>
 </html>

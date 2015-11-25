@@ -17,6 +17,7 @@
 			    <div class="collapse navbar-collapse">
 			      <ul class="nav navbar-nav">
 			        <li><a href="/"><h4>HOME</h4></a></li>
+			        <li><a href="/clientes"><h4>CLIENTES</h4></a></li>
 			      </ul>
 			    </div>
 			  </div>
@@ -25,8 +26,28 @@
 		
 		<section class="container" style="background-color: snow;">
 			<div class="text-center">
-				<h2 th:text="${msg}">Message here</h2>
+				<h2>Bem Vindo à Lavanderia Crescer</h2>
+				<img src="http://lavanderiasantahelena.com.br/gallery/banner04.png" class="img-responsive" style="display: block;margin-left: auto;margin-right: auto;margin:20px" />
 			</div>
+			
+			<article style="width:50%;heigth:300px;margin-top:30px;" class="col-md-6">
+				<header class="text-center">
+					<h3>Qualidade</h3>
+				</header>
+				<img style="width:100px;heigth:80px;float:left;" src="http://www.macroetiquetas.com.br/sites/template.orbitadev.com.br/files/conteudo/qualidade-comprovada_0.png" />
+				<p style="float:rigth;width:300px;margin-left:130px;">A Lavanderia Crescer conta com as recentes tecnologias e técnicas de lavagem, garantindo os melhores níveis de qualidade e oferecendo aos nossos clientes a agilidade e segurança desejadas.</p>
+			</article>
+			
+			<article style="width:50%;heigth:300px;margin-top:30px;" class="col-md-6">
+				<header>
+					<h3>Servicos</h3>
+				</header>
+				<ul>
+					<li>Limpeza a seco</li>
+					<li>Limpeza a água</li>
+					<a href="#">veja mais...</a>
+				</ul>
+			</article>
 		</section>
 	</body>
 </html>

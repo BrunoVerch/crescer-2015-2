@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Index</title>
-		<link rel="stylesheet" type="text/css" href="bootstrap.css" />
-		<link rel="stylesheet" href="Site.css" />
+		<link rel="stylesheet" type="text/css" href="../../bootstrap.css" />
+		<link rel="stylesheet" href="../../Site.css" />
 	</head>
 	<body class="backcolor-dark">
 		<header>
@@ -24,33 +24,51 @@
 		</header>
 		
 		<section class="container" style="background-color: snow;">
-			<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post">
+			<form th:action="@{/clientes/editar}" th:object="${cliente}" method="post" class="col-md-offset-4" style="width:400px;margin-top:30px">
 		
 			<input th:field="*{id}" type="hidden" />
 			
-			<p>
+			<h3 class="text-center">Editar</h3>
+			<div class="form-group">
 				<label class="control-label">Nome: </label>
-				<input th:field="*{nome}" type="text" />
-			</p>
+				<input th:field="*{nome}" type="text" class="form-control" />
+			</div>
 			
-			<p>
+			<div class="form-group">
 				<label class="control-label">CPF: </label>
-		 		<input th:field="*{cpf}" type="text" />
-			</p>
+		 		<input th:field="*{cpf}" type="text" class="form-control" />
+			</div>
 			
-			<p>
+			<div class="form-group">
+				<label class="control-label">Endereco: </label>
+		 		<input th:field="*{endereco}" type="text" class="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label">Bairro: </label>
+		 		<input th:field="*{bairro}" type="text" class="form-control" />
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label">CEP: </label>
+		 		<input th:field="*{cep}" type="text" class="form-control" />
+			</div>
+			
+			<div class="form-group">
 		 		<label class="control-label">Email: </label>
-		 		<input th:field="*{email}" type="text" />
-	 		</p>
+		 		<input th:field="*{email}" type="text" class="form-control"/>
+	 		</div>
 	 		
-	 		<p>
-	 		<label class="control-label">Cidade: </label>
-		 		<select th:field="*{idCidade}">
-	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" >[option]</option>
+	 		<div>
+		 		<label class="control-label">Cidade: </label>
+		 		<select class="form-control" th:field="*{idCidade}">
+	                <option th:each="c : ${cidades}" th:text="${c.nome}" th:value="${c.idCidade}" ></option>
 	            </select>
-            </p>
-             
-            <button type="submit">Salvar</button>
+            </div>
+            
+            <div class="text-center" style="margin:20px">
+            <button type="submit" class="btn btn-default">Salvar</button>
+            </div>
 		
 		</form>
 		</section>
