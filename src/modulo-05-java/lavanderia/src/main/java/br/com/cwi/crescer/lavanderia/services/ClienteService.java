@@ -49,9 +49,10 @@ public class ClienteService {
         clienteDao.save(entity);
     }
 
-    public void excluir(Long id){
+    public void excluir(Long id) {
         Cliente entity = clienteDao.findById(id);
-        clienteDao.exclude(entity);
+        entity.setSituacao(SituacaoCliente.INATIVO);
+        clienteDao.save(entity);
     }
 
     public void criar(ClienteDTO dto) {
