@@ -50,7 +50,7 @@ public class ClienteController {
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
     public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO dto,BindingResult result, RedirectAttributes redirectAttributes) {
     	if(result.hasErrors()){
-        	return new ModelAndView("cliente/inclui");
+        	return new ModelAndView("cliente/edita");
         }
         clienteService.atualizar(dto);
         redirectAttributes.addFlashAttribute("message", "Editado com sucesso...");
