@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<div>
+			<h3 th:if="${status}"></h3>
+			<h3 th:if="${error}"></h3>
+		</div>
+	
+		<div th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+		   <i th:text="${message}">message ...</i>
+		</div>
+	</div>
+</body>
+</html>

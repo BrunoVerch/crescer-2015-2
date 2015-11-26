@@ -11,33 +11,34 @@ import org.hibernate.validator.constraints.br.CPF;
 public class ClienteDTO {
 
     private Long id;
-    
+
     @NotBlank
     @Length(max=70)
     private String nome;
-    
+
     @NotBlank
     @Length(min=11,max=11)
     @CPF
     private String cpf;
-    
+
     @NotBlank
     @Length(max=100)
     @Email
     private String email;
-    
+
     @NotBlank
     @Length(max=50)
     private String endereco;
-    
+
     @NotBlank
     @Length(max=50)
     private String bairro;
-    
+
     @NotNull
     private Long idCidade;
-    
+
     @NotNull
+    @Range(max = 99999999)
     private Long cep;
 
     public Long getId() {

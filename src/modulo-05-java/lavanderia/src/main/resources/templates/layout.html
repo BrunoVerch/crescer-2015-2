@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Index</title>
-		<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.css}" />
-		<link rel="stylesheet" th:href="@{/Site.css}" />
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+		<link rel="stylesheet" th:href="@{/css/Site.css}" />
 	</head>
 	<body class="backcolor-dark">
 		<header>
@@ -20,6 +20,17 @@
 			        <li><a href="/clientes"><h4>CLIENTES</h4></a></li>
 			        <li><a href="/clientes/incluir"><h4>CADASTRAR CLIENTE</h4></a></li>
 			      </ul>
+			      <div sec:authorize="isAuthenticated()">
+			      <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form name="form" th:action="@{/logout}" action="/logout" method="POST">
+                            <button type="submit" class="btn btn-default" aria-label="Left Align">
+  								<span class="" aria-hidden="true">Sair</span>
+							</button>
+                        </form>
+                    </li>
+                </ul>
+                </div>
 			    </div>
 			  </div>
 			</nav>
