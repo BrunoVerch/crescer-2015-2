@@ -2,8 +2,11 @@ package br.com.cwi.crescer.lavanderia.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,7 +48,10 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/editar", method = RequestMethod.POST)
-    public ModelAndView editar(ClienteDTO dto, RedirectAttributes redirectAttributes) {
+    public ModelAndView editar(@Valid @ModelAttribute("cliente") ClienteDTO dto,BindingResult result, RedirectAttributes redirectAttributes) {
+    	if(result.hasErrors()){
+        	return new ModelAndView("cliente/inclui");
+        }
         clienteService.atualizar(dto);
         redirectAttributes.addFlashAttribute("message", "Editado com sucesso...");
         return new ModelAndView("redirect:/clientes");
@@ -69,8 +75,11 @@ public class ClienteController {
     }
 
     @RequestMapping(path = "/incluir", method = RequestMethod.POST)
-    public ModelAndView incluir(ClienteDTO dto, RedirectAttributes redirectAttributes) {
-        clienteService.criar(dto);
+    public ModelAndView incluir(@Valid @ModelAttribute("cliente") ClienteDTO dto,BindingResult result, RedirectAttributes redirectAttributes) {
+        if(result.hasErrors()){
+        	return new ModelAndView("cliente/inclui");
+        }
+    	clienteService.criar(dto);
         redirectAttributes.addFlashAttribute("message", "Incluido com sucesso...");
         return new ModelAndView("redirect:/clientes");
     }
