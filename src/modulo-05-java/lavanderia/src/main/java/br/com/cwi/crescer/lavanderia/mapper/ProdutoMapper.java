@@ -11,7 +11,7 @@ public class ProdutoMapper {
         entity.setMaterial(dto.getMaterial());
         entity.setServico(dto.getServico());
         entity.setValor(dto.getValor());
-        entity.setSituacao(dto.getSituacao());
+        // entity.setSituacao(dto.getSituacao());
         entity.setPrazo(dto.getPrazo());
         return entity;
     }
@@ -23,12 +23,14 @@ public class ProdutoMapper {
         dto.setServico(entity.getServico());
         dto.setValor(entity.getValor());
         dto.setPrazo(entity.getPrazo());
-        dto.setSituacao(entity.getSituacao());
+        dto.setSituacao(entity.getSituacao().ordinal());
         return dto;
     }
 
     public static Produto merge(ProdutoDTO dto, Produto entity) {
         entity.setIdProduto(dto.getIdProduto());
+        entity.setValor(dto.getValor());
+        entity.setPrazo(dto.getPrazo());
         // toDO: colocar conforme salvar form
         return entity;
     }

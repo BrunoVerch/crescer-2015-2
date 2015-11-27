@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="@{layout}">
+	<head>
+		<title>Listar</title>
+	</head>
+	<body>
+		<div th:if="${not #lists.isEmpty(produtos)}" layout:fragment="content">
+		<a class="btn btn-default" th:href="${'/produtos/incluir/'}">Criar</a>
+        <table class="table table-hover">        
+            <tr>
+                <th>Material</th>
+                <th>Servico</th>
+                <th>Valor</th>
+                <th>Prazo</th>
+                <th>Situacao</th>
+            </tr>
+            <tr th:each="produto : ${produtos}">
+            	<td th:text="${produto.material.descricao}"></td>
+                <td th:text="${produto.servico.descricao}"></td>
+                <td th:text="${produto.valor}"></td>
+                <td th:text="${produto.prazo}"></td>
+                <td th:text="${produto.situacao == 0 ? 'ATIVO' : 'INATIVO'}"></td>
+                
+                <td><a th:href="${'/produtos/editar/' + produto.idProduto}">Editar</a></td>
+            </tr>
+        </table>
+    	</div>
+</body>
+</html>

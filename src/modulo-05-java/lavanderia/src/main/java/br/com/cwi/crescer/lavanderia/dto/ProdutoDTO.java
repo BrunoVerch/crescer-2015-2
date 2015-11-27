@@ -2,8 +2,11 @@ package br.com.cwi.crescer.lavanderia.dto;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
+
 import br.com.cwi.crescer.lavanderia.domain.Material;
-import br.com.cwi.crescer.lavanderia.domain.Produto.SituacaoProduto;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
 
 public class ProdutoDTO {
@@ -15,11 +18,15 @@ public class ProdutoDTO {
 
     private Material material;
 
+    @NotNull
+    @Range(max = 999)
     private BigDecimal valor;
 
+    @NotNull
+    @Range(max = 99)
     private Long prazo;
 
-    private SituacaoProduto situacao;
+    private int situacao;
 
     public Long getPrazo() {
         return prazo;
@@ -29,11 +36,11 @@ public class ProdutoDTO {
         this.prazo = prazo;
     }
 
-    public SituacaoProduto getSituacao() {
+    public int getSituacao() {
         return situacao;
     }
 
-    public void setSituacao(SituacaoProduto situacao) {
+    public void setSituacao(int situacao) {
         this.situacao = situacao;
     }
 

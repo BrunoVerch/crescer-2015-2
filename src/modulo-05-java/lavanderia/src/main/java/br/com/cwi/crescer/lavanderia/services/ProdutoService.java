@@ -42,6 +42,8 @@ public class ProdutoService {
     public void atualizar(ProdutoDTO dto) {
         Produto entity = produtoDao.findById(dto.getIdProduto());
         ProdutoMapper.merge(dto, entity);
+        SituacaoProduto situacao = dto.getSituacao() == 0 ? SituacaoProduto.ATIVO : SituacaoProduto.INATIVO;
+        entity.setSituacao(situacao);
         produtoDao.save(entity);
     }
 
