@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.lavanderia.dto;
 
 import br.com.cwi.crescer.lavanderia.domain.Cliente;
+import br.com.cwi.crescer.lavanderia.domain.Cliente.SituacaoCliente;
 
 public class ClienteResumoDTO {
 
@@ -9,16 +10,18 @@ public class ClienteResumoDTO {
     private String cpf;
     private String email;
     private String endereco;
+    private SituacaoCliente situacao;
 
     public ClienteResumoDTO() {
     }
 
-    public ClienteResumoDTO(Long id, String nome, String cpf, String email, String endereco) {
+    public ClienteResumoDTO(Long id, String nome, String cpf, String email, String endereco, SituacaoCliente situacao) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.endereco = endereco;
+        this.situacao = situacao;
     }
 
     public ClienteResumoDTO(Cliente entity) {
@@ -27,6 +30,7 @@ public class ClienteResumoDTO {
         cpf = entity.getCpf();
         email = entity.getEmail();
         endereco = entity.getEndereco();
+        situacao = entity.getSituacao();
     }
 
     public Long getId() {
@@ -60,13 +64,20 @@ public class ClienteResumoDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    public String getEndereco() {
-		return endereco;
-	}
-    
-    public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public SituacaoCliente getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(SituacaoCliente situacao) {
+        this.situacao = situacao;
+    }
 }

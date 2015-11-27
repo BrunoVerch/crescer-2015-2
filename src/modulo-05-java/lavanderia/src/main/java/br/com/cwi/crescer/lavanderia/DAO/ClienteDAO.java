@@ -21,9 +21,20 @@ public class ClienteDAO {
         return em.find(Cliente.class, id);
     }
 
+    public List<Cliente> findByName(String nome) {
+        return em.createQuery("FROM Cliente c WHERE c.nome LIKE :nome", Cliente.class)
+                .setParameter("nome", nome + "%")
+                .getResultList();
+    }
+
     public List<Cliente> findBySituacao(SituacaoCliente situacao) {
         return em.createQuery("FROM Cliente c WHERE c.situacao = :situacao", Cliente.class)
                 .setParameter("situacao", situacao)
+                .getResultList();
+    }
+
+    public List<Cliente> findAll() {
+        return em.createQuery("SELECT c FROM Cliente c", Cliente.class)
                 .getResultList();
     }
 

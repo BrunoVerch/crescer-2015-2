@@ -30,8 +30,32 @@ public class ClienteService {
         return ClienteMapper.toDTO(clienteDao.findById(id));
     }
 
+    public List<ClienteDTO> buscarClientePorNome(String nome) {
+        List<Cliente> clientes = clienteDao.findByName(nome);
+
+        List<ClienteDTO> dtos = new ArrayList<ClienteDTO>();
+
+        for (Cliente cliente : clientes) {
+            dtos.add(ClienteMapper.toDTO(cliente));
+        }
+
+        return dtos;
+    }
+
     public List<ClienteResumoDTO> listarClientesAtivos() {
         List<Cliente> clientes = clienteDao.findBySituacao(SituacaoCliente.ATIVO);
+
+        List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
+
+        for (Cliente cliente : clientes) {
+            dtos.add(new ClienteResumoDTO(cliente));
+        }
+
+        return dtos;
+    }
+
+    public List<ClienteResumoDTO> listarClientes() {
+        List<Cliente> clientes = clienteDao.findAll();
 
         List<ClienteResumoDTO> dtos = new ArrayList<ClienteResumoDTO>();
 

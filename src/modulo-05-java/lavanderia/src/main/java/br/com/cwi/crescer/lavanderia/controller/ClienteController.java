@@ -35,7 +35,7 @@ public class ClienteController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView listar() {
-        return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientesAtivos());
+        return new ModelAndView("cliente/lista", "clientes", clienteService.listarClientes());
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
