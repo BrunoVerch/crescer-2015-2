@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,19 +46,44 @@ public class Pedido {
     @Basic(optional = false)
     private Date dataEntrega;
 
-    @Column(name = "Valor")
+    @Column(name = "VALORBruto")
     @Basic(optional = false)
     private BigDecimal valor;
 
     @OneToMany(mappedBy = "pedido")
     private List<Item> itens;
 
+    @Column(name = "VALORDesconto")
+    @Basic(optional = false)
+    private BigDecimal valorDesconto;
+
+    @Column(name = "VALORFinal")
+    @Basic(optional = false)
+    private BigDecimal valorFinal;
+
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "Situacao", length = 1)
     @Basic(optional = false)
     private SituacaoPedido situacao;
 
     public static enum SituacaoPedido {
         PENDENTE, PROCESSANDO, PROCESSADO, ENCERRADO, CANCELADO
+    }
+
+    public BigDecimal getValorDesconto() {
+        return valorDesconto;
+    }
+
+    public void setValorDesconto(BigDecimal valorDesconto) {
+        this.valorDesconto = valorDesconto;
+    }
+
+    public BigDecimal getValorFinal() {
+        return valorFinal;
+    }
+
+    public void setValorFinal(BigDecimal valorFinal) {
+        this.valorFinal = valorFinal;
     }
 
     public Long getIdPedido() {
