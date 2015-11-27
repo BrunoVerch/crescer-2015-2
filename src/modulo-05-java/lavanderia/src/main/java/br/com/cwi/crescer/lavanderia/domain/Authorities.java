@@ -1,33 +1,35 @@
 package br.com.cwi.crescer.lavanderia.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="authorities")
-public class Authorities {
+public class Authorities implements Serializable {
 
-	//@ManyToOne toDo: relacao 
-	@PrimaryKeyJoinColumn(name= "username")
-	private String username;
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@ManyToOne
+	@JoinColumn(name= "username")
+	private Users user;
 	
 	@Id
 	@Column(name="authority", length=30)
 	private String authority;
 
-	public String getUsername() {
-		return username;
+	public Users getUser() {
+		return user;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser(Users user) {
+		this.user = user;
 	}
 
 	public String getAuthority() {
