@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="Layout">
 <head>
 </head>
 <body>
 
 	<div layout:fragment="content">
 		<div>
-			<h3 th:if="${status}"></h3>
-			<h3 th:if="${error}"></h3>
+			<h3 th:if="${status}" th:text="${status}"></h3>
 		</div>
 	
 		<div th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
