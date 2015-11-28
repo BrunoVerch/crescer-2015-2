@@ -1,5 +1,7 @@
 package br.com.cwi.crescer.lavanderia.DAO;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,4 +18,9 @@ public class MaterialDAO {
 	public Material findById(Long id) {
 		return em.find(Material.class, id);
 	}
+	
+	public List<Material> listAll() {
+        return em.createQuery("FROM Material", Material.class)
+                .getResultList();
+    }
 }

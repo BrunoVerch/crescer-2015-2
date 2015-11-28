@@ -5,14 +5,41 @@
 	</head>
 	<body>
 		<div th:if="${not #lists.isEmpty(produtos)}" layout:fragment="content">
-		<a class="btn btn-default" th:href="${'/produtos/incluir/'}">Criar</a>
+		<h3 th:if="${messageError}" th:text="${messageError}" class="alert alert-danger" role="alert" name="mensagem"></h3>
+		<h3 th:if="${messageSucess}" th:text="${messageSucces}" class="alert alert-success" role="alert" name="mensagem"></h3>
+		
+		<a class="btn btn-default" style="float:right;" th:href="${'/produtos/incluir/'}">Criar</a>
+		
+		<form th:action="@{/produtos/buscar}" th:object="${String}" class="form-inline">
+			<div class="form-group">
+			 	<label>Material: </label>
+			 	<select name="material">
+			 		<option selected="selected">Selecione</option>
+		            <option th:each="c : ${materiais}" th:text="${c.descricao}" th:value="${c.IdMaterial}" ></option>
+		        </select>
+	        </div>
+	            
+	        <div class="form-group">
+			 	<label>Servico: </label>
+			 	<select name="servico">
+			 		<option selected="selected">Selecione</option>
+		            <option th:each="c : ${servicos}" th:text="${c.descricao}" th:value="${c.IdServico}" ></option>
+		        </select>
+	       </div>
+	       <div class="form-group">
+	       		<button class="btn btn-default btn-sm" type="submit" id="btn-pesquisa">Pesquisar</button>
+	       </div>
+	    </form>
+       
+            
         <table class="table table-hover">        
             <tr>
                 <th>Material</th>
                 <th>Servico</th>
                 <th>Valor</th>
-                <th>Prazo</th>
+                <th>Prazo(dias)</th>
                 <th>Situacao</th>
+                <th>Editar</th>
             </tr>
             <tr th:each="produto : ${produtos}">
             	<td th:text="${produto.material.descricao}"></td>
@@ -23,7 +50,19 @@
                 
                 <td><a th:href="${'/produtos/editar/' + produto.idProduto}">Editar</a></td>
             </tr>
-        </table>
+        </table>      
     	</div>
+    	
+    	<script layout:fragment="scripts">
+    		setTimeout(function () {
+    			$("h3[name='mensagem']").addClass('hide');
+    		},3000);
+    		
+    		$('select').click(function () {
+    			  $('option[selected="selected"]', this).remove();
+    			});
+    	</script>
+    	
+    	
 </body>
 </html>

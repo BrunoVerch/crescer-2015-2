@@ -6,21 +6,29 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.cwi.crescer.lavanderia.DAO.MaterialDAO;
 import br.com.cwi.crescer.lavanderia.DAO.ProdutoDAO;
+import br.com.cwi.crescer.lavanderia.DAO.ServicoDAO;
+import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Produto;
 import br.com.cwi.crescer.lavanderia.domain.Produto.SituacaoProduto;
+import br.com.cwi.crescer.lavanderia.domain.Servico;
 import br.com.cwi.crescer.lavanderia.dto.ProdutoDTO;
+import br.com.cwi.crescer.lavanderia.dto.ProdutoIncluirDTO;
 import br.com.cwi.crescer.lavanderia.mapper.ProdutoMapper;
 
 @Service
 public class ProdutoService {
 
     private ProdutoDAO produtoDao;
+    private MaterialDAO materialDao;
+    private ServicoDAO servicoDao;
 
     @Autowired
-    public ProdutoService(ProdutoDAO produtoDao){
-        super();
+    public ProdutoService(ProdutoDAO produtoDao,MaterialDAO materialDao,ServicoDAO servicoDao){
         this.produtoDao = produtoDao;
+        this.materialDao = materialDao;
+        this.servicoDao = servicoDao;
     }
 
     public Produto findById(Long id){
@@ -38,6 +46,12 @@ public class ProdutoService {
 
         return dtos;
     }
+    
+    public ProdutoDTO listarUmProduto(Long idMaterial,Long idServico){
+    	return ProdutoMapper.toDTO(produtoDao.findByServicoAndMaterial(idServico, idMaterial));
+    }
+    
+    
 
     public void atualizar(ProdutoDTO dto) {
         Produto entity = produtoDao.findById(dto.getIdProduto());
@@ -47,9 +61,26 @@ public class ProdutoService {
         produtoDao.save(entity);
     }
 
-    public void criar(ProdutoDTO dto) {
+    public boolean criar(ProdutoIncluirDTO dto) {
         Produto entity = ProdutoMapper.getNewEntity(dto);
+        entity.setMaterial(materialDao.findById(dto.getIdMaterial()));
+        entity.setServico(servicoDao.findById(dto.getIdServico()));
+        boolean ehCombinacaoUnica = !verificaSeEhExisteCombinacao(dto.getIdMaterial(),dto.getIdServico());
         entity.setSituacao(SituacaoProduto.ATIVO);
-        produtoDao.save(entity);
+        if(ehCombinacaoUnica){        	
+            produtoDao.save(entity);
+            return true;
+        } else {
+        	return false;
+        }
+    }
+    
+    public boolean verificaSeEhExisteCombinacao(Long idMaterial,Long idServico){
+    	Produto produto = produtoDao.findByServicoAndMaterial(idServico, idMaterial);
+    	if(produto == null){
+    		return false;
+    	} else {
+    		return true;
+    	}
     }
 }

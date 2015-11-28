@@ -24,6 +24,13 @@ public class ProdutoDAO {
         return em.createQuery("SELECT c FROM Produto c", Produto.class)
                 .getResultList();
     }
+    
+    public Produto findByServicoAndMaterial(Long idServico,Long idMaterial){
+    	return em.createQuery("FROM Produto p WHERE idServico = :idServico AND idMaterial = :idMaterial", Produto.class)
+    			.setParameter("idServico", idServico)
+    			.setParameter("idMaterial", idMaterial)
+    			.getSingleResult();
+    }
 
     @Transactional
     public Produto save(Produto produto) {
