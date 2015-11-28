@@ -1,7 +1,10 @@
 package br.com.cwi.crescer.lavanderia.mapper;
 
+import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Produto;
+import br.com.cwi.crescer.lavanderia.domain.Servico;
 import br.com.cwi.crescer.lavanderia.dto.ProdutoDTO;
+import br.com.cwi.crescer.lavanderia.dto.ProdutoIncluirDTO;
 
 public class ProdutoMapper {
 
@@ -13,6 +16,21 @@ public class ProdutoMapper {
         entity.setValor(dto.getValor());
         // entity.setSituacao(dto.getSituacao());
         entity.setPrazo(dto.getPrazo());
+        return entity;
+    }
+    
+    public static Produto getNewEntity(ProdutoIncluirDTO incluirDto) {
+    	Material material = new Material();
+    	material.setIdMaterial(incluirDto.getIdMaterial());
+    	Servico servico = new Servico();
+    	servico.setIdServico(incluirDto.getIdServico());
+    	
+        Produto entity = new Produto();
+        entity.setIdProduto(incluirDto.getIdProduto());
+        entity.setMaterial(material);
+        entity.setServico(servico);
+        entity.setValor(incluirDto.getValor());
+        entity.setPrazo(incluirDto.getPrazo());
         return entity;
     }
 

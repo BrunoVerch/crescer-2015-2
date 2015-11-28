@@ -11,19 +11,14 @@ import br.com.cwi.crescer.lavanderia.domain.Servico;
 
 public class ProdutoDTO {
 
-    // toDo: validacao para form
     private Long idProduto;
 
     private Servico servico;
 
     private Material material;
 
-    @NotNull
-    @Range(max = 999)
     private BigDecimal valor;
 
-    @NotNull
-    @Range(max = 99)
     private Long prazo;
 
     private int situacao;

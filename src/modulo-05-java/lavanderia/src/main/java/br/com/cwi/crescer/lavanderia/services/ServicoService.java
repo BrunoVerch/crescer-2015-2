@@ -1,9 +1,12 @@
 package br.com.cwi.crescer.lavanderia.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.cwi.crescer.lavanderia.DAO.ServicoDAO;
+import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
 
 @Service
@@ -20,4 +23,8 @@ public class ServicoService {
 	public Servico findById(Long id){
 		return this.servicoDao.findById(id);
 	}
+	
+	public List<Servico> listar() {
+        return servicoDao.listAll();
+    }
 }
