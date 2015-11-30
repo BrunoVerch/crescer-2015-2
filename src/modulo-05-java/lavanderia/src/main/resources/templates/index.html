@@ -6,27 +6,29 @@
 	<body>
 		<div layout:fragment="content">
 			<div class="text-center">
-				<div th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">
-					<p>Ola user</p>
-					<span sec:authentication="name"></span>
-				</div>
-				<div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-					<p>Ola admin</p>
-					<span sec:authentication="name"></span>
+				<div class="pull-rigth text-25pt">
+					<div th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">
+						<span>Ola</span>
+						<span sec:authentication="name"></span>
+					</div>
+					<div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+						<span>Ola</span>
+						<span sec:authentication="name"></span>
+					</div>
 				</div>
 				<h2>Bem Vindo à Lavanderia Crescer</h2>
-				<img src="http://lavanderiasantahelena.com.br/gallery/banner04.png" class="img-responsive" style="display: block;margin-left: auto;margin-right: auto;margin:20px" />
+				<img src="http://lavanderiasantahelena.com.br/gallery/banner04.png" class="img-responsive banner-index" />
 			</div>
 			
-			<article style="width:50%;heigth:300px;margin-top:30px;" class="col-md-6">
+			<article class="col-md-6 my-article">
 				<header class="text-center">
 					<h3>Qualidade</h3>
 				</header>
-				<img style="width:100px;heigth:80px;float:left;" src="http://www.macroetiquetas.com.br/sites/template.orbitadev.com.br/files/conteudo/qualidade-comprovada_0.png" />
-				<p style="float:rigth;width:300px;margin-left:130px;">A Lavanderia Crescer conta com as recentes tecnologias e técnicas de lavagem, garantindo os melhores níveis de qualidade e oferecendo aos nossos clientes a agilidade e segurança desejadas.</p>
+				<img class="img-article" src="http://www.macroetiquetas.com.br/sites/template.orbitadev.com.br/files/conteudo/qualidade-comprovada_0.png" />
+				<p class="p-article">A Lavanderia Crescer conta com as recentes tecnologias e técnicas de lavagem, garantindo os melhores níveis de qualidade e oferecendo aos nossos clientes a agilidade e segurança desejadas.</p>
 			</article>
 			
-			<article style="width:50%;heigth:300px;margin-top:30px;" class="col-md-6">
+			<article class="col-md-6 my-article">
 				<header>
 					<h3>Servicos</h3>
 				</header>

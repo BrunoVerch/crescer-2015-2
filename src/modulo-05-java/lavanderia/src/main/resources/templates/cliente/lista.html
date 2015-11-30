@@ -6,7 +6,16 @@
 	<body>
 		<div th:if="${not #lists.isEmpty(clientes)}" layout:fragment="content">
 		<h3 th:if="${message}" th:text="${message}" class="alert alert-success" role="alert" id="mensagem"></h3>
-        <input type="text" class="form-control" value="Nome"/>
+        <div class="margin-20">
+			<form th:action="@{/clientes/buscar}" th:object="${String}" method="GET" class="form-inline width-400">
+				<div class="form-group">
+					<input class="form-control" type="text" name="nome" placeholder="Nome do cliente" />
+				</div>
+				<button type="submit" class="btn btn-default">Buscar</button>
+			</form>
+		</div>
+
+        
         <table class="table table-hover">        
             <tr>
                 <th>Nome</th>

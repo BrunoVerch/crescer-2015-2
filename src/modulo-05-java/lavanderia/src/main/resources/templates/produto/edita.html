@@ -4,7 +4,7 @@
 		<title>Editar</title>
 	</head>
 	<body>
-			<form th:action="@{/produtos/editar}" th:object="${produto}" method="post" class="col-md-offset-4" style="width:400px;margin-top:30px" layout:fragment="content">
+			<form th:action="@{/produtos/editar}" th:object="${produto}" method="post" class="col-md-offset-4 width-400" layout:fragment="content">
 		
 			<input th:field="*{idProduto}" type="hidden" />
 			
@@ -30,7 +30,7 @@
 	            <span class="help-inline" th:errors="*{situacao}"></span>
             </div>
             
-            <div class="text-center" style="margin:20px">
+            <div class="text-center margin-30">
             <button type="submit" class="btn btn-default">Salvar</button>
             </div>
 		

@@ -4,7 +4,7 @@
 		<title>Editar</title>
 	</head>
 	<body>
-			<form th:action="@{/produtos/incluir}" th:object="${produto}" method="post" class="col-md-offset-4" style="width:400px;margin-top:30px" layout:fragment="content">
+			<form th:action="@{/produtos/incluir}" th:object="${produto}" method="post" class="width-400 col-md-offset-4" layout:fragment="content">
 		
 			<input th:field="*{idProduto}" type="hidden" />
 			<h3 th:if="${message}" th:text="${message}" class="alert alert-success" role="alert" id="mensagem"></h3>

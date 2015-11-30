@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+layout:decorator="Layout"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<meta charset="UTF-8" />
+	<title>Pedido</title>
+</head>
+<body>
+
+	<section layout:fragment="content" th:object="${pedido}">
+	
+		<h3 class="text-center">Dados do pedido</h3>
+		<table class="table">
+			<tr>
+					<th>ID</th>
+					<th>Nome:</th>
+					<th>Cpf:</th>
+					<th>Data de inclusao:</th>
+					<th>Data de entrega:</th>
+					<th>Valor Bruto:</th>
+					<th>Valor Desconto:</th>
+					<th>Valor Total: </th>
+					<th>Situacao:</th>
+				</tr>
+			<tr>
+				<td th:text="*{idPedido}"></td>
+				<td th:text="*{cliente.nome}"></td>
+				<td th:text="*{cliente.cpf}"></td>
+				<td th:text="*{dataInclusao}"></td>
+				<td th:text="*{dataEntrega}"></td>
+				<td th:text="*{valor}"></td>
+				<td th:text="*{valorDesconto}"></td>
+				<td th:text="*{valorFinal}"></td>
+				<td th:text="*{situacao}"></td>
+			</tr>
+		</table>
+		
+		<h3 class="text-center">Itens</h3>
+		<table class="table">
+				<tr>
+					<th>ID</th>
+					<th>Servico</th>
+					<th>Material</th>
+					<th>Peso</th>
+					<th>Valor Unitario</th>
+					<th>Valor Total</th>
+					<th>Situacao</th>
+				</tr>			
+				<tr style="margin-top:50px" th:each="item : ${pedido.itens}" >
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.nomeServico}"></td>
+					<td th:text="${item.nomeMaterial}"></td>
+					<td th:text="${item.peso}"></td>
+					<td th:text="${item.valorUnitario}"></td>
+					<td th:text="${item.valorTotal}"></td>
+					<td th:text="${item.situacao}"></td>
+				</tr>
+		</table>
+		
+	</section>
+</body>
+</html>
