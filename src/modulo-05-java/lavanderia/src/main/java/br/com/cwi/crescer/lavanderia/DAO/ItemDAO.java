@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cwi.crescer.lavanderia.domain.Item;
 import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
+import br.com.cwi.crescer.lavanderia.domain.Pedido;
 
 @Repository
 public class ItemDAO {
@@ -24,6 +25,12 @@ public class ItemDAO {
     public List<Item> findBySituacao(SituacaoItem situacao) {
         return em.createQuery("FROM Item c WHERE c.situacao = :situacao", Item.class)
                 .setParameter("situacao", situacao)
+                .getResultList();
+    }
+    
+    public List<Item> findByIdPedido(Pedido pedido){
+    	return em.createQuery("FROM Item c WHERE c.pedido = :pedido", Item.class)
+                .setParameter("pedido", pedido)
                 .getResultList();
     }
 

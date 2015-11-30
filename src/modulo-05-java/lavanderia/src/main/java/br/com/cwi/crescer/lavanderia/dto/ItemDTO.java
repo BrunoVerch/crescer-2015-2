@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotNull;
 
+import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
+
 public class ItemDTO {
 	
 	private Long id;
@@ -28,7 +30,21 @@ public class ItemDTO {
 	private BigDecimal valorTotal;
 	
 	private String situacao;
+	
+	private SituacaoItem situacaoItem;
 
+	public ItemDTO(){}
+	
+	public ItemDTO(Long idPedido){
+		this.idPedido=idPedido;
+	}
+	
+	public SituacaoItem getSituacaoItem() {
+		return situacaoItem;
+	}
+	public void setSituacaoItem(SituacaoItem situacaoItem) {
+		this.situacaoItem = situacaoItem;
+	}
 	public Long getIdMaterial() {
 		return idMaterial;
 	}

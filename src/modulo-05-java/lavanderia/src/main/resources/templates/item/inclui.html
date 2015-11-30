@@ -7,9 +7,19 @@
 	</head>
 	<body>
 		<div layout:fragment="content" class="margem-top-min centralizar">
-			<form th:action="@{/itens/incluir}" th:object="${item}" method="POST">
-				<div class="container-form">
+			
+			
+			<form id="formServico" th:action="@{/produtos/buscarMateriais}" th:object="${item}">
+				<div class="form-group">
+						<label>Servico: </label>
+						<select class="form-control" th:field="*{idServico}">
+						       <option th:each="servico : ${servicos}" th:text="${servico.descricao}" th:value="${servico.idServico}" ></option>
+						</select>
+					</div>
+					<button type="button" id="btn-buscarServico">Pesquisa</button>
+				</form>
 				
+			<form th:action="@{/itens/incluir}" th:object="${item}" method="POST">
 					<div class="form-group">
 						<input class="form-control" th:field="*{idPedido}" type="hidden" />
 					</div>
@@ -20,23 +30,17 @@
 					           <option th:each="material : ${materiais}" th:text="${material.descricao}" th:value="${material.idMaterial}" ></option>
 				        </select>
 			   		 </div>
-				            
-				    <div class="form-group">
-						<label>Servico: </label>
-						<select class="form-control" th:field="*{idServico}">
-						       <option th:each="servico : ${servicos}" th:text="${servico.descricao}" th:value="${servico.idServico}" ></option>
-						</select>
-					</div>
-					
-					<div class="form-group" th:classappend="${#fields.hasErrors('peso')} ? 'has-error'">
-				 		<label>Peso: </label>
-				 		<input class="form-control" th:field="*{peso}" type="text"/>
-				 		<span class="help-inline" th:errors="*{peso}"></span>
-			 		</div>
-					
-				</div>
-				<button class="btn btn-primary" type="submit">Escolher</button>
+			   		 
+			   		 <div class="form-group">
+			   		 	<input class="form-control" th:field="*{peso}">
+			   		 </div>			
+				<button type="button" id="btn-buscar">Escolher</button>
 			</form>	
 		</div>
 	</body>
+	<script layout:fragment="scripts">
+    		$('#btn-buscarServico').click(function () {
+    			  $('#formServico').submit();
+    			});
+    	</script>
 </html>

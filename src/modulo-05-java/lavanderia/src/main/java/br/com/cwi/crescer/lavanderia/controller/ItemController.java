@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -33,37 +34,18 @@ public class ItemController {
 	private ItemService itemService;
     private MaterialService materialService;
     private ServicoService servicoService;
-    private PedidoService pedidoService;
 
 
     @Autowired
-    public ItemController(ItemService itemService,MaterialService materialService,ServicoService servicoService,PedidoService pedidoService) {
+    public ItemController(ItemService itemService,MaterialService materialService,ServicoService servicoService) {
         this.itemService = itemService;
         this.materialService=materialService;
         this.servicoService=servicoService;
-        this.pedidoService=pedidoService;
     }
     
-    //inclusao item terminar
-    @RequestMapping(path = "/incluir", method = RequestMethod.POST)
-    public ModelAndView manter(@Valid @ModelAttribute("item") ItemDTO itemDTO,
-    							BindingResult result,
-    							final RedirectAttributes redirectAttributes) {
-		
-		if (result.hasErrors()) {
-		    return new ModelAndView("item/inclui");
-		}
-		Item incluido = itemService.incluirItem(itemDTO);	
-		if(incluido != null){
-			redirectAttributes.addFlashAttribute("menssagemFlash", "incluiu Com Sucesso");
-		}else{
-			redirectAttributes.addFlashAttribute("menssagemFlash", "não foi possivel incluir");
-		}
-		return new ModelAndView("item/inclui");
-		/*Pedido pedido = pedidoService.findById(incluido.getPedido().getIdPedido());		
-		ItemDTO outroItem = new ItemDTO();
-		outroItem.setIdPedido(pedido.getIdPedido());
-        return new ModelAndView("item/inclui","item",outroItem);*/
+    @RequestMapping(path = "/incluir", method = RequestMethod.GET)
+    public ModelAndView manter(@RequestParam("id") Long idPedido) {
+		return new ModelAndView("item/inclui","item",new ItemDTO(idPedido));
     }
 	
 	@ModelAttribute("materiais")

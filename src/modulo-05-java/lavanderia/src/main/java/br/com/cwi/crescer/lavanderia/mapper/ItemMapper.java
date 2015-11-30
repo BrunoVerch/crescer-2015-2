@@ -1,7 +1,10 @@
 package br.com.cwi.crescer.lavanderia.mapper;
 
+import java.math.BigDecimal;
+
 import br.com.cwi.crescer.lavanderia.domain.Item;
 import br.com.cwi.crescer.lavanderia.dto.ItemDTO;
+import br.com.cwi.crescer.lavanderia.dto.ProdutoDTO;
 
 public class ItemMapper {
 
@@ -20,5 +23,14 @@ public class ItemMapper {
         dto.setValorUnitario(entity.getValorUnitario());
         return dto;
     }
+	
+	public static ItemDTO criarItemDTO(Long idPedido, String peso, ProdutoDTO produto) {
+		ItemDTO itemDto = new ItemDTO(idPedido);
+		itemDto.setIdProduto(produto.getIdProduto());
+		itemDto.setPeso(new BigDecimal(peso));
+		itemDto.setValorUnitario(produto.getValor());
+		itemDto.setValorTotal(itemDto.getValorUnitario().multiply(itemDto.getPeso()));
+		return itemDto;
+	}
 	
 }
