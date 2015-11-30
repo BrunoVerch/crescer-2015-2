@@ -8,12 +8,12 @@ import br.com.cwi.crescer.lavanderia.domain.Cliente;
 import br.com.cwi.crescer.lavanderia.domain.Item;
 import br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido;
 
-public class PedidoDTO {
+public class PedidoIncluirDTO {
 
     // toDo: validacao para form
     private Long idPedido;
 
-    private Cliente cliente;
+    private Long idCliente;
 
     private Date dataInclusao;
 
@@ -28,6 +28,12 @@ public class PedidoDTO {
     private BigDecimal valorDesconto;
 
     private BigDecimal valorFinal;
+
+    public PedidoIncluirDTO(){}
+    
+    public PedidoIncluirDTO(Long idCliente){
+    	this.idCliente = idCliente;
+    }
     
     public BigDecimal getValorDesconto() {
         return valorDesconto;
@@ -53,12 +59,12 @@ public class PedidoDTO {
         this.idPedido = idPedido;
     }
 
-    public Cliente getCliente() {
-		return cliente;
+    public Long getIdCliente() {
+		return idCliente;
 	}
     
-    public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+    public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
 
     public Date getDataInclusao() {
