@@ -1,6 +1,80 @@
+html{
+	height:100%;
+}
+html body{
+	height:100%;
+}
+html body section{
+	height:88%;
+}
 .backcolor-eee{
 	background-color: #eee;
 }
 .backcolor-dark{
 	background-color: DarkSlateGray;
+}
+.margin-20{
+	margin: 10px 0px;
+}
+.margin-30{
+	margin: 30px 0px;
+}
+.width-400{
+	width:400px;
+}
+.width-600{
+	width:600px;
+}
+.pull-rigth{
+	float:rigth;
+}
+.pull-left{
+	float:left;
+}
+.icon{
+	width:30px;
+	heigth:30px;
+	margin-left:20px;
+}
+.my-article{
+	width:50%;
+	heigth:300px;
+	margin-top:30px;
+	margin-bottom:30px;
+}
+.img-article{
+	width:100px;
+	heigth:80px;
+	float:left;
+}
+.p-article{
+	float:rigth;
+	width:300px;
+	margin-left:130px;
+}
+.banner-index{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin:20px
+}
+.center{
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+.text-white{
+	color:white;
+}
+.big-text{
+	font-size: 50pt;
+}
+.text-25pt{
+	font-size: 25pt;
+}
+.display-inline{
+	display:inline;
 }
