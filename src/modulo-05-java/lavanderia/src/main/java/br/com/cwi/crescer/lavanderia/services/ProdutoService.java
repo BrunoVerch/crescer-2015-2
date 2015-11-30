@@ -2,6 +2,8 @@ package br.com.cwi.crescer.lavanderia.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,20 @@ public class ProdutoService {
     public Produto findById(Long id){
         return this.produtoDao.findById(id);
     }
+    
+    public List<Material> buscarMaterialPorServico(Long idServico) {
+    	List<Material> materiais = new ArrayList<Material>();
+    	
+    	for(ProdutoDTO produto : listarProdutos()) {
+    		if(produto.getServico().getIdServico().equals(idServico)) {   			
+    			if(!materiais.contains(produto.getMaterial())) {
+    				materiais.add(produto.getMaterial());
+    			}
+    		}
+    	} 	
+    	return materiais;
+    }
+
 
     public List<ProdutoDTO> listarProdutos() {
         List<Produto> produtos = produtoDao.findAll();
@@ -47,11 +63,33 @@ public class ProdutoService {
         return dtos;
     }
     
-    public ProdutoDTO listarUmProduto(Long idMaterial,Long idServico){
+    public ProdutoDTO listarUmProduto(Long idMaterial,Long idServico){   	
     	return ProdutoMapper.toDTO(produtoDao.findByServicoAndMaterial(idServico, idMaterial));
     }
     
+    public List<ProdutoDTO> listarProdutosPorMaterial(Long idMaterial){
+    	List<Produto> produtos = produtoDao.findByMaterial( idMaterial);
+
+        List<ProdutoDTO> dtos = new ArrayList<ProdutoDTO>();
+
+        for (Produto produto : produtos) {
+            dtos.add(ProdutoMapper.toDTO(produto));
+        }
+
+        return dtos;
+    }
     
+    public List<ProdutoDTO> listarProdutosPorServico(Long idServico){
+    	List<Produto> produtos = produtoDao.findByServico(idServico);
+
+        List<ProdutoDTO> dtos = new ArrayList<ProdutoDTO>();
+
+        for (Produto produto : produtos) {
+            dtos.add(ProdutoMapper.toDTO(produto));
+        }
+
+        return dtos;
+    }
 
     public void atualizar(ProdutoDTO dto) {
         Produto entity = produtoDao.findById(dto.getIdProduto());

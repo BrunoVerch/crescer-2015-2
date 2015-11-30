@@ -1,6 +1,7 @@
 package br.com.cwi.crescer.lavanderia.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.cwi.crescer.lavanderia.domain.Cidade;
 import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
 import br.com.cwi.crescer.lavanderia.dto.ProdutoDTO;
@@ -46,11 +46,23 @@ public class ProdutoController {
     
     @RequestMapping(path="/buscar", method = RequestMethod.GET)
     public ModelAndView buscaListar(String material, String servico, RedirectAttributes redirectAttributes) {
-    	Long idMaterial = Long.valueOf(material).longValue();
-    	Long idServico = Long.valueOf(servico).longValue();
+    	
+    	if(servico == null){
+    		Long idMaterial =Long.valueOf(material).longValue();
+    		return new ModelAndView("produto/lista", "produtos", produtoService.listarProdutosPorMaterial(idMaterial));
+    	}
+    	
+    	if(material == null){
+    		Long idServico =Long.valueOf(servico).longValue();
+    		return new ModelAndView("produto/lista", "produtos", produtoService.listarProdutosPorServico(idServico));
+    	}
+    	
+    	Long idMaterial =Long.valueOf(material).longValue();
+    	Long idServico =Long.valueOf(servico).longValue();
     	if(produtoService.verificaSeEhExisteCombinacao(idMaterial, idServico)){
     		return new ModelAndView("produto/lista", "produtos", produtoService.listarUmProduto(idMaterial, idServico)); 		
     	}
+    	
     	return new ModelAndView("produto/lista", "produtos", produtoService.listarProdutos());
     }
 

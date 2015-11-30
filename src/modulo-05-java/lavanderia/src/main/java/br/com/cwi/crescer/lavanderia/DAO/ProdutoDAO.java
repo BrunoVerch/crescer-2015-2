@@ -25,6 +25,18 @@ public class ProdutoDAO {
                 .getResultList();
     }
     
+    public List<Produto> findByServico(Long idServico){
+    	return em.createQuery("FROM Produto p WHERE idServico = :idServico", Produto.class)
+    			.setParameter("idServico", idServico)
+    			.getResultList();
+    }
+    
+    public List<Produto> findByMaterial(Long idMaterial){
+    	return em.createQuery("FROM Produto p WHERE idMaterial = :idMaterial", Produto.class)
+    			.setParameter("idMaterial", idMaterial)
+    			.getResultList();
+    }
+    
     public Produto findByServicoAndMaterial(Long idServico,Long idMaterial){
     	return em.createQuery("FROM Produto p WHERE idServico = :idServico AND idMaterial = :idMaterial", Produto.class)
     			.setParameter("idServico", idServico)
