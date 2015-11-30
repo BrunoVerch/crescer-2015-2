@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.cwi.crescer.lavanderia.domain.Item;
 import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
@@ -25,4 +26,13 @@ public class ItemDAO {
                 .setParameter("situacao", situacao)
                 .getResultList();
     }
+
+    @Transactional
+	public Item save(Item item) {	
+		if (item.getIdItem() == null) {
+            em.persist(item);
+            return item;
+        }
+        return em.merge(item);
+	}
 }
