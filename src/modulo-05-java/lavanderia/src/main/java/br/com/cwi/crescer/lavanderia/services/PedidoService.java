@@ -27,11 +27,13 @@ public class PedidoService {
 
     private PedidoDAO pedidoDao;
     private ClienteDAO clienteDao;
+    private PedidoInclusaoService pedidoInclusaoService;
 
     @Autowired
-    public PedidoService(PedidoDAO pedidoDao,ClienteDAO clienteDao){
+    public PedidoService(PedidoDAO pedidoDao,ClienteDAO clienteDao,PedidoInclusaoService pedidoInclusaoService){
         this.pedidoDao = pedidoDao;
         this.clienteDao=clienteDao;
+        this.pedidoInclusaoService=pedidoInclusaoService;
     }
 
     public Pedido findById(Long id){
@@ -39,8 +41,7 @@ public class PedidoService {
     }
 
     public void atualizar(PedidoDTO dto) {
-        Pedido entity = pedidoDao.findById(dto.getIdPedido());
-        PedidoMapper.merge(dto, entity);
+        Pedido entity = PedidoMapper.getNewEntity(dto);
         pedidoDao.save(entity);
     }
     
@@ -59,6 +60,7 @@ public class PedidoService {
         List<PedidoDTO> dtos = new ArrayList<PedidoDTO>();
 
         for (Pedido pedido : pedidos) {
+        	pedidoInclusaoService.valorTotalPedido(pedido);
             dtos.add(PedidoMapper.toDTO(pedido));
         }
 

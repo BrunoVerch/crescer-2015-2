@@ -1,6 +1,8 @@
 package br.com.cwi.crescer.lavanderia.services;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -8,23 +10,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.cwi.crescer.lavanderia.DAO.PedidoDAO;
-import br.com.cwi.crescer.lavanderia.DAO.ProdutoDAO;
 import br.com.cwi.crescer.lavanderia.domain.Item;
+import br.com.cwi.crescer.lavanderia.domain.Item.SituacaoItem;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
 import br.com.cwi.crescer.lavanderia.domain.Pedido.SituacaoPedido;
 
 @Service
 public class PedidoInclusaoService {
 
-	private ProdutoDAO produtoDao;
-	private PedidoDAO pedidoDao;
 	private DateService dateService;
 	
 	@Autowired
-    public PedidoInclusaoService(PedidoDAO pedidoDao,ProdutoDAO produtoDao,DateService dateService){
-        this.pedidoDao = pedidoDao;
-        this.produtoDao = produtoDao;
+    public PedidoInclusaoService(DateService dateService){
         this.dateService=dateService;
     }
 	
@@ -32,16 +29,23 @@ public class PedidoInclusaoService {
 		pedido.setSituacao(SituacaoPedido.CANCELADO);
 	}
 	
-	public void retirarPedido(Pedido pedido) throws Exception{
+	public boolean retirarPedido(Pedido pedido){
 		if(pedido.getSituacao() == SituacaoPedido.PROCESSADO){
 			pedido.setSituacao(SituacaoPedido.ENCERRADO);
+			return true;
 		} else {
-			throw new Exception("Não é possivel retirar o pedido que não foi processado!");
+			return false;
 		}
 	}
 	
 	public void valorBrutoPedido(Pedido pedido){
 		pedido.setValor(totalValorItens(pedido));
+	}
+	
+	public void calculaDataValores(Pedido pedido){
+		dataDeEntrega(pedido);
+		calculaValorDesconto(pedido);
+		valorTotalPedido(pedido);
 	}
 	
 	public void calculaValorDesconto(Pedido pedido){
@@ -64,16 +68,48 @@ public class PedidoInclusaoService {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(pedido.getDataInclusao());
 		calendar.add(calendar.DATE, maiorPrazo.intValue());
-		
-		pedido.setDataEntrega(calendar.getTime());
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		try{
+			Date date = sdf.parse(sdf.format(calendar.getTime()));
+			pedido.setDataEntrega(date);
+		} catch(ParseException e){
+			e.printStackTrace();
+		}
 	}
 	
-	private Long pegaMaiorPrazo(List<Item> listaItens){
+	public Long pegaMaiorPrazo(List<Item> listaItens){
 		Long maiorPrazo = 0L;
 		for (Item item : listaItens) {
 			maiorPrazo = item.getProduto().getPrazo() > maiorPrazo ? item.getProduto().getPrazo() : maiorPrazo;
 		}
 		return maiorPrazo;
+	}
+	
+	public void processarItens(List<Item> listaItens){
+		for (Item item : listaItens) {
+			item.setSituacao(SituacaoItem.PROCESSADO);
+		}
+	}
+	
+	public void processarUmItem(Item item){
+		item.setSituacao(SituacaoItem.PROCESSADO);
+	}
+	
+	public boolean itensEstaoProcessados(List<Item> listaItens){
+		for (Item item : listaItens) {
+			if(item.getSituacao() != SituacaoItem.PROCESSADO){
+				return false;
+			}
+		}
+		return false;
+	}
+	
+	public void alterarParaProcessado(Pedido pedido){
+		pedido.setSituacao(SituacaoPedido.PROCESSADO);
+	}
+	
+	public void salvarPedido(Pedido pedido){
+		pedido.setSituacao(SituacaoPedido.PROCESSANDO);
 	}
 	
 	//Operacoes com relacao ao desconto
@@ -102,7 +138,7 @@ public class PedidoInclusaoService {
 	
 	public BigDecimal totalQuantidadePeso(Pedido pedido){
 		List<Item> itens = pedido.getItens();
-		BigDecimal total = new BigDecimal(0);
+		BigDecimal total = new BigDecimal("0");
 		for(Item item : itens){
 			total=total.add(item.getPeso());
 		}
@@ -110,17 +146,16 @@ public class PedidoInclusaoService {
 	}
 	
 	//Operacoes com relacao ao item
-	private BigDecimal totalValorItens(Pedido pedido){
+	public BigDecimal totalValorItens(Pedido pedido){
 		List<Item> itens = pedido.getItens();
-		BigDecimal total = new BigDecimal(0);
+		BigDecimal total = new BigDecimal("0");
 		for(Item item : itens){
-			total=total.add(totalDoItem(item));
+			total=total.add(calculaValorTotal(item.getValorUnitario(), item.getPeso()));			
 		}
 		return total;
 	}
-	private BigDecimal totalDoItem(Item item){
-		BigDecimal peso = item.getPeso();
-		BigDecimal valorProduto = item.getProduto().getValor();
-		return peso.multiply(valorProduto);
+	
+	public BigDecimal calculaValorTotal(BigDecimal valorUnitario, BigDecimal peso) {
+		return valorUnitario.multiply(peso);
 	}
 }
