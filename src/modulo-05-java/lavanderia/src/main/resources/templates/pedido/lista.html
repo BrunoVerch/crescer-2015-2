@@ -36,7 +36,7 @@
             </tr>
             <tr th:each="pedido : ${pedidos}">
                 <td th:text="${pedido.cliente.nome}"></td>
-                <td th:text="${pedido.cliente.cpf}"></td>
+                <td th:text="${pedido.cliente.cpf}" class="cpf"></td>
                 <td th:text="${pedido.dataInclusao}"></td>
                 <td th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorFinal, 0, 'COMMA', 2, 'POINT')}"></td>
                 <td th:text="${pedido.situacao}"></td>
@@ -53,6 +53,9 @@
     		setTimeout(function () {
     			$('#mensagem').addClass('hide');
     		},3000);
+    		
+    			$(".cpf").mask("999.999.999-99");
+    		
     	</script>
 	</body>
 </html>

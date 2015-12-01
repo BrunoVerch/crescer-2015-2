@@ -26,7 +26,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 				</tr>
 			<tr>			
 				<td th:text="*{cliente.nome}"></td>
-				<td th:text="*{cliente.cpf}"></td>
+				<td th:text="*{cliente.cpf}" class="cpf" ></td>
 				<td th:text="*{dataInclusao}"></td>
 				<td th:if="*{dataEntrega != null}" th:text="${#dates.format(pedido.dataEntrega, 'dd-MM-YYYY')}"></td>
 				<td th:text="${'R$ ' + #numbers.formatDecimal(pedido.valor, 0, 'COMMA', 2, 'POINT')}"></td>
@@ -58,5 +58,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 		</table>
 		
 	</section>
+	
+	<script layout:fragment="scripts">
+
+		$(".cpf").mask("999.999.999-99");
+    	</script>
 </body>
 </html>
