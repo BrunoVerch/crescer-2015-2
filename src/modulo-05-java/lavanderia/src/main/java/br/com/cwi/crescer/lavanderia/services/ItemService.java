@@ -1,6 +1,5 @@
 package br.com.cwi.crescer.lavanderia.services;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +18,14 @@ public class ItemService {
 	private ItemDAO itemDao;
 	private PedidoService pedidoService;
 	private ProdutoService produtoService;
-	private ItemService itemService;
 	private PedidoInclusaoService pedidoInclusaoService;
 
 	@Autowired
 	public ItemService(ItemDAO itemDao, PedidoService pedidoService,
-			ProdutoService produtoService, ItemService itemService,PedidoInclusaoService pedidoInclusaoService) {
+			ProdutoService produtoService,PedidoInclusaoService pedidoInclusaoService) {
 		this.itemDao = itemDao;
 		this.pedidoService = pedidoService;
 		this.produtoService = produtoService;
-		this.itemService = itemService;
 		this.pedidoInclusaoService = pedidoInclusaoService;
 	}
 
