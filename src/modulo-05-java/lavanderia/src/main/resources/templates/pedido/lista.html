@@ -6,6 +6,7 @@
 	<body>
 		<div th:if="${not #lists.isEmpty(pedidos)}" layout:fragment="content">
 		<h3 th:if="${message}" th:text="${message}" class="alert alert-success" role="alert" id="mensagem"></h3>
+		<h3 th:if="${mensagem}" th:text="${mensagem}" class="alert" role="alert"></h3>
 		
 		<a class="btn btn-default" style="float:right;" th:href="${'/pedidos/incluir/'}">Incluir Pedido</a>
 		
@@ -42,6 +43,7 @@
                 <td><a th:href="${ '/pedidos/visualizar/' + pedido.idPedido}">Visualizar</a></td>
                 <td><a th:href="${ '/pedidos/cancelar/' + pedido.idPedido}">Cancelar</a></td>
                 <td><a th:href="${ '/pedidos/encerrar/' + pedido.idPedido}">Retirar Pedido</a></td>
+                <td><a th:if="*{pedido.situacao.toString() == 'PENDENTE'}" th:href="${ '/pedidos/editar/' + pedido.idPedido}">Editar Pedido</a></td>
             </tr>
         </table>
 

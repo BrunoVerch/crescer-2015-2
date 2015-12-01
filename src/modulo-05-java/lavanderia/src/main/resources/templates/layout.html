@@ -43,6 +43,9 @@
 			      </ul>
 			      
 			      <ul class="nav navbar-nav navbar-right">
+			      	<li>
+			      		<h4 class="margin-20-right" sec:authentication="name"></h4>
+			      	</li>
                     <li>
                         <form name="form" th:action="@{/logout}" action="/logout" method="POST" sec:authorize="isAuthenticated()">
                             <button type="submit" class="btn btn-default btn-lg" aria-label="Left Align">

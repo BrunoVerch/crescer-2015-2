@@ -6,41 +6,56 @@
 	<head>
 	</head>
 	<body>
-		<div layout:fragment="content" class="margem-top-min centralizar">
+		<div layout:fragment="content" class="width-600 center">
 			
 			
-			<form id="formServico" th:action="@{/produtos/buscarMateriais}" th:object="${item}">
-				<div class="form-group">
-						<label>Servico: </label>
-						<select class="form-control" th:field="*{idServico}">
-						       <option th:each="servico : ${servicos}" th:text="${servico.descricao}" th:value="${servico.idServico}" ></option>
-						</select>
-					</div>
-					<button type="button" id="btn-buscarServico">Pesquisa</button>
-				</form>
+			<form id="form-servico" th:action="@{/pedidos/buscarMateriais}" class="form-group" method="get">
 				
-			<form th:action="@{/itens/incluir}" th:object="${item}" method="POST">
-					<div class="form-group">
-						<input class="form-control" th:field="*{idPedido}" type="hidden" />
-					</div>
+					<input name="idPedido" th:field="*{pedido.idPedido}" type="hidden" />
 				
-		            <div class="form-group">
-				 		<label>Material: </label>
-						<select class="form-control" th:field="*{idMaterial}">
-					           <option th:each="material : ${materiais}" th:text="${material.descricao}" th:value="${material.idMaterial}" ></option>
-				        </select>
-			   		 </div>
-			   		 
-			   		 <div class="form-group">
-			   		 	<input class="form-control" th:field="*{peso}">
-			   		 </div>			
-				<button type="button" id="btn-buscar">Escolher</button>
-			</form>	
-		</div>
+	        		<div class="form-group">
+	        		<label>Serviço</label>
+	        		<select th:if="${servicoSelecionado != null}" name="idServico" class="form-control">
+				        <option th:text="${servicoSelecionado.descricao}" th:value="${servicoSelecionado.idServico}" ></option>
+				        <option th:each="s : ${servicos}" th:if="${s.idServico != servicoSelecionado.idServico}" th:text="${s.descricao}" th:value="${s.idServico}" ></option>
+				      </select>  		
+				      <select th:if="${servicoSelecionado == null}" name="idServico" class="form-control">
+				        <option value="0"> </option>
+				        <option th:each="s : ${servicos}" th:text="${s.descricao}" th:value="${s.idServico}" ></option>
+				      </select>
+				    </div>
+	      		</form>	      		
+	      		<form th:action="@{/pedidos/incluirItem}" class="form-group" method="post">
+	      		
+	      			<input name="idPedido" th:field="*{pedido.idPedido}" type="hidden" />
+	      			
+	      			<input th:if="${servicoSelecionado != null}" name="idServico" th:field="${servicoSelecionado.idServico}" type="hidden" />
+	      			
+	        		<div class="form-group">
+	        		<label>Material</label>
+				      <select th:disabled="${servicoSelecionado == null}" id="materiais" name="idMaterial" class="form-control">
+				        <option value="0"> </option>
+				        <option th:each="m : ${materiais}" th:text="${m.descricao}" th:value="${m.idMaterial}" ></option>
+				      </select>
+				    </div>
+				    <div class="form-group">
+				    	<label>Peso</label>
+				    	<input name="peso" th:disabled="${servicoSelecionado == null}" type="text" class="form-control" />
+				    </div>
+				    
+				    <button class="btn btn-default" type="submit">Salvar</button>
+				    
+	      		</form>
+      		</div>
+      		
+      		<script>	 
+				
+			</script>	
 	</body>
 	<script layout:fragment="scripts">
-    		$('#btn-buscarServico').click(function () {
-    			  $('#formServico').submit();
-    			});
+	$("#form-servico").change(function() {
+		  $("#form-servico").submit();
+		  $('#materiais').prop('disabled', false);
+		});	
     	</script>
 </html>

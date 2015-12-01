@@ -8,10 +8,7 @@
 			<form th:action="@{/clientes/incluir}" th:object="${cliente}" method="post" class="col-md-offset-4 width-400">
 		
 			<input th:field="*{id}" type="hidden" />
-			
-			<h3 class="text-center">Criar</h3>
-			
-			<div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? 'has-error'">
+			<div class="form-group margin-20" th:classappend="${#fields.hasErrors('nome')} ? 'has-error'">
 				<label class="control-label">Nome: </label>
 				<input th:field="*{nome}" type="text" class="form-control" />
 				<span class="help-inline" th:errors="*{nome}"></span>

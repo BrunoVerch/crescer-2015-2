@@ -11,10 +11,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 	<section layout:fragment="content" th:object="${pedido}">
 	
-		<h3 class="text-center">Dados do pedido</h3>
-		<table class="table">
+		<h3 class="text-center margin-30">Dados do pedido</h3>
+		<input th:field="*{idPedido}" type="hidden" />
+		<table class="table table-bordered">
 			<tr>
-					<th>ID</th>
 					<th>Nome:</th>
 					<th>Cpf:</th>
 					<th>Data de inclusao:</th>
@@ -24,8 +24,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 					<th>Valor Total: </th>
 					<th>Situacao:</th>
 				</tr>
-			<tr>
-				<td th:text="*{idPedido}"></td>
+			<tr>			
 				<td th:text="*{cliente.nome}"></td>
 				<td th:text="*{cliente.cpf}"></td>
 				<td th:text="*{dataInclusao}"></td>
@@ -37,10 +36,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 			</tr>
 		</table>
 		
-		<h3 class="text-center">Itens</h3>
-		<table class="table">
+		<h3 class="text-center margin-30">Itens</h3>
+		<table class="table table-bordered">
 				<tr>
-					<th>ID</th>
 					<th>Servico</th>
 					<th>Material</th>
 					<th>Peso</th>
@@ -49,12 +47,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 					<th>Situacao</th>
 				</tr>			
 				<tr style="margin-top:50px" th:each="item : ${pedido.itens}" >
-					<td th:text="${item.id}"></td>
-					<td th:text="${item.nomeServico}"></td>
-					<td th:text="${item.nomeMaterial}"></td>
+					<td th:text="${item.idItem}" class="hide"></td>
+					<td th:text="${item.produto.servico.getDescricao()}"></td>
+					<td th:text="${item.produto.material.getDescricao()}"></td>
 					<td th:text="${item.peso}"></td>
-					<td th:text="${item.valorUnitario}"></td>
-					<td th:text="${item.valorTotal}"></td>
+					<td>$ <span th:text="${#numbers.formatDecimal(item.valorUnitario, 0, 'COMMA', 2, 'POINT')}"></span></td>
+					<td>$ <span th:text="${#numbers.formatDecimal(item.valorTotal, 0, 'COMMA', 2, 'POINT')}"></span></td>			
 					<td th:text="${item.situacao}"></td>
 				</tr>
 		</table>

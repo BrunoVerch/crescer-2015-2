@@ -65,10 +65,4 @@ public class PedidoMapper {
         dto.setValorFinal(entity.getValorFinal());
         return dto;
     }
-
-    public static Pedido merge(PedidoDTO dto, Pedido entity) {
-        entity.setCliente(dto.getCliente());
-        // toDO: colocar conforme salvar form
-        return entity;
-    }
 }

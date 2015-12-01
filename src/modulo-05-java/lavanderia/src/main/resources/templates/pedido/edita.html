@@ -11,8 +11,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 	<section layout:fragment="content" th:object="${pedido}">
 	
-		<h3 class="text-center">Dados do pedido</h3>
-		<table class="table">
+		<h3 class="text-center margin-30">Dados do pedido</h3>
+		<table class="table table-bordered">
 			<tr>
 					<th>ID</th>
 					<th>Nome:</th>
@@ -37,10 +37,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 			</tr>
 		</table>
 		
-		<a th:href="${'/itens/incluir/' + pedido.idPedido}" class="btn btn-default">Inserir item</a>
+		<a th:href="${'/pedidos/incluirProduto/' + pedido.idPedido}" class="btn btn-default">Inserir item</a>
+		<a th:href="${'/pedidos/processarItens/' + pedido.idPedido}" class="btn btn-default">Processar Itens</a>
+		<a th:href="${'/pedidos/salvarItens/' + pedido.idPedido}" class="btn btn-default">Salvar Pedido</a>
 		
-		<h3 class="text-center">Itens</h3>
-		<table class="table">
+		<h3 class="text-center margin-30">Itens</h3>
+		<table class="table table-bordered">
 				<tr>
 					<th>ID</th>
 					<th>Servico</th>
@@ -51,13 +53,16 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 					<th>Situacao</th>
 				</tr>			
 				<tr style="margin-top:50px" th:each="item : ${pedido.itens}" >
-					<td th:text="${item.id}"></td>
-					<td th:text="${item.nomeServico}"></td>
-					<td th:text="${item.nomeMaterial}"></td>
+					<td th:text="${item.idItem}"></td>
+					<td th:text="${item.produto.servico.descricao}"></td>
+					<td th:text="${item.produto.material.descricao}"></td>
 					<td th:text="${item.peso}"></td>
 					<td th:text="${item.valorUnitario}"></td>
 					<td th:text="${item.valorTotal}"></td>
 					<td th:text="${item.situacao}"></td>
+					<td>
+						<a th:href="${'/pedidos/processarItem/' + item.idItem}" class="btn btn-default">Processar</a>
+					</td>
 				</tr>
 		</table>
 		

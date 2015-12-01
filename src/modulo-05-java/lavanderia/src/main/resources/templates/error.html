@@ -7,13 +7,13 @@
 <body>
 
 	<div layout:fragment="content">
-		<div class="text-center center text-white">
+		<div class="text-center center" style="width:800px">
 			<div>
-				<h3 class="big-text" th:if="${status}" th:text="${status}"></h3>
+				<h3 th:if="${status}" th:text="${status}"></h3>
 			</div>
 		
 			<div th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
-			   <h3 class="big-text" th:text="${message}">message ...</h3>
+			   <h3 th:text="${message}">message ...</h3>
 			</div>
 		</div>
 	</div>
