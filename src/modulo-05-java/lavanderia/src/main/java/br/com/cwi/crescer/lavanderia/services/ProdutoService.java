@@ -114,11 +114,11 @@ public class ProdutoService {
     }
     
     public boolean verificaSeEhExisteCombinacao(Long idMaterial,Long idServico){
-    	Produto produto = produtoDao.findByServicoAndMaterial(idServico, idMaterial);
-    	if(produto == null){
-    		return false;
-    	} else {
+    	try{
+    		Produto produto = produtoDao.findByServicoAndMaterial(idServico, idMaterial);
     		return true;
+    	} catch(Exception e){
+    		return false;
     	}
     }
 }
