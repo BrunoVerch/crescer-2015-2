@@ -14,6 +14,8 @@ public class DateService {
 	private int quarta = calendar.WEDNESDAY;
 	private int quinta = calendar.THURSDAY;
 	private int sexta = calendar.FRIDAY;
+	private int sabado = calendar.SATURDAY;
+	private int domingo = calendar.SUNDAY;
 
 	private int diaAtualDaSemana(){
 		return calendar.get(calendar.DAY_OF_WEEK);
@@ -21,7 +23,8 @@ public class DateService {
 	public boolean ehQuintaOuSexta(Date data){
 		calendar.setTime(data);
 		int diaAtual = diaAtualDaSemana();
-		return diaAtual == quinta || diaAtual == sexta;
+		boolean ehQuintaOuSexta =  diaAtual == quinta || diaAtual == sexta;
+		return ehQuintaOuSexta;
 	}
 	
 	public boolean ehDeSegundaAQuarta(Date data){

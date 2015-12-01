@@ -22,7 +22,6 @@ import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Pedido;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
 import br.com.cwi.crescer.lavanderia.dto.ClienteResumoDTO;
-import br.com.cwi.crescer.lavanderia.dto.ItemDTO;
 import br.com.cwi.crescer.lavanderia.dto.PedidoDTO;
 import br.com.cwi.crescer.lavanderia.dto.PedidoIncluirDTO;
 import br.com.cwi.crescer.lavanderia.dto.ProdutoDTO;

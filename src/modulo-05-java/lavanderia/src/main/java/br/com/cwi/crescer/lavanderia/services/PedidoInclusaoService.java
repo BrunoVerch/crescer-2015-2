@@ -49,6 +49,7 @@ public class PedidoInclusaoService {
 	}
 	
 	public void calculaValorDesconto(Pedido pedido){
+		valorBrutoPedido(pedido);
 		BigDecimal percentualDeDesconto = percentualDoDesconto(pedido);
 		BigDecimal valorDesconto = pedido.getValor().multiply(percentualDeDesconto).divide(new BigDecimal("100"));
 		valorDesconto.setScale(2, BigDecimal.ROUND_DOWN);
@@ -95,13 +96,13 @@ public class PedidoInclusaoService {
 		item.setSituacao(SituacaoItem.PROCESSADO);
 	}
 	
-	public boolean itensEstaoProcessados(List<Item> listaItens){
+	public boolean itensEstaoProcessados(List<Item> listaItens){		
 		for (Item item : listaItens) {
-			if(item.getSituacao() != SituacaoItem.PROCESSADO){
+			if(item.getSituacao() != SituacaoItem.PROCESSADO || listaItens.isEmpty()){
 				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 	
 	public void alterarParaProcessado(Pedido pedido){

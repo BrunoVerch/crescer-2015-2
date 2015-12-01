@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.cwi.crescer.lavanderia.domain.Material;
 import br.com.cwi.crescer.lavanderia.domain.Servico;
 import br.com.cwi.crescer.lavanderia.dto.ItemDTO;
-import br.com.cwi.crescer.lavanderia.services.ItemService;
 import br.com.cwi.crescer.lavanderia.services.MaterialService;
 import br.com.cwi.crescer.lavanderia.services.ServicoService;
 

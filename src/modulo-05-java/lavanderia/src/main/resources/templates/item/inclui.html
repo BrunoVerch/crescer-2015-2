@@ -40,7 +40,8 @@
 				    </div>
 				    <div class="form-group">
 				    	<label>Peso</label>
-				    	<input name="peso" th:disabled="${servicoSelecionado == null}" type="text" class="form-control" />
+				    	<input name="peso" step="0.1" th:disabled="${servicoSelecionado == null}" type="number" min="1" class="form-control" />
+				    	<div class="input-group-addon">kg</div>
 				    </div>
 				    
 				    <button class="btn btn-default" type="submit">Salvar</button>

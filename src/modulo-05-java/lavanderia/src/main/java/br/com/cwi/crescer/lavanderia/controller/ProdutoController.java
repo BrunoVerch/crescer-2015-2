@@ -1,7 +1,6 @@
 package br.com.cwi.crescer.lavanderia.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 

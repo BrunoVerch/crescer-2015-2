@@ -49,9 +49,10 @@ public class PedidoService {
     	Pedido pedido = new Pedido();
 		pedido.setCliente(clienteDao.findById(dto.getIdCliente()));
 		pedido.setDataInclusao(new Date());
-		pedido.setValor(new BigDecimal("0"));
+		pedido.setValor(new BigDecimal("0.0"));
 		pedido.setSituacao(SituacaoPedido.PENDENTE);
-		return pedidoDao.save(pedido).getIdPedido();
+		pedidoDao.save(pedido);
+		return pedido.getIdPedido();
     }
 
 	public List<PedidoDTO> listar() {
@@ -82,7 +83,7 @@ public class PedidoService {
 		List<Pedido> pedidos = pedidoDao.findAll();
         List<PedidoDTO> dtos = new ArrayList<PedidoDTO>();
         for (Pedido pedido : pedidos) {
-        	if(pedido.getSituacao().toString().equals(situacao)){
+        	if(pedido.getSituacao().toString().equals(situacao.toUpperCase())){
         		dtos.add(PedidoMapper.toDTO(pedido));
         	}
         }
