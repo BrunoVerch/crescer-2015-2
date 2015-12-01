@@ -28,10 +28,10 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 				<td th:text="*{cliente.nome}"></td>
 				<td th:text="*{cliente.cpf}"></td>
 				<td th:text="*{dataInclusao}"></td>
-				<td th:text="*{dataEntrega}"></td>
-				<td th:text="*{valor}"></td>
-				<td th:text="*{valorDesconto}"></td>
-				<td th:text="*{valorFinal}"></td>
+				<td th:if="*{dataEntrega != null}" th:text="${#dates.format(pedido.dataEntrega, 'dd-MM-YYYY')}"></td>
+				<td th:text="${'R$ ' + #numbers.formatDecimal(pedido.valor, 0, 'COMMA', 2, 'POINT')}"></td>
+				<td th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorDesconto, 0, 'COMMA', 2, 'POINT')}"></td>
+				<td th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorFinal, 0, 'COMMA', 2, 'POINT')}"></td>
 				<td th:text="*{situacao}"></td>
 			</tr>
 		</table>
@@ -50,9 +50,9 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 					<td th:text="${item.idItem}" class="hide"></td>
 					<td th:text="${item.produto.servico.getDescricao()}"></td>
 					<td th:text="${item.produto.material.getDescricao()}"></td>
-					<td th:text="${item.peso}"></td>
-					<td>$ <span th:text="${#numbers.formatDecimal(item.valorUnitario, 0, 'COMMA', 2, 'POINT')}"></span></td>
-					<td>$ <span th:text="${#numbers.formatDecimal(item.valorTotal, 0, 'COMMA', 2, 'POINT')}"></span></td>			
+					<td th:text="${#numbers.formatDecimal(item.peso, 0, 'COMMA', 2, 'POINT') + ' Kg'}"></td>
+					<td th:text="${'R$ ' + #numbers.formatDecimal(item.valorUnitario, 0, 'COMMA', 2, 'POINT')}"></td>
+					<td th:text="${'R$ ' + #numbers.formatDecimal(item.valorTotal, 0, 'COMMA', 2, 'POINT')}"></td>			
 					<td th:text="${item.situacao}"></td>
 				</tr>
 		</table>
