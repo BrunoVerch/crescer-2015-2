@@ -41,8 +41,8 @@
                 <td th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorFinal, 0, 'COMMA', 2, 'POINT')}"></td>
                 <td th:text="${pedido.situacao}"></td>
                 <td><a th:href="${ '/pedidos/visualizar/' + pedido.idPedido}">Visualizar</a></td>
-                <td><a th:href="${ '/pedidos/cancelar/' + pedido.idPedido}">Cancelar</a></td>
-                <td><a th:href="${ '/pedidos/encerrar/' + pedido.idPedido}">Retirar Pedido</a></td>
+                <td><a th:if="*{pedido.situacao.toString() != 'CANCELADO'}" th:href="${ '/pedidos/cancelar/' + pedido.idPedido}">Cancelar</a></td>
+                <td><a th:if="*{pedido.situacao.toString() != 'ENCERRADO'}" th:href="${ '/pedidos/encerrar/' + pedido.idPedido}">Retirar Pedido</a></td>
                 <td><a th:if="*{pedido.situacao.toString() == 'PENDENTE'}" th:href="${ '/pedidos/editar/' + pedido.idPedido}">Editar Pedido</a></td>
             </tr>
         </table>

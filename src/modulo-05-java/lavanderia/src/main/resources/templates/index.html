@@ -6,16 +6,6 @@
 	<body>
 		<div layout:fragment="content">
 			<div class="text-center">
-				<div class="pull-rigth text-25pt">
-					<div th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">
-						<span>Ola</span>
-						<span sec:authentication="name"></span>
-					</div>
-					<div th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
-						<span>Ola</span>
-						<span sec:authentication="name"></span>
-					</div>
-				</div>
 				<h2>Bem Vindo à Lavanderia Crescer</h2>
 				<img src="http://lavanderiasantahelena.com.br/gallery/banner04.png" class="img-responsive banner-index" />
 			</div>
